@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900|Roboto:wght@100;300;400;500;700;900&display=swap');
 
 
-
-
-
 *{
     margin: 0;
     padding: 0;
@@ -164,6 +161,60 @@ section h1 {
 }
 
 
+/*BODY - Footer*/
+
+
+.footer {
+    background-color: black;
+    color: white;
+    padding: 50px 0;
+}
+
+.footer_contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 135px;
+}
+
+.link {
+    margin-bottom: 1rem; /* Agrega espacio entre los elementos */
+}
+
+.link h3 {
+    margin-bottom: 0.5rem; /* Agrega espacio debajo del título */
+}
+
+.footer_contenedor{ 
+    color: #f8b020; /* Cambia el color de los hipervínculos a naranja */
+}
+
+/* LEGAL */
+.info_legal{    
+    margin-top: 250px;
+    display: relative;
+    margin-left: 300px;
+    margin-right: 0;    
+    padding-right: 0;
+    align-items: center;
+}
+
+.info_legal ul {
+    list-style: none; /* Elimina los estilos de lista */
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+}
+
+.info_legal ul li { 
+    display: inline; /* Muestra los elementos de lista en línea */
+    margin-right: 1rem; /* Agrega espacio entre los elementos */
+    font-size: 0.8rem; /* Tamaño de fuente más pequeño */
+}
+
+.info_legal a {
+    color: #f8b020; /* Cambia el color de los hipervínculos a naranja */
+}
 
 
 

@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900|Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; /*quitamos el subrayado de los enlaces */
+    list-style: none; /*quitamos los puntos de los enlaces*/
+    font-family: 'Exo 2', sans-serif;
+
+}
+
+header {
+    background-color: black;
+    height: 7rem;
+    display: flex;
+    justify-content: center; /* Centramos horizontalmente los elementos */
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.menu.contenedor {
+    width: 100%; /* Ajustamos el ancho al 100% para ocupar toda la barra de navegación */
+    display: flex;
+    justify-content: space-between; /* Distribuimos los elementos a lo largo de la barra */
+    align-items: center;
+}
+
+.logo {
+    /* flex: 1; */
+}
+
+.navbar {
+    /* flex: 2; */
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 9rem;
+}
+
+.navbar ul li:last-child {
+    margin-right: 0;
+}
+
+.navbar ul li a {
+    color: #f8b020;
+    text-decoration: none;
+}
+
+.boton_login {
+    margin-right: 25px;
+    text-align: right;
+}
+
+.boton_login a {
+    color: #f8b020;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #f8b020;
+    border-radius: 4px;
+}
+
+.boton_login a:hover {
+    background-color: #f8b020;
+    color: black;
+}
+
+
+/*BODY*/
+
+body{
+    background-color: black;
+}
+
+
+/* EDICIÓN BOTONES*/
+
+
+.boton_mas_info0{
+    background-color: #FFF1D4;
+} 
+.boton_mas_info5{
+    background-color: #F8DCA5;
+}
+.boton_mas_info50{
+    background-color: #F8B020;
+}
+.boton_mas_info100{
+    background-color: #F86E20;
+}
+
+.boton_mas_info0,
+.boton_mas_info5,
+.boton_mas_info50,
+.boton_mas_info100 {
+    margin-top: 30px;
+    padding: 1rem 2rem;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem; /
+}
+
+.boton_mas_info0:hover,
+.boton_mas_info5:hover,
+.boton_mas_info50:hover,
+.boton_mas_info100:hover {
+    background-color: #f8b020; /* Cambia el color de fondo al pasar el ratón */
+}
+
+/* Edición Texto*/
+.texto{
+    margin: 50px 25px 45px 25px;
+    color: white;
+    font-size: 13px;
+}
+
+.texto h3{
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.texto li{
+    margin-top: 15px;
+}
+
+ .texto p{
+    margin-top: 12px;
+ }
+
+ .texto #token_ahorro {
+    margin-top: 45px;
+ }

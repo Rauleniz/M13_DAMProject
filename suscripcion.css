@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900|Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; /*quitamos el subrayado de los enlaces */
+    list-style: none; /*quitamos los puntos de los enlaces*/
+    font-family: 'Exo 2', sans-serif;
+
+}
+
+header {
+    background-color: black;
+    height: 7rem;
+    display: flex;
+    justify-content: center; /* Centramos horizontalmente los elementos */
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.menu.contenedor {
+    width: 100%; /* Ajustamos el ancho al 100% para ocupar toda la barra de navegación */
+    display: flex;
+    justify-content: space-between; /* Distribuimos los elementos a lo largo de la barra */
+    align-items: center;
+}
+
+.logo {
+    /* flex: 1; */
+}
+
+.navbar {
+    /* flex: 2; */
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 9rem;
+}
+
+.navbar ul li:last-child {
+    margin-right: 0;
+}
+
+.navbar ul li a {
+    color: #f8b020;
+    text-decoration: none;
+}
+
+.boton_login {
+    margin-right: 25px;
+    text-align: right;
+}
+
+.boton_login a {
+    color: #f8b020;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #f8b020;
+    border-radius: 4px;
+}
+
+.boton_login a:hover {
+    background-color: #f8b020;
+    color: black;
+}
+
+
+/* BODY - PLANES*/
+
+body {
+    background-color: black;
+  }
+  
+
+.plan_contenedor {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem; /* Espacio por encima de los planes */
+}
+
+.plan0,
+.plan5,
+.plan50,
+.plan100 {
+  width: 100%; /* Ajustar el ancho de las cajas */
+  margin: 0; /* Agregar margen entre las cajas */
+}
+
+h1 {
+color: #f8b020; 
+text-align: center; 
+margin-top: 2rem; 
+font-family: 'Exo 2', sans-serif;
+}
+
+
+/* colores de las cajas*/
+.plan_texto0{
+    background-color: #FFF1D4;
+}
+.plan_texto5{
+    background-color: #F8DCA5;
+}
+.plan_texto50{
+    background-color: #F8B020;
+}
+.plan_texto100{
+    background-color: #F86E20;
+}
+
+.plan_texto0, .plan_texto5, .plan_texto50, .plan_texto100 h3 {
+    color: black; /* Texto negro */
+    margin-bottom: 20px;
+}
+
+/*Tamaño de los precios*/
+.plan_contenedor h3{
+    font-size: 30px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+}
+
+
+/* Dentro de Plan 0 separamos los dos bloques de texto*/
+.plan_texto0 .artist p,
+.plan_texto0 .user p {
+    line-height: 2.5; 
+    font-size: 18px;
+}
+
+.plan_texto0 .artist {
+    margin-bottom: 20px; 
+}
+
+
+.plan_texto5 p {
+    line-height: 2.5; 
+    font-size: 18px;
+}
+
+.plan_texto50 p {
+    line-height: 2.5; 
+    font-size: 18px;
+}
+
+.plan_texto100 p {
+    line-height: 2.0; 
+    font-size: 18px;
+}
+
+  
+.plan_texto0, .plan_texto5, .plan_texto50, .plan_texto100 {
+border-radius: 10px; /* Bordes redondeados */
+padding: 1rem; /* Espacio interno */
+width: 80%; /* Ancho de cada plan */
+height: 100%;
+text-align: center;
+margin-left: 10%; /* Aumenta el margen izquierdo */
+margin-right: 10%; 
+}
+
+
+
+.boton_mas_info0 {
+    display: block;
+    margin-top: 65px; /* Espacio entre el texto y el botón */
+    padding: 0.5rem 1rem; /* Espacio interno del botón */
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+}
+
+.boton_mas_info5 {
+    display: block;
+    margin-top: 220px; /* Espacio entre el texto y el botón */
+    padding: 0.5rem 1rem; /* Espacio interno del botón */
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+}
+
+.boton_mas_info50 {
+    display: block;
+    margin-top: 180px; /* Espacio entre el texto y el botón */
+    padding: 0.5rem 1rem; /* Espacio interno del botón */
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+}
+
+.boton_mas_info100 {
+display: block;
+margin-top: 29px; /* Espacio entre el texto y el botón */
+padding: 0.5rem 1rem; /* Espacio interno del botón */
+background-color: black; /* Fondo negro */
+color: white; /* Texto blanco */
+border: none; /* Sin borde */
+border-radius: 5px; /* Bordes redondeados */
+cursor: pointer;
+}
+
+.boton_mas_info:hover {
+background-color: #444; /* Color de fondo más oscuro al pasar el mouse */
+}
+  

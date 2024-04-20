@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M13</title>
+    <link rel="stylesheet" href="condiciones.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    </head>
+
+    <header>
+    <div class="menu contenedor">
+        <a href="index.html" class="logo">
+            <img src="Images/logo_marco.png" alt="logo">
+        </a>            
+
+        <!-- menú de navegación header -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="maps.html">Maps</a></li>
+                <li><a href="suscripcion.html">Suscribirse</a></li>
+                <li><a href="quienessomos.html">Quiénes Somos</a></li>
+            </ul>                
+        </nav>
+
+        <div class="boton_login"><a href="login.html">Login</a></div>
+    </div>
+    </header>
+
+    <body> 
+        <div class="botones">
+            <a href="formulario.html" class="boton_mas_info0" data-id="boton0">0€</a>
+            <a href="formulario.html" class="boton_mas_info5" data-id="boton5">5€/mes</a>
+            <a href="formulario.html" class="boton_mas_info50" data-id="boton50">50€/mes</a>
+            <a href="formulario.html" class="boton_mas_info100" data-id="boton100">100€/mes</a>
+        </div>
+
+        <div class="texto">
+            <h2>CONDICIONES</h2>
+            <p>La categoría de las etiquetas se establecen en función del número de habitantes de una ciudad, el número de salas y actividad cultural y turística, el número de conciertos anuales y el número de festivales celebrados en el lugar... además de si una calle es céntrica o es zona de ocio. Zona 1: centro ciudad, zonas de ocio, culturales y turísticas. Zona 2: zonas de extrarradio y periurbanas y ciudades satélite a la capital de una área metropolitana.</p>
+            <p>La finalidad de este proyecto es tejer una red colaborativa entre los músicos locales. Para aprovechar al máximo esta herramienta te aconsejamos que seas sincero y te etiquetes en la ciudad en la que de verdad ejerces tu actividad profesional para que los músicos, salas, productores y el público de tu alrededor te puedan encontrar para colaboraciones profesionales cercanas, actuar en conciertos no planificados, buscar músicos de sesión o un nuevo miembro para tu banda.</p>
+            <h3>0€</h3>
+            <p>Derecho a etiqueta en Zona 2.</p>
+            <h3>5€/mes</h3>
+            <p>Derecho a etiquetar en cualquier parte de la ciudad o área metropolitana.</p>
+            <h3>50€/mes</h3>
+            <p>Derecho a etiquetar en cualquier parte de la ciudad. Generación de token de ahorro. Con cada interactuación en nuestra web , ya sea relacionándote proactivamente en la organización, celebración y participación de eventos musicales con otros artistas o cerrando colaboraciones profesionales (producción, actuación) generarás 1 token. Por cada 5 token acumulados el mes siguiente se reduce tu cuota un  1%. Si llegado el mes 12 desde la fecha de inscripción, en la renovación de tu licencia has acumulado un número de token de ahorro por un valor superior a la próxima cuota mensual, te pagamos los costes de una actuación en la *sala que escojas de tu provincia. (*Calendario sujeto a disponibilidad de la sala.).</p>
+            <h3>Premium 100€/mes</h3>
+            <p>Incluye todo lo anterior, más asesoramiento fiscal y la posibilidad de escoger indistintamente entre las siguientes opciones (*no es acumulable, solamente se puede escoger una opción al mismo tiempo):</p>
+            <ul class="lista_premium">
+                <li>1- Emisión en directo de tu concierto desde nuestra plataforma</li>
+                <li>2- Te asignamos un técnico de sonido para tus conciertos. </li>
+                <li>3- Cheque cena para toda la banda en la noche del concierto.</li>
+                <li>4- Te financiamos la grabación de tu disco o maqueta con un productor musical. (*Se financia una bolsa de 50 horas. A partir de aquí, los costes corren a cargo del artista. Te aconsejamos que prepares bien tu sesión, si vas con los deberes hechos, con 50h tendrás más que suficiente).</li>
+                <li>5- Seguro para tu equipamiento técnico durante el día del desplazamiento de ida, concierto y desplazamiento de vuelta.</li>
+                <li>6- Alquiler de furgón sin conductor + alojamiento si el concierto es a más de 100km de tu ciudad</li>
+            </ul>
+            <h3 id="token_ahorro">Token de ahorro</h3>
+            <p>Cada interacción que realice un usuario de este sitio web dentro de la plataforma surgido de la colaboración y participación de cualquier evento de características culturales y artísticas generará un token de ahorro. La manera de contabilizar el token es mediante el sistema de valoración que cada usuario posee en su perfil. El sistema de valoración es una medida mediante un sistema de puntos que permite a cada a todos los usuarios depositar su confianza en otros compañeros de profesión y usuarios de este sitioweb para futuras colaboraciones.</p>
+            <p>Para que el token pueda generarse se ha de tener un punto positivo y una prueba de la celebración del evento/colaboración (el cartel de un concierto, la copia de una factura de un estudio de grabación o cualquier otro documento que constate la existencia de dicha colaboración)</p>
+            <p>Cada 5 tokens generados dentro del mes natural produce un descuento de un 1% en la cuota del mes siguiente.</p>
+            <p>Si llegado el mes 12 desde la fecha de inscripción, en la renovación de tu licencia has acumulado un número de token de ahorro por un valor superior a la próxima cuota mensual, te pagamos los costes de una actuación en la *sala que escojas de tu provincia. (*Calendario sujeto a disponibilidad de la sala.).</p>
+            <p>Puedes cambiar de plan siempre que lo desees desde tu perfil de usuario. Cada 12 meses se renovará la suscripción automáticamente. Puedes cancelar tu suscripción cuando quieras desde tu área de usuario. La cancelación no conlleva penalización de ningún tipo.</p>
+            <p>Las colaboraciones con los técnicos de sonido, productores, y lutieres se realziaran con acuerdo entre las partes así, y sujeto al Convenio colectivo de la Industria de la Producción Audiovisual (Técnicos). BOE-A-2021-8425.</p>
+            <p>Sólo una etiqueta por dirección y portal. La direcciones corresponden a direcciones postales reales</p>
+            <p>No nos hacemos responsables de las condiciones de colaboración entre terceros que puedan surgir entre los usuarios de este sitioweb.</p>
+            <p>No poseemos ningún derecho sobre las producciones y obras artísticas subidas a la aplicación</p>
+        </div>
+
+
+    <!-- Script JS -->
+    <script src="condiciones.js"></script>
+
+    </body>
+</html>

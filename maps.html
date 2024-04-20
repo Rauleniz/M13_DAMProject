@@ -1,51 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>M13</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M13</title>
+    <link rel="stylesheet" href="maps.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  </head>
 
-<header>
-  <div class="menu contenedor">
-    <a href="#header" class="logo">
-        <img src="Images/logo_marco.png" alt="logo">
-    </a>            
+  <header>
+    <div class="menu contenedor">
+      <a href="index.html" class="logo">
+          <img src="Images/logo_marco.png" alt="logo">
+      </a>            
 
-    <!-- menú de navegación header -->
-    <nav class="navbar">
-        <ul>
-            <li><a href="maps.html">Maps</a></li>
-            <li><a href="suscripcion.html">Suscribirse</a></li>
-            <li><a href="quienessomos.html">Quiénes somos</a></li>
-        </ul>                
-    </nav>
+      <!-- menú de navegación header -->
+      <nav class="navbar">
+          <ul>
+              <li><a href="maps.html">Maps</a></li>
+              <li><a href="suscripcion.html">Suscribirse</a></li>
+              <li><a href="quienessomos.html">Quiénes somos</a></li>
+          </ul>                
+      </nav>
 
-    <div class="boton_login"><a href="login.html">Login</a></div>
-</div>
-</header>
-
-
-<body> 
+      <div class="boton_login"><a href="login.html">Login</a></div>
+  </div>
+  </header>
 
 
-  <!-- DIV mapa -->
-  <div id="map" style="height: 400px;"></div>
+  <body> 
+    <!-- DIV mapa -->
+    <div id="map" style="height: 400px;"></div>
 
+    <script>
+      // inicializar mapa
+      var map = L.map('map').setView([41.3926386, 2.0577881], 10);
 
+      // Añadir capa de OpenStreetMap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+    </script>
 
-  <script>
-    // inicializar mapa
-    var map = L.map('map').setView([41.3926386, 2.0577881], 10);
-
-    // Añadir capa de OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-  </script>
-
-</body>
+  </body>
 </html>
