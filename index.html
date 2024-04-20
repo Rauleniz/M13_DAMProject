@@ -4,22 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>M13</title>
+  <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet2" href="styles.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
-<body>
-  <div id="map" style="height: 400px;"></div>
 
-  <script>
-    // Inicializar el mapa
-    var map = L.map('map').setView([41.3926386, 2.0577881], 10);
+<header>
+  <div class="menu contenedor">
+    <a href="#header" class="logo">
+        <img src="Images/logo_marco.png" alt="logo">
+    </a>            
 
-    // Añadir capa de OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-  </script>
+    <!-- menú de navegación header -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="maps.html">Maps</a></li>
+            <li><a href="suscripcion.html">Suscribirse</a></li>
+            <li><a href="quienessomos.html">Quiénes somos</a></li>
+        </ul>                
+    </nav>
+
+    <div class="boton_login"><a href="login.html">Login</a></div>
+</div>
+</header>
+
+<hr class="separator">
+
+<body> 
+
+  <section>
+    <h1> No importa lo grande o pequeño que seas, nos importa qué haces </h1>
+  </section>
+
+  <hr class="separator">
+
+
+    <!-- info 3 cajas -->
+  <section class="cajas_info_portada">
+    <div class="caja_info">   
+        <h3>Accede a la escena musical local de cualquier ciudad del mundo</h3>
+    </div>
+
+    <div class="caja_info">        
+        <h3>Contacta  directamente con los artistas</h3>
+    </div>
+
+    <div class="caja_info">        
+        <h3>Visualización única, sin algoritmos de posicionamiento </h3>
+    </div>
+  </section>
+
+  <hr class="separator">
+
+  <!-- DIV mapa -->
+  <section id="map_img_home">
+    <img src="img/img_maps_home_2.png" alt="img map estático">
+  </section>
+
+  <hr class="separator">
+
+
+    <!-- DIV Info Básic -->
+  <section class="info_basic">
+    <h2>Conoce e interactuar con artistas de cualquier lugar del mundo de una manera libre y directa</h2>
+    <h2>Ningún algoritmo de posicionamiento te alejará de tu próximo descubrimiento</h2>
+    <h2>La experiencia de ir a conocer la música de cualquier país directamente buscando en un mapa</h2>
+    <h2> Te redirigimos a los portales directos de los artistas para potenciar el acceso a sus redes habituales sin depender del tráfico</h2>
+  </section>
+
+
+  <!-- Script JS -->
+  <script src="main.js"></script>
 
 </body>
 </html>

@@ -1,20 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900|Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+
+
+
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; /*quitamos el subrayado de los enlaces */
+    list-style: none; /*quitamos los puntos de los enlaces*/
+    font-family: 'Exo 2', sans-serif;
+
 }
 
-html, body{
-    height: 100%;
-}
-
-body{
+header {
+    background-color: black;
+    height: 7rem;
     display: flex;
+    justify-content: center; /* Centramos horizontalmente los elementos */
+    align-items: center;
+    padding: 0 1rem;
 }
 
-#google-map{
-    border: 1px solid #ccc;
-    width: 700px;
-    height: 500px;
-    align-self: center;
-    margin: 0 auto;
+.menu.contenedor {
+    width: 100%; /* Ajustamos el ancho al 100% para ocupar toda la barra de navegación */
+    display: flex;
+    justify-content: space-between; /* Distribuimos los elementos a lo largo de la barra */
+    align-items: center;
 }
+
+.logo {
+    /* flex: 1; */
+}
+
+.navbar {
+    /* flex: 2; */
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 9rem;
+}
+
+.navbar ul li:last-child {
+    margin-right: 0;
+}
+
+.navbar ul li a {
+    color: #f8b020;
+    text-decoration: none;
+}
+
+.boton_login {
+    margin-right: 25px;
+    text-align: right;
+}
+
+.boton_login a {
+    color: #f8b020;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #f8b020;
+    border-radius: 4px;
+}
+
+.boton_login a:hover {
+    background-color: #f8b020;
+    color: black;
+}
+
+
+/* Linea Separador */
+.separator {
+    border: none; /* Sin borde */
+    border-top: 3px solid #f8b020; /* Línea horizontal de 1px de ancho y color naranja */
+    margin: 220; /* Sin margen */
+    width: 100%; /* Ancho completo */
+}
+
+
+
+/* BODY */
+
+/* BODY - Texto slogan*/
+section {
+    background-color: black; /* Fondo negro */
+    width: 100%; /* Anchura horizontal que ocupa toda la ventana del navegador */
+    height: 25rem;
+    display: flex; /* Usar flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    padding: 20rem 18rem; /* Añadir espacio alrededor del contenido */
+    margin: 0 auto; /* Centrar horizontalmente */
+}
+
+section h1 {
+    color: white; /* Texto en blanco */
+    font-size: 3rem;
+}
+
+
+/*BODY - Cajas info*/
+
+.cajas_info_portada {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    padding: 20rem;
+    margin: 0 -0.5rem; /* Ajustamos el margen negativo para compensar */
+}
+
+.caja_info {
+    width: 30%; /* Reducimos el ancho */
+    height: 16rem; /* Reducimos la altura */
+    background-color: #f8b020;
+    text-align: center;
+    padding: 1rem;
+    margin: 0 1.5rem; /* Reducimos el margen entre las cajas */
+    box-sizing: border-box; /* Incluimos el padding y el borde en el tamaño total */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.caja_info h3 {
+    color: black;
+}
+
+
+/*BODY - mapa estático*/
+
+#map_img_home {   
+    max-width: 100%; /* Asegura que la imagen no supere el ancho de la ventana */
+    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
+}
+
+#map_img_home img {
+    width: 1000px; /* Ancho de la imagen en píxeles */
+    height: auto; /* Permitir que la altura se ajuste automáticamente para mantener la proporción */
+    margin-top: -11rem;    
+}
+
+/*BODY - info basic*/
+.info_basic{
+    height: auto;
+    color: white;
+    display: flex;    
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias líneas */
+    align-items: center;
+    
+}
+
+.info_basic h2 {
+    margin: 1.5rem; /* Agrega un espacio entre cada línea de texto */
+    display: flex; 
+}
+
+
+
+
+
+
+
+
