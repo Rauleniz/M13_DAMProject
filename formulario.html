@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M13</title>
+    <link rel="stylesheet" href="formulario.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    </head>
+
+    <header>
+    <div class="menu contenedor">
+        <a href="index.html" class="logo">
+            <img src="Images/logo_marco.png" alt="logo">
+        </a>            
+
+        <!-- menú de navegación header -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="maps.html">Maps</a></li>
+                <li><a href="suscripcion.html">Suscribirse</a></li>
+                <li><a href="quienessomos.html">Quiénes Somos</a></li>
+            </ul>                
+        </nav>
+
+        <div class="boton_login"><a href="login.html">Login</a></div>
+    </div>
+    </header>
+
+    <body> 
+
+    <div class="caja_inscripcion">
+        <h1>Formulario de Inscripción</h1>
+        <form action="procesar_inscripcion.php" method="POST"> 
+            <div>
+                <label for="nombre_artista">Nombre de Artístico</label>
+                <input type="text" id="nombre_artista" name="nombre_artista" required>
+            </div>
+            <div>
+                <label for="direccion_facturacion">Dirección de Facturación:</label>
+                <input type="text" id="direccion_facturacion" name="direccion_facturacion" required>
+            </div>
+            <div>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="opciones_perfil">Selecciona tu perfil:</label>
+                <select id="opciones" name="opciones">
+                    <option value="opcion1">Artista</option>
+                    <option value="opcion2">Técnico</option>
+                    <option value="opcion3">Productor</option>
+                </select>
+            </div>
+            <div>
+                <label for="tarjeta">Número de tarjeta:</label>
+                <input type="text" id="tarjeta" name="tarjeta" placeholder="Ingresa el número de tu tarjeta" required>
+                <br>
+            
+                <label for="nombre_titular">Nombre del titular de la tarjeta:</label>
+                <input type="text" id="nombre_titular" name="nombre_titular" placeholder="Ingresa el nombre del titular de la tarjeta" required>
+                <br>
+            </div>
+            <div>
+                <label for="nombre_usuario">Registra tu Nombre de Usuario</label>
+                <input type="text" id="nombre_usuario" name="nombre_usuario" required>
+            </div>
+            <div>
+                <label for="contraseña">Registra tu Contraseña</label>
+                <input type="text" id="contraseña" name="contraseña" required>
+            </div>
+        </form>
+    </div>
+
+    <div class="boton">
+        <button type="submit">Registrar</button>
+    </div>
+
+
+    <!-- Script JS -->
+    <script src="formulario.js"></script>
+
+    </body>
+</html>

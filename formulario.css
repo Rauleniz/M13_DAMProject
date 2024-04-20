@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900|Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; /*quitamos el subrayado de los enlaces */
+    list-style: none; /*quitamos los puntos de los enlaces*/
+    font-family: 'Exo 2', sans-serif;
+
+}
+
+header {
+    background-color: black;
+    height: 7rem;
+    display: flex;
+    justify-content: center; /* Centramos horizontalmente los elementos */
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.menu.contenedor {
+    width: 100%; /* Ajustamos el ancho al 100% para ocupar toda la barra de navegación */
+    display: flex;
+    justify-content: space-between; /* Distribuimos los elementos a lo largo de la barra */
+    align-items: center;
+}
+
+.logo {
+    /* flex: 1; */
+}
+
+.navbar {
+    /* flex: 2; */
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 9rem;
+}
+
+.navbar ul li:last-child {
+    margin-right: 0;
+}
+
+.navbar ul li a {
+    color: #f8b020;
+    text-decoration: none;
+}
+
+.boton_login {
+    margin-right: 25px;
+    text-align: right;
+}
+
+.boton_login a {
+    color: #f8b020;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #f8b020;
+    border-radius: 4px;
+}
+
+.boton_login a:hover {
+    background-color: #f8b020;
+    color: black;
+}
+
+
+/* Linea Separador */
+.separator {
+    border: none; /* Sin borde */
+    border-top: 3px solid #f8b020; /* Línea horizontal de 1px de ancho y color naranja */
+    margin: 220; /* Sin margen */
+    width: 100%; /* Ancho completo */
+}
+
+
+/* BODY*/
+
+body{
+    background-color: black;
+}
+
+
+/* display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 50;
+padding: 20px; */
+
+.caja_inscripcion h1{
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+}
+
+
+.caja_inscripcion{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;    
+    background-color: #f8b020;
+    padding: 20px;    
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    border: 10px solid black;
+    outline-offset: -2px;
+    border-radius: 80px 80px 80px 80px;
+    text-align: center;
+}
+
+.caja_inscripcion label{
+    display: block;
+    margin-bottom: 3px;
+    margin-top: 20px;
+    color: black;
+}
+
+.caja_inscripcion input, .caja_inscripcion select {    
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 20px; /* Aumenta el espacio entre campos */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block; /* Asegura que los inputs ocupen todo el ancho disponible */
+    margin: 0 auto; /* Centra horizontalmente los inputs */   
+}
+
+.caja_inscripcion input[type="submit"] {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fb0404;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+form{
+    background-color: #f8b020;
+    
+}
+
+.boton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #f8b020;
+    color: black;
+    text-decoration: none;
+    border: 2px solid #f8b020; /* Añadimos un borde */
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px; /* Ajustamos el tamaño del texto */
+    transition: background-color 0.3s, color 0.3s; /* Agregamos una transición suave */
+}
+
+.boton:hover {
+    background-color: #fb0404; /* Cambiamos el color de fondo al pasar el ratón */
+    color: white; /* Cambiamos el color del texto al pasar el ratón */
+}
