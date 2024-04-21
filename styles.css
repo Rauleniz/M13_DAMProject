@@ -219,5 +219,80 @@ section h1 {
 
 
 
+/* Footer */
+
+.footer {
+    padding: 50px 0;
+    color: #ffffff;
+    background-color: #000000;        
+}
+
+.footer_contenedor {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 135px;
+}
+
+.link h3 {
+    color:#ffffff;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.link a{
+    color: #f8b020;
+    font-size: 15px;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;   
+}
+
+.link a:hover {
+    color: #F86E20;
+}
 
 
+.info_legal{    
+    margin-top: 250px;
+    display: relative;
+    margin-left: 500px;
+    margin-right: 0;    
+    padding-right: 0;
+}
+
+
+ .info_legal a{
+    color:#ffffff;
+    font-size: 17px;
+    margin-right: 50px;      
+} 
+
+
+
+
+/* Estilos para el aviso de cookies */
+.aviso-cookies {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: none; /* Lo ocultamos inicialmente */
+}
+
+.aviso-cookies a {
+    color: #fb0404;
+    text-decoration: underline;
+}
+
+.aviso-cookies button {
+    background-color: #fb0404;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}

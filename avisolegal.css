@@ -1,0 +1,212 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900|Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; /*quitamos el subrayado de los enlaces */
+    list-style: none; /*quitamos los puntos de los enlaces*/
+    font-family: 'Exo 2', sans-serif;
+
+}
+
+header {
+    background-color: black;
+    height: 7rem;
+    display: flex;
+    justify-content: center; /* Centramos horizontalmente los elementos */
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.menu.contenedor {
+    width: 100%; /* Ajustamos el ancho al 100% para ocupar toda la barra de navegación */
+    display: flex;
+    justify-content: space-between; /* Distribuimos los elementos a lo largo de la barra */
+    align-items: center;
+}
+
+.logo {
+    /* flex: 1; */
+}
+
+.navbar {
+    /* flex: 2; */
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 9rem;
+}
+
+.navbar ul li:last-child {
+    margin-right: 0;
+}
+
+.navbar ul li a {
+    color: #f8b020;
+    text-decoration: none;
+}
+
+.boton_login {
+    margin-right: 25px;
+    text-align: right;
+}
+
+.boton_login a {
+    color: #f8b020;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #f8b020;
+    border-radius: 4px;
+}
+
+.boton_login a:hover {
+    background-color: #f8b020;
+    color: black;
+}
+
+
+/* Linea Separador */
+.separator {
+    border: none; /* Sin borde */
+    border-top: 3px solid #f8b020; /* Línea horizontal de 1px de ancho y color naranja */
+    margin: 220; /* Sin margen */
+    width: 100%; /* Ancho completo */
+}
+
+
+/* BODY */
+body{
+    background-color: #000000;
+    color: #ffffff;
+    margin: 50px, 30px, 20px, 30px;
+    font-size: 13px;
+}
+
+.texto_legal{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+body h2{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 30px;
+}
+
+body h3{
+    margin-top: 25px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+body p{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+body ul{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+body li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+
+
+
+/* Footer */
+
+.footer {
+    padding: 50px 0;
+    color: #ffffff;
+    background-color: #000000;        
+}
+
+.footer_contenedor {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 135px;
+}
+
+.link h3 {
+    color:#ffffff;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.link a{
+    color: #f8b020;
+    font-size: 15px;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;   
+}
+
+.link a:hover {
+    color: #F86E20;
+}
+
+
+.info_legal{    
+    margin-top: 250px;
+    display: relative;
+    margin-left: 500px;
+    margin-right: 0;    
+    padding-right: 0;
+}
+
+
+ .info_legal a{
+    color:#ffffff;
+    font-size: 17px;
+    margin-right: 50px;      
+} 
+
+
+
+
+/* Estilos para el aviso de cookies */
+.aviso-cookies {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: none; /* Lo ocultamos inicialmente */
+}
+
+.aviso-cookies a {
+    color: #fb0404;
+    text-decoration: underline;
+}
+
+.aviso-cookies button {
+    background-color: #fb0404;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
