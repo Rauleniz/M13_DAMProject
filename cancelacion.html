@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+    <link rel="stylesheet" href="cancelacion.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    </head>
+
+    <header>
+        <div class="menu contenedor">
+            <a href="index.html" class="logo">
+                <img src="Images/logo_marco.png" alt="logo">
+            </a>            
+    
+            <!-- menú de navegación header -->
+            <nav class="navbar">
+                <ul>
+                    <li><a href="maps.html">Maps</a></li>
+                    <li><a href="suscripcion.html">Suscribirse</a></li>
+                    <li><a href="quienessomos.html">Quiénes Somos</a></li>
+                </ul>                
+            </nav>
+            
+            <div class="menu_user">
+                <div class="boton_menu">
+                    <button class="boton_menu_icono">&#9898;</button>
+                    <div class="menu_desplegable">
+                      <ul>
+                        <li><a href="maps.html">Maps</a></li>
+                        <li><a href="mietiqueta.html">Mi Etiqeuta</a></li>
+                        <li><a href="agenda.html">Agenda</a></li>
+                        <li><a href="chat.html">Chat</a></li>
+                        <li><a href="miperfil.html">Mi perfil</a></li>
+                        <li><a href="index.html">Logout</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        </header>
+
+
+    <body> 
+        <h1>Mi perfil</h1>   
+        <div class="container">
+            <div class="pregunta">
+                <p class="texto_pregunta">¿Cancelar Suscripción?</p>
+            </div>
+        </div>
+        <div class="botones">
+            <div class="opciones">
+                <button id="si-btn">Sí</button>
+            </div>
+            <div class="opciones">
+                <!-- volvemos a miperfil -->
+                <button id="no-btn">No</button>
+            </div>
+        </div>  
+
+        <!-- Script JS -->
+        <script src="cancelacion.js"></script>
+
+    </body>
+
+</html>

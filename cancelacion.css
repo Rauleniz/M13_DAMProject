@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900|Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; /*quitamos el subrayado de los enlaces */
+    list-style: none; /*quitamos los puntos de los enlaces*/
+    font-family: 'Exo 2', sans-serif;
+
+}
+
+header {
+    background-color: black;
+    height: 7rem;
+    display: flex;
+    justify-content: center; /* Centramos horizontalmente los elementos */
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.menu.contenedor {
+    width: 100%; /* Ajustamos el ancho al 100% para ocupar toda la barra de navegación */
+    display: flex;
+    justify-content: space-between; /* Distribuimos los elementos a lo largo de la barra */
+    align-items: center;
+}
+
+.logo {
+    /* flex: 1; */
+}
+
+.navbar {
+    /* flex: 2; */
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 9rem;
+}
+
+.navbar ul li:last-child {
+    margin-right: 0;
+}
+
+.navbar ul li a {
+    color: #f8b020;
+    text-decoration: none;
+}
+
+.boton_login {
+    margin-right: 25px;
+    text-align: right;
+}
+
+.boton_login a {
+    color: #f8b020;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #f8b020;
+    border-radius: 4px;
+}
+
+.boton_login a:hover {
+    background-color: #f8b020;
+    color: black;
+}
+
+.boton_menu {
+    position: relative;
+}
+
+.boton_menu_icono {
+width: 40px;
+height: 40px;
+background-color: #f8b020;
+color: white;
+border: none;
+border-radius: 50%;
+font-size: 24px;
+cursor: pointer;
+}
+
+.menu_desplegable {
+position: absolute;
+top: 60px;
+right: 0;
+background-color: #f8b020;
+border-radius: 5px;
+display: none;
+}
+
+.menu_desplegable ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
+
+.menu_desplegable ul li {
+padding: 10px;
+}
+
+.menu_desplegable ul li a {
+color: white;
+text-decoration: none;
+display: block;
+}
+
+.boton_menu:hover .menu_desplegable {
+display: block;
+}
+
+
+
+/* BODY */
+
+body{
+    background-color: #000;
+}
+
+body h1{
+    margin-top: 40px;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 20vh; /* Toma el 100% de la altura de la ventana */
+}
+
+.pregunta {
+    margin-top: 30px;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f8b020;
+    color: black;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.pregunta p {
+    margin: 0;
+}
+
+.texto_pregunta {
+    font-size: 2em; /* Duplica el tamaño del texto */
+}
+
+
+.botones {
+    display: flex;
+    justify-content: center; /* Alinear horizontalmente los botones */
+    margin-top: 50px; /* Espacio encima de los botones */
+}
+
+.opciones {
+    margin: 0 90px; /* Espacio entre los botones */
+}
+
+button {
+    padding: 15px 30px; /* Tamaño de los botones */
+    background-color: orange; /* Color de fondo naranja */
+    color: black; /* Texto en negro */
+    border: none;
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer;
+    font-size: 18px; /* Tamaño del texto del botón */
+}
+
+button:hover {
+    background-color: red; /* Cambiar el color de fondo al pasar el ratón */
+}
