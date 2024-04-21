@@ -170,6 +170,6 @@ form{
 }
 
 .boton:hover {
-    background-color: #fb0404; /* Cambiamos el color de fondo al pasar el ratón */
+    background-color: #218c3f; /* Cambiamos el color de fondo al pasar el ratón */
     color: white; /* Cambiamos el color del texto al pasar el ratón */
 }

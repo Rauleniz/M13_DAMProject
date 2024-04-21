@@ -3,8 +3,8 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M13</title>
-    <link rel="stylesheet" href="bienvenida.css" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="chat.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     </head>
@@ -43,13 +43,37 @@
         </div>
         </header>
 
-    <body> 
-
-        <h3>¡Bienvenido!</h3>
-        <h3>¡Registro realizado con éxito!</h3>
+    <body>      
+    
+        <div class="chat-container">
+            <div class="contact-list">
+                <!-- Aquí se mostrará la lista de contactos -->
+                <div class="contact">Amigo 1</div>
+                <div class="contact">Amigo 2</div>
+                <div class="contact">Amigo 3</div>
+                <div class="contact">Amigo 4</div>
+                <div class="contact">Amigo 5</div>
+                <div class="contact">Amigo 6</div>
+                <div class="contact">Amigo 7</div>
+                <div class="contact">Amigo 8</div>
+                <!-- Añadir más contactos según sea necesario -->
+            </div>
+            <div class="chat-content">
+                <div class="chat-header">
+                    <h2>Chat en línea</h2>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Aquí se mostrarán los mensajes -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="message-input" placeholder="Escribe tu mensaje...">
+                    <button id="send-button">Enviar</button>
+                </div>
+            </div>            
+        </div>
 
         <!-- Script JS -->
-        <script src="bienvenida.html"></script>
+        <script src="chat.js"></script>
 
     </body>
 </html>

@@ -73,81 +73,140 @@ header {
     color: black;
 }
 
-
-/* Linea Separador */
-.separator {
-    border: none; /* Sin borde */
-    border-top: 3px solid #f8b020; /* Línea horizontal de 1px de ancho y color naranja */
-    margin: 220; /* Sin margen */
-    width: 100%; /* Ancho completo */
-}
-
-
-/* BOTON MENU*/
-
-body{
-    background-color: black;
-}
-
 .boton_menu {
     position: relative;
-  }
-  
-  .boton_menu_icono {
-    width: 40px;
-    height: 40px;
-    background-color: #f8b020;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .menu_desplegable {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: #f8b020;
-    border-radius: 5px;
-    display: none;
-  }
-  
-  .menu_desplegable ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .menu_desplegable ul li {
-    padding: 10px;
-  }
-  
-  .menu_desplegable ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .boton_menu:hover .menu_desplegable {
-    display: block;
-  }
-  
-  #map_img_home img {
-    opacity: 0.2; 
 }
+
+.boton_menu_icono {
+width: 40px;
+height: 40px;
+background-color: #f8b020;
+color: white;
+border: none;
+border-radius: 50%;
+font-size: 24px;
+cursor: pointer;
+}
+
+.menu_desplegable {
+position: absolute;
+top: 60px;
+right: 0;
+background-color: #f8b020;
+border-radius: 5px;
+display: none;
+}
+
+.menu_desplegable ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
+
+.menu_desplegable ul li {
+padding: 10px;
+}
+
+.menu_desplegable ul li a {
+color: white;
+text-decoration: none;
+display: block;
+}
+
+.boton_menu:hover .menu_desplegable {
+display: block;
+}
+
+
 
 
 /*BODY*/
 
-body .botones{
-    display: flex; /* Utiliza el modelo de caja flexible */
-    flex-direction: column;
+/* Estilos para la sección */
+
+body{
+    background-color: #000;
 }
 
-.section {
-    flex: 1; /* Cada div ocupa el mismo ancho */
+body h1{
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 70px 25px 30px 25px;;
+ 
+}
+
+/* Estilos para los botones */
+.botones {
     padding: 20px;
-    border: 1px solid black;
-    margin: 10px;
-  }
+    border-radius: 8px;
+    color: black;
+}
+
+.botones, .info_actual, .edicion_info {
+    width: 30%;
+}
+
+.botones button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f8b020;
+    color: black;
+    cursor: pointer;
+}
+
+/* Estilos para la información actual */
+.info_actual {
+    background-color: #F8DCA5;
+    padding: 20px;
+    border-radius: 8px;
+    color: black;
+}
+
+.datos_actual p {
+    margin-bottom: 10px;
+}
+
+/* Estilos para la edición de información */
+.edicion_info {
+    background-color: #f8b020;
+    padding: 20px;
+    border-radius: 8px;
+    color: black;
+}
+
+.datos_actualizados input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+
+/* Botón guardar cambios*/
+.guardar_cambios {
+    text-align: center;
+    margin-top: 20px; /* Espacio entre el formulario y el botón */
+}
+
+.guardar_cambios button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
