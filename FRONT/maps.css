@@ -11,7 +11,7 @@
 }
 
 header {
-    background-color: black;
+    background-color: #1d1d1d;
     height: 7rem;
     display: flex;
     justify-content: center; /* Centramos horizontalmente los elementos */
@@ -81,7 +81,7 @@ body {
 #map {
 width: 100vw; /* Toma el 100% del ancho de la ventana del navegador */
 height: 500px; /* Por ejemplo, establecer la altura en 500 píxeles */
-background-color: black; /* Fondo negro para la sección del mapa */
+background-color: #1d1d1d; /* Fondo negro para la sección del mapa */
 }
   
   

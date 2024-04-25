@@ -12,7 +12,7 @@
 }
 
 header {
-    background-color: black;
+    background-color: #1d1d1d;
     height: 7rem;
     display: flex;
     justify-content: center; /* Centramos horizontalmente los elementos */
@@ -77,7 +77,7 @@ header {
 /* BODY - PLANES*/
 
 body {
-    background-color: black;
+    background-color: #1d1d1d;
   }
   
 

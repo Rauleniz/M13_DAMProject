@@ -15,7 +15,7 @@
 }
 
 header {
-    background-color: black;
+    background-color: #1d1d1d;
     height: 7rem;
     display: flex;
     justify-content: center; /* Centramos horizontalmente los elementos */
@@ -88,7 +88,7 @@ header {
 
 /* BODY */
 body{
-    background-color: #000000;
+    background-color: #1d1d1d;
     color: #ffffff;
     margin: 50px, 30px, 20px, 30px;
     font-size: 13px;
@@ -138,7 +138,7 @@ body li{
 .footer {
     padding: 50px 0;
     color: #ffffff;
-    background-color: #000000;        
+    background-color: #1d1d1d;        
 }
 
 .footer_contenedor {
