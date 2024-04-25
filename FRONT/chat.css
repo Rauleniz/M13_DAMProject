@@ -136,6 +136,7 @@ body {
 .chat-container {
     display: flex;
     max-width: 800px;
+    max-height: 500px;
     margin: 50px auto;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -148,6 +149,7 @@ body {
     color: #fff;
     padding: 10px;
     overflow-y: auto; /* Agregar barra de desplazamiento vertical */
+    max-height: 100%;
 }
 
 .contact {

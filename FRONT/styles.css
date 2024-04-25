@@ -12,7 +12,7 @@
 }
 
 header {
-    background-color: black;
+    background-color: #1d1d1d;
     height: 7rem;
     display: flex;
     justify-content: center; /* Centramos horizontalmente los elementos */
@@ -88,7 +88,7 @@ header {
 
 /* BODY - Texto slogan*/
 section {
-    background-color: black; /* Fondo negro */
+    background-color: #1d1d1d; /* Fondo negro */
     width: 100%; /* Anchura horizontal que ocupa toda la ventana del navegador */
     height: 25rem;
     display: flex; /* Usar flexbox */
@@ -109,7 +109,7 @@ section h1 {
 .cajas_info_portada {
     display: flex;
     justify-content: space-between;
-    background-color: black;
+    background-color: #1d1d1d;
     padding: 20rem;
     margin: 0 -0.5rem; /* Ajustamos el margen negativo para compensar */
 }
@@ -224,7 +224,7 @@ section h1 {
 .footer {
     padding: 50px 0;
     color: #ffffff;
-    background-color: #000000;        
+    background-color: #1d1d1d;        
 }
 
 .footer_contenedor {
