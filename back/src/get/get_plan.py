@@ -5,21 +5,19 @@ from back.db import database
 
 get_plan_bp = Blueprint('plan_get', __name__)
 
-planes = []
+# planes = []
 
-@get_plan_bp.route('/plan', methods=['GET'])
-def obtener_planes():
+# @get_plan_bp.route('/plan', methods=['GET'])
+# def obtener_planes():
 
-    return jsonify(planes)
+#     return jsonify(planes)
 
 @get_plan_bp.route('/plan/<int:id_plan>', methods=['GET'])
 def obtener_plan(id_plan):
     try:
-        cursor = database.cursor()
-        sql = "SELECT * FROM plan"
-        data = (id_plan)
-        cursor.execute(sql, data)
-        plan = cursor.fetchone()  # Obtener el plan encontrado
+        cursor = database.cursor() 
+        cursor.execute("SELECT * FROM plan WHERE id = %s", (id_plan, ))
+        plan = cursor.fetchone()  
         if plan:
             return jsonify(plan)
         else:

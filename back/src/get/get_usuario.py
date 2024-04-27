@@ -5,7 +5,7 @@ from back.db import database
 
 get_usuarios_bp = Blueprint('usuarios_get', __name__)
 
-#usuarios = []
+# usuarios = []
 
 # @get_usuarios_bp.route('/usuario', methods=['GET'])
 # def obtener_usuarios():
@@ -16,8 +16,6 @@ get_usuarios_bp = Blueprint('usuarios_get', __name__)
 def obtener_usuario(id_usuario):
     try:
         cursor = database.cursor()
-        # sql = "SELECT * FROM usuario WHERE id = %s"
-        # data = (id_usuario)
         cursor.execute("SELECT * FROM usuario WHERE id = %s", (id_usuario,))
 
         usuario = cursor.fetchone()  # Obtener el usuario encontrado
