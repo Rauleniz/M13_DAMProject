@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, session
 from back.db import database
 
 post_bancarios_bp = Blueprint('bancarios_post', __name__)
@@ -6,6 +6,12 @@ post_bancarios_bp = Blueprint('bancarios_post', __name__)
 @post_bancarios_bp.route('/bancario', methods=['POST'])
 def nuevo_datobancario():
     try:    
+
+        # Verificar si el usuario está autenticado y obtener su ID de la sesión
+        if 'user_id' not in session:
+            return jsonify({'mensaje': 'Usuario no autenticado'}), 401
+        user_id = session['user_id']
+
         data = request.json
         nombre_tarjeta = data.get('nombre_tarjeta')
         numero_tarjeta = data.get('numero_tarjeta')
@@ -13,8 +19,8 @@ def nuevo_datobancario():
         cvc = data.get('cvc')
   
         cursor = database.cursor()
-        sql = "INSERT INTO datosbancarios (nombre_tarjeta, numero_tarjeta, caducidad_tarjeta, cvc) VALUES (%s, %s, %s, %s)"
-        cursor.execute(sql, (nombre_tarjeta, numero_tarjeta, caducidad_tarjeta, cvc))
+        sql = "INSERT INTO datosbancarios (id_usuario, nombre_tarjeta, numero_tarjeta, caducidad_tarjeta, cvc) VALUES (%s, %s, %s, %s)"
+        cursor.execute(sql, (user_id, nombre_tarjeta, numero_tarjeta, caducidad_tarjeta, cvc))
         database.commit()
 
         if cursor.rowcount > 0:
