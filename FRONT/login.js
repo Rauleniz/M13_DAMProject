@@ -17,21 +17,21 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         if (response.ok) {
             return response.json(); // Si la respuesta es exitosa, devolver los datos JSON
         } else {
-            throw new Error("Credenciales Yincorrectas"); // Si hay un error en la respuesta, lanzar un error
+            throw new Error("Credenciales incorrectas"); // Si hay un error en la respuesta, lanzar un error
         }
     })
     .then(data => {
         // datos devueltos por el backend (token JWT)
         console.log("Token JWT:", data.token);
         // Redirigir al usuario a la página, mostrar un mensaje de éxito, etc.
-        window.location.href = "miperfil.html";
+        window.location.href = "miperfil.html"; //va a home_user.html una ves edite el menú del perfil
     })
     .catch(error => {
-        // Si hay algún error en el proceso de inicio de sesión, mostrar un mensaje de error
+        // info error en el proceso de inicio de sesión
         console.error("Error:", error.message);
-        // Por ejemplo, mostrar un mensaje de error en el formulario
+        //mensaje de error en el formulario
         var errorMessage = document.createElement("p");
-        errorMessage.textContent = "Credenciales YYincorrectas";
+        errorMessage.textContent = "Credenciales incorrectas";
         this.appendChild(errorMessage);
     });
 });

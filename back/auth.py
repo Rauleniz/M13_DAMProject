@@ -52,22 +52,15 @@ def verificar_credenciales_decorador(f):
 @verificar_credenciales_decorador
 def login(usuario):
     try:
-        print(f'/*/*/*/*/ Esto es el usuario en LOGIN: {usuario}')
-        # Generar el token JWT si las credenciales son válidas
+          # Generar el token JWT si las credenciales son válidas
         exp_time = datetime.utcnow() + timedelta(minutes=30)
         exp_time_unix = exp_time.timestamp()  # Convertir a tiempo UNIX
-        payload = {'usuario_id': usuario['id'], 'exp': exp_time_unix}
-        print(f'/*/*/*/*/ Esto es el payload en LOGIN: {payload}')
-        
+        payload = {'usuario_id': usuario['id'], 'exp': exp_time_unix}        
         # Codificar la clave secreta en bytes
         secret_key_bytes = current_app.config['SECRET_KEY'].encode('utf-8')
 
         # Generar el token JWT utilizando la clave secreta codificada
         token = jwt.encode(payload, secret_key_bytes, algorithm='HS256')
-
-
-        
-        print(f'/*/*/*/*/ Esto es el token en LOGIN: {token}')
 
         return jsonify({'token': token}), 200  # Decodificar el token a cadena
     except Exception as e:
