@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+import bcrypt
 from back.db import database
 
 post_usuarios_bp = Blueprint('usuarios_post', __name__)
@@ -16,10 +17,13 @@ def nuevo_usuario():
         id_plan = data.get('id_plan')
         username = data.get('username')
         password = data.get('password')
+
+        # Aplicar el hash bcrypt a la contraseña
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
   
         cursor = database.cursor()
         sql = "INSERT INTO usuario (nombre, apellidos, email, direccion, descripcion, estatus, id_plan, username, password) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        cursor.execute(sql, (nombre, apellidos, email, direccion, descripcion, estatus, id_plan, username, password))
+        cursor.execute(sql, (nombre, apellidos, email, direccion, descripcion, estatus, id_plan, username, hashed_password))
         database.commit()
 
         if cursor.rowcount > 0:
