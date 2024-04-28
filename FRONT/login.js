@@ -6,7 +6,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     var password = formData.get("password");
 
     // enviar datos al backend para verificar las credenciales
-    fetch("/login", {
+    fetch("http://localhost:5000/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -17,7 +17,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         if (response.ok) {
             return response.json(); // Si la respuesta es exitosa, devolver los datos JSON
         } else {
-            throw new Error("Credenciales incorrectas"); // Si hay un error en la respuesta, lanzar un error
+            throw new Error("Credenciales Yincorrectas"); // Si hay un error en la respuesta, lanzar un error
         }
     })
     .then(data => {
@@ -31,7 +31,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         console.error("Error:", error.message);
         // Por ejemplo, mostrar un mensaje de error en el formulario
         var errorMessage = document.createElement("p");
-        errorMessage.textContent = "Credenciales incorrectas";
+        errorMessage.textContent = "Credenciales YYincorrectas";
         this.appendChild(errorMessage);
     });
 });
