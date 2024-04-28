@@ -1,3 +1,20 @@
+
+
+
+
+// CAJA 2 - INFO ACTUAL
+// Supongamos que 'data' es el JSON recibido del backend con la información del usuario
+const informacionActualUsuario = data;
+
+// Actualizar los elementos <p> con la información actual del usuario
+document.getElementById("direccion").textContent = informacionActualUsuario.direccion;
+document.getElementById("email").textContent = informacionActualUsuario.email;
+document.getElementById("descripcion").textContent = informacionActualUsuario.descripcion;
+// Actualiza los demás campos de la misma manera si es necesario
+
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener referencia a los botones
     var editNombreBtn = document.getElementById("edit-nombre-btn");
