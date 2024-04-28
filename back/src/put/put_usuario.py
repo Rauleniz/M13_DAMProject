@@ -1,10 +1,12 @@
 from flask import Blueprint, jsonify, request
-from back.db import database
+from back.db import get_database_connection
 
 put_usuarios_bp = Blueprint('usuarios_put', __name__)
 
 @put_usuarios_bp.route('/usuario/<int:id_usuario>', methods=['PUT'])
 def actualizar_usuario(id_usuario):
+
+    connection = get_database_connection()
     try:
         # Obtener los datos del usuario del cuerpo de la solicitud
         data = request.json
@@ -18,10 +20,10 @@ def actualizar_usuario(id_usuario):
         password = data.get('password')
 
         # Actualizar el usuario en la base de datos
-        cursor = database.cursor()
+        cursor = connection.cursor()
         sql = "UPDATE usuario SET nombre = %s, apellidos = %s, email = %s, direccion = %s, descripcion = %s, estatus = %s, username = %s, password = %s WHERE id = %s"
         cursor.execute(sql, (nombre, apellidos, email, direccion, descripcion, estatus, username, password, id_usuario))
-        database.commit()
+        connection.commit()
 
         # Verificar si se realizó la actualización correctamente
         if cursor.rowcount > 0:

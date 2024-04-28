@@ -9,12 +9,15 @@ db_config = {
 }
 
 # Intentar conectar a la base de datos
-try:
-    connection = mysql.connector.connect(**db_config)
-    if connection.is_connected():
-        print('Conexión exitosa a la base de datos MySQL')
-        database = connection  
-    else:
-        print('Error al conectar a la base de datos')
-except Exception as e:
-    print('Error al conectar a la base de datos:', e)
+def get_database_connection():
+    try:
+        connection = mysql.connector.connect(**db_config)
+        if connection.is_connected():
+            print('Conexión exitosa a la base de datos MySQL')
+            return connection
+        else:
+            print('Error al conectar a la base de datos')
+            return None
+    except Exception as e:
+        print('Error al conectar a la base de datos:', e)
+        return None

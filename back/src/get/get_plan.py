@@ -1,7 +1,7 @@
 # En usuarios.py
 
 from flask import Blueprint, jsonify
-from back.db import database
+from back.db import get_database_connection
 
 get_plan_bp = Blueprint('plan_get', __name__)
 
@@ -14,8 +14,9 @@ get_plan_bp = Blueprint('plan_get', __name__)
 
 @get_plan_bp.route('/plan/<int:id_plan>', methods=['GET'])
 def obtener_plan(id_plan):
+    connection = get_database_connection()
     try:
-        cursor = database.cursor() 
+        cursor = connection.cursor() 
         cursor.execute("SELECT * FROM plan WHERE id = %s", (id_plan, ))
         plan = cursor.fetchone()  
         if plan:

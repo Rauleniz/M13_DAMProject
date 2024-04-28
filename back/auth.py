@@ -1,32 +1,37 @@
-from flask import Flask, request, jsonify, current_app
+from flask import Flask, Blueprint, request, jsonify, current_app
 import jwt
 from datetime import datetime, timedelta
 import bcrypt
-from db import database
+from db import get_database_connection
 import mysql.connector
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
+auth_bp = Blueprint('auth_psw', __name__)
 
 
 def verificar_credenciales(username, password):
+    connection = None
     try:
-        connection = mysql.connector.connect(**database)
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            sql = "SELECT * FROM usuario WHERE username = %s"
-            cursor.execute(sql, (username,))
-            usuario = cursor.fetchone()
-            if usuario:
-                # Verificar la contraseña utilizando bcrypt
-                hashed_password = usuario['password']
-                if bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8')):
-                    return usuario
-    except mysql.connector.Error as error:
+        connection = get_database_connection()
+        if connection:
+            with connection.cursor(dictionary=True) as cursor:
+                sql = "SELECT id, password FROM usuario WHERE username = %s"
+                cursor.execute(sql, (username,))
+                usuario = cursor.fetchone()
+                if usuario:
+                    hashed_password = usuario['password']
+                    if bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8')):
+                        return usuario
+    except Exception as error:
         print("Error al conectar a la base de datos:", error)
     finally:
-        if 'connection' in locals():
+        if connection:
             connection.close()
     return None
+
 
 
 def verificar_credenciales_decorador(f):
@@ -38,19 +43,33 @@ def verificar_credenciales_decorador(f):
         if usuario:
             return f(usuario, *args, **kwargs)
         else:
-            return jsonify({'mensaje': 'Credenciales incorrectas'}), 401
+            return jsonify({'mensaje': '**/Credenciales incorrectas'}), 401
     return wrapper
 
 
 
-@app.route('/login', methods=['POST'])
+@auth_bp.route('/login', methods=['POST'])
 @verificar_credenciales_decorador
 def login(usuario):
     try:
+        print(f'/*/*/*/*/ Esto es el usuario en LOGIN: {usuario}')
         # Generar el token JWT si las credenciales son válidas
-        payload = {'usuario_id': usuario['id'], 'exp': datetime.utcnow() + timedelta(minutes=30)}
-        token = jwt.encode(payload, current_app.config['SECRET_KEY'], algorithm='HS256')
-        return jsonify({'token': token}), 200
+        exp_time = datetime.utcnow() + timedelta(minutes=30)
+        exp_time_unix = exp_time.timestamp()  # Convertir a tiempo UNIX
+        payload = {'usuario_id': usuario['id'], 'exp': exp_time_unix}
+        print(f'/*/*/*/*/ Esto es el payload en LOGIN: {payload}')
+        
+        # Codificar la clave secreta en bytes
+        secret_key_bytes = current_app.config['SECRET_KEY'].encode('utf-8')
+
+        # Generar el token JWT utilizando la clave secreta codificada
+        token = jwt.encode(payload, secret_key_bytes, algorithm='HS256')
+
+
+        
+        print(f'/*/*/*/*/ Esto es el token en LOGIN: {token}')
+
+        return jsonify({'token': token}), 200  # Decodificar el token a cadena
     except Exception as e:
         print("Error al generar el token JWT:", e)
         return jsonify({'mensaje': 'Error interno del servidor'}), 500
