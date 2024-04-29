@@ -4,10 +4,11 @@ from datetime import datetime, timedelta
 import bcrypt
 from db import get_database_connection
 import mysql.connector
-from flask_cors import CORS
+# from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app, supports_credentials=True, allow_headers=["Content-Type", "Authorization"], resources={r"/*": {"origins": "*"}})
+
 
 auth_bp = Blueprint('auth_psw', __name__)
 

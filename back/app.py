@@ -9,7 +9,8 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(parent_dir)
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True, allow_headers=["Content-Type", "Authorization"], resources={r"/*": {"origins": "*"}})
+
 
 app.config['SECRET_KEY'] = 'DamM13&Proj3ct'
 
