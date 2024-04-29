@@ -21,6 +21,8 @@ blueprints = [
     {'module': 'back.src.post.post_usuario', 'name': 'post_usuarios_bp', 'url_prefix': '/post'},
     {'module': 'back.src.get.get_plan', 'name': 'get_plan_bp', 'url_prefix': '/get'},
     {'module': 'back.src.post.post_bancario', 'name': 'post_bancarios_bp', 'url_prefix': '/post'},
+    {'module': 'back.src.usuario.actualizar_nombre', 'name': 'actualizar_nombre_bp', 'url_prefix': '/usuario'},
+    {'module': 'back.src.usuario.info_usuario', 'name': 'usuario_info_bp', 'url_prefix': '/usuario'},
    
 ]
 
