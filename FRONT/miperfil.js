@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         method: "GET",
         headers: {
             "Authorization": "Bearer " + token,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',            
         },
         mode: 'cors'
     })
@@ -121,41 +121,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-
-
-    // CARGAR LA PÁGINA CON LA INFO ACTUAL DEL USUARIO
-    // function actualizarInformacionUsuario() {
-    //     fetch('/usuario/informacion', {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             // Aquí puedes incluir el token de autenticación si es necesario
-    //             // 'Authorization': 'Bearer ' + authToken
-    //         }
-    //     })
-    //     .then(response => {
-    //         if (response.ok) {
-    //             return response.json();
-    //         } else {
-    //             throw new Error('Error al obtener la información del usuario');
-    //         }
-    //     })
-    //     .then(data => {
-    //         // Actualizar la sección de información actual en la página con los nuevos datos
-    //         document.getElementById('direccion').textContent = data.direccion;
-    //         document.getElementById('email').textContent = data.email;
-    //         document.getElementById('descripcion').textContent = data.descripcion;
-    //         // Actualizar otros campos según sea necesario
-
-    //         // Opcional: Mostrar un mensaje de éxito o realizar otras acciones después de la actualización
-    //         console.log('Información de usuario actualizada con éxito');
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //         // Manejar errores, mostrar mensajes de error, etc.
-    //     });
-    // }
-
-    // // Llamar a la función para actualizar la información del usuario después de una actualización exitosa
-    // actualizarInformacionUsuario();
+  
 });

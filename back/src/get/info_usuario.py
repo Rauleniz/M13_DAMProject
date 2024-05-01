@@ -11,7 +11,7 @@ def handle_preflight():
     response.headers.add('Access-Control-Allow-Methods', '*')
     return response
 
-@usuario_info_bp.route('/usuario/info', methods=['OPTIONS'])
+@usuario_info_bp.route('/usuario/info', methods=['OPTIONS', 'GET'])
 def options():
     return handle_preflight()
 
@@ -44,7 +44,11 @@ def obtener_informacion_usuario(usuario):
                     'password': usuario['password']
                 }
                 print(f'*/*/*/*/*/*Print de la query info_usuario: {info_usuario}')              
-                return jsonify(info_usuario), 200
+                response = jsonify(info_usuario)
+                response.headers.add('Access-Control-Allow-Origin', '*')
+                response.headers.add('Access-Control-Allow-Headers', '*')
+                response.headers.add('Access-Control-Allow-Methods', '*')
+                return response, 200
             else:
                 return jsonify({'mensaje': 'Usuario no encontrado'}), 404
         else:

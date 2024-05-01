@@ -3,18 +3,19 @@ import sys
 import importlib
 from flask import Flask #render_template
 from flask_cors import CORS #cross_origin
-from auth import auth_bp 
+from auth import auth_bp
 #import middleware as middleware
 
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(parent_dir)
 
+rutas = ["http://localhost:5500", "http://127.0.0.1:5500"]
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, allow_headers=["Content-Type", "Authorization"], resources={r"/*": {"origins": ["http://localhost:5500", "http://127.0.0.1:5500"]}}, methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"])
+CORS(app, supports_credentials=True, allow_headers=["Content-Type", "Authorization"], resources={r"/*": {"origins": rutas}}, methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"])
 
-#app.config['CORS_LOGGING'] = True
+app.config['CORS_LOGGING'] = True
 
 app.config['SECRET_KEY'] = 'DamM13&Proj3ct'
 
@@ -42,9 +43,12 @@ for bp in blueprints:
 # Registrando el blueprint de autenticación
 app.register_blueprint(auth_bp) 
 
+
+# 01/05 - VALORAR SI HACER TODOS LOS ENDPOINTS EN EL APP.PY
 @app.route('/')
-def index():
-    return 
+def index():      
+    print (f'Vamosssssss')
+    return f'exitooooo'
 
 
 if __name__ == '__main__':
