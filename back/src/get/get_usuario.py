@@ -5,12 +5,7 @@ from back.db import get_database_connection
 
 get_usuarios_bp = Blueprint('usuarios_get', __name__)
 
-# usuarios = []
 
-# @get_usuarios_bp.route('/usuario', methods=['GET'])
-# def obtener_usuarios():
-
-#     return jsonify(usuarios)
 
 @get_usuarios_bp.route('/usuario/<int:id_usuario>', methods=['GET'])
 def obtener_usuario(id_usuario):

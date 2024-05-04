@@ -28,8 +28,8 @@ class Usuario(db.Model):
             "estatus": self.estatus,
             "img_perfil": self.img_perfil,
             "cancion": self.cancion,
-            "id_plan": self.id_plan,
-            "link_rrss": self.link_rrss,
+            "idPlan": self.id_plan,
+            "linkRrss": self.link_rrss,
             "username": self.username,
             "password": self.password
         }
@@ -43,9 +43,9 @@ class Conversacion(db.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "id_usuario1": self.id_usuario1,
-            "id_usuario2": self.id_usuario2,
-            "ultima_actividad": self.ultima_actividad
+            "idUsuario1": self.id_usuario1,
+            "idUsuario2": self.id_usuario2,
+            "ultimaActividad": self.ultima_actividad
         }
 
 class Mensaje(db.Model):
@@ -58,10 +58,10 @@ class Mensaje(db.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "id_conversacion": self.id_conversacion,
-            "id_usuario": self.id_usuario,
+            "idConversacion": self.id_conversacion,
+            "idUsuario": self.id_usuario,
             "contenido": self.contenido,
-            "fecha_envio": self.fecha_envio
+            "fechaEnvio": self.fecha_envio
         }
 
 class DatosBancarios(db.Model):
@@ -76,11 +76,11 @@ class DatosBancarios(db.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "id_usuario": self.id_usuario,
-            "id_factura": self.id_factura,
-            "nombre_iban": self.nombre_iban,
-            "numero_tarjeta": self.numero_tarjeta,
-            "caducidad_tarjeta": self.caducidad_tarjeta,
+            "idUsuario": self.id_usuario,
+            "idFactura": self.id_factura,
+            "nombreIban": self.nombre_iban,
+            "numeroTarjeta": self.numero_tarjeta,
+            "caducidadTarjeta": self.caducidad_tarjeta,
             "cvc": self.cvc
         }
 
@@ -93,7 +93,7 @@ class Multimedia(db.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "id_usuario": self.id_usuario,
+            "idUsuario": self.id_usuario,
             "img": self.img,
             "song": self.song
         }
@@ -110,10 +110,10 @@ class Factura(db.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "id_usuario": self.id_usuario,
-            "id_plan": self.id_plan,
-            "fecha_servicio": self.fecha_servicio,
-            "token_ahorro": self.token_ahorro,
+            "idUsuario": self.id_usuario,
+            "idPlan": self.id_plan,
+            "fechaServicio": self.fecha_servicio,
+            "tokenAhorro": self.token_ahorro,
             "documentos": self.documentos
         }
 
@@ -126,7 +126,7 @@ class Plan(db.Model):
         return {
             "id": self.id,
             "nombre": self.nombre,
-            "cambio_plan": self.cambio_plan
+            "cambioPlan": self.cambio_plan
         }
 
 
@@ -141,11 +141,11 @@ class Servicio(db.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "asignacion_tecnico": self.asignacion_tecnico,
+            "asignacionTecnico": self.asignacion_tecnico,
             "cheque": self.cheque,
             "financiacion": self.financiacion,
             "seguro": self.seguro,
-            "alquiler_furgon": self.alquiler_furgon
+            "alquilerFurgon": self.alquiler_furgon
         }
 
 class PlanServicio(db.Model):
@@ -156,8 +156,8 @@ class PlanServicio(db.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "id_plan": self.id_plan,
-            "id_servicio": self.id_servicio
+            "idPlan": self.id_plan,
+            "idServicio": self.id_servicio
         }
 
 class Ubicacion(db.Model):
@@ -170,11 +170,28 @@ class Ubicacion(db.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "id_usuario": self.id_usuario,
+            "idUsuario": self.id_usuario,
             "latitud": self.latitud,
             "longitud": self.longitud,
             "direccion": self.direccion
         }
+    
+
+
+    # OPCIÓN: @staticmethod coger varios diccionarios como argumentos y los combina en un solo diccionario.
+    @staticmethod
+    def combine_to_dict(*args):
+        result = {}
+        for model_dict in args:
+            result.update(model_dict)
+        return result
+    
+    # ASÍ SE UTILIZA el @staticmethod con tablas relacionadas:
+    # usuarios_dict = usuario.to_dict()
+    # multimedia_dict = multimedia.to_dict()
+    # # Combina los diccionarios
+    # resultado = Multimedia.combine_to_dict(usuarios_dict, multimedia_dict)
+
 
 
 # Intentar inicializar la base de datos
