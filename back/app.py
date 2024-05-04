@@ -4,6 +4,7 @@ import importlib
 from flask import Flask #render_template
 from flask_cors import CORS #cross_origin
 from auth import auth_bp
+from flask_sqlalchemy import SQLAlchemy
 #import middleware as middleware
 
 
@@ -19,6 +20,10 @@ app.config['CORS_LOGGING'] = True
 
 app.config['SECRET_KEY'] = 'DamM13&Proj3ct'
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/m13db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Suprime la señalización de modificaciones de la base de datos
+
+db = SQLAlchemy(app)
 
 # Traemos los blueprints de todos los endpoints
 blueprints = [
