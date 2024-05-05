@@ -52,10 +52,7 @@ blueprints = [
     {'module': 'back.src.delete.borrar_usuario', 'name': 'delete_usuarios_bp', 'url_prefix': '/delete'},
     {'module': 'back.src.delete.borrar_conversacion', 'name': 'delete_conversacion_bp', 'url_prefix': '/delete'},
     {'module': 'back.src.delete.borrar_mensaje', 'name': 'eliminar_mensaje_bp', 'url_prefix': '/delete'},
-
-    {'module': 'back.src.delete.borrar_plan', 'name': 'delete_plan_bp', 'url_prefix': '/delete'},
-    {'module': 'back.src.usuario.actualizar_nombre', 'name': 'actualizar_nombre_bp', 'url_prefix': '/usuario'},
-    {'module': 'back.src.get.credenciales_get_usuario', 'name': 'usuario_info_bp', 'url_prefix': '/get'},   
+    {'module': 'back.src.delete.borrar_plan', 'name': 'delete_plan_bp', 'url_prefix': '/delete'}, 
 ]
 
 

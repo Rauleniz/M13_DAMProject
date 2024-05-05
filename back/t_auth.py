@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_jwt_extended import JWTManager, create_access_token
-from .models import Usuario
+from models import Usuario
 from db import get_database_connection
 
 app = Flask(__name__)
@@ -32,4 +32,4 @@ def register():
     return jsonify(access_token=access_token), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
