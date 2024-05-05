@@ -17,6 +17,14 @@ def nuevo_plan():
         cursor.execute(sql, (nombre, cambio_plan))
         connection.commit()
 
+        # Obtener el ID del plan recién insertado
+        plan_id = cursor.lastrowid
+
+        # Insertar una entrada en la tabla plan_servicio
+        cursor.execute("INSERT INTO plan_servicio (id_plan, id_servicio) VALUES (%s, %s)",
+                       (plan_id, data.get('id_servicio')))
+        connection.commit()
+
         if cursor.rowcount > 0:
             return jsonify({'mensaje': 'Plan dado de alta correctamente'})
         else:

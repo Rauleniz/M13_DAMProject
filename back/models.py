@@ -103,7 +103,8 @@ class Factura(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_usuario = db.Column(db.Integer)
     id_plan = db.Column(db.Integer)
-    fecha_servicio = db.Column(db.TIMESTAMP)
+    fecha_servicio = db.Column(db.String(255))
+    fecha_emision = db.Column(db.TIMESTAMP)
     token_ahorro = db.Column(db.Float)
     documentos = db.Column(db.String(255))
 
