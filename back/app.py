@@ -30,11 +30,17 @@ blueprints = [
     {'module': 'back.src.get.get_usuario', 'name': 'get_usuarios_bp', 'url_prefix': '/get'},
     {'module': 'back.src.put.put_usuario', 'name': 'put_usuarios_bp', 'url_prefix': '/put'},
     {'module': 'back.src.post.post_usuario', 'name': 'post_usuarios_bp', 'url_prefix': '/post'},
+    {'module': 'back.src.delete.borrar_usuario', 'name': 'delete_usuarios_bp', 'url_prefix': '/delete'},
     {'module': 'back.src.get.get_plan', 'name': 'get_plan_bp', 'url_prefix': '/get'},
+    {'module': 'back.src.post.post_plan', 'name': 'post_plan_bp', 'url_prefix': '/post'},
+    {'module': 'back.src.post.post_mensaje', 'name': 'escribir_mensaje_bp', 'url_prefix': '/post'},
+    {'module': 'back.src.get.get_conversacion', 'name': 'obtener_conversacion_bp', 'url_prefix': '/get'},
+    {'module': 'back.src.post.post_conversacion', 'name': 'crear_conversacion_bp', 'url_prefix': '/post'},
+
+    {'module': 'back.src.delete.borrar_plan', 'name': 'delete_plan_bp', 'url_prefix': '/delete'},
     {'module': 'back.src.post.post_bancario', 'name': 'post_bancarios_bp', 'url_prefix': '/post'},
     {'module': 'back.src.usuario.actualizar_nombre', 'name': 'actualizar_nombre_bp', 'url_prefix': '/usuario'},
-    {'module': 'back.src.usuario.t_actualizar_usuario', 'name': 'actualizar_usuario_bp', 'url_prefix': '/usuario'},
-    {'module': 'back.src.get.info_usuario', 'name': 'usuario_info_bp', 'url_prefix': '/get'},   
+    {'module': 'back.src.get.credenciales_get_usuario', 'name': 'usuario_info_bp', 'url_prefix': '/get'},   
 ]
 
 

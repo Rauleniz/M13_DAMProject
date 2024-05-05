@@ -10,39 +10,25 @@ actualizar_usuario_bp = Blueprint('actualizar_usuario', __name__)
 @verificar_credenciales_decorador
 def actualizar_usuario(usuario):
     try:
-        # Obtener los nuevos datos del usuario del cuerpo de la solicitud
-        data = request.json
-        nuevo_nombre = data.get('nombre')
-        nuevos_apellidos = data.get('apellidos')
-        nuevo_email = data.get('email')
-        nueva_direccion = data.get('direccion')
-        nueva_descripcion = data.get('descripcion')
-        nuevo_estatus = data.get('estatus')
-        nuevo_username = data.get('username')
-        nueva_password = data.get('password')
-
         # Obtener el usuario de la base de datos utilizando su ID
         usuario_a_actualizar = Usuario.query.get(usuario['id'])
 
         # Verificar si se encontró el usuario
         if usuario_a_actualizar:
             # Actualizar los campos del usuario si se proporcionaron nuevos valores
-            if nuevo_nombre:
-                usuario_a_actualizar.nombre = nuevo_nombre
-            if nuevos_apellidos:
-                usuario_a_actualizar.apellidos = nuevos_apellidos
-            if nuevo_email:
-                usuario_a_actualizar.email = nuevo_email
-            if nueva_direccion:
-                usuario_a_actualizar.direccion = nueva_direccion
-            if nueva_descripcion:
-                usuario_a_actualizar.descripcion = nueva_descripcion
-            if nuevo_estatus:
-                usuario_a_actualizar.estatus = nuevo_estatus
-            if nuevo_username:
-                usuario_a_actualizar.username = nuevo_username
-            if nueva_password:
-                usuario_a_actualizar.password = nueva_password
+            # Obtener los datos del usuario del cuerpo de la solicitud
+            data = request.json
+
+            # Actualizar los campos del usuario si se proporcionan nuevos valores
+            usuario_a_actualizar.nombre = data.get("nombre", usuario_a_actualizar.nombre)
+            usuario_a_actualizar.apellido = data.get("apellido", usuario_a_actualizar.apellido)
+            usuario_a_actualizar.email = data.get("email", usuario_a_actualizar.email)
+            usuario_a_actualizar.direccion = data.get("direccion", usuario_a_actualizar.direccion)
+            usuario_a_actualizar.descripcion = data.get("descripcion", usuario_a_actualizar.descripcion)
+            usuario_a_actualizar.estatus = data.get("estatus", usuario_a_actualizar.estatus)
+            usuario_a_actualizar.username = data.get("username", usuario_a_actualizar.username)
+            usuario_a_actualizar.password = data.get("password", usuario_a_actualizar.password)
+
             
             # Confirmar los cambios en la base de datos
             db.session.commit()
