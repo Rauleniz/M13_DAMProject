@@ -2,7 +2,8 @@ import os
 import sys
 import importlib
 from flask import Flask #render_template
-from flask_cors import CORS #cross_origin
+from flask_cors import CORS
+from flask_jwt_extended import JWTManager #cross_origin
 from auth import auth_bp
 from flask_sqlalchemy import SQLAlchemy
 #import middleware as middleware
@@ -16,18 +17,22 @@ rutas = ["http://localhost:5500", "http://127.0.0.1:5500"]
 app = Flask(__name__)
 CORS(app, supports_credentials=True, allow_headers=["Content-Type", "Authorization"], resources={r"/*": {"origins": rutas}}, methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"])
 
+app.config['SECRET_KEY'] = 'DamM13&Proj3ct'
+app.config['JWT_TOKEN_LOCATION'] = ['headers']
+
 app.config['CORS_LOGGING'] = True
 
-app.config['SECRET_KEY'] = 'DamM13&Proj3ct'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/m13db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Suprime la señalización de modificaciones de la base de datos
 
 db = SQLAlchemy(app)
+jwt = JWTManager(app)
 
 # Traemos los blueprints de todos los endpoints
 blueprints = [
     {'module': 'back.src.get.get_usuario', 'name': 'get_usuarios_bp', 'url_prefix': '/get'},
+    {'module': 'back.src.get.get_usuario_tk', 'name': 'get_usuarios_tk_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_plan', 'name': 'get_plan_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_conversacion', 'name': 'obtener_conversacion_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_factura', 'name': 'get_factura_usuario_bp', 'url_prefix': '/get'},
@@ -76,4 +81,5 @@ def index():
 
 
 if __name__ == '__main__':
+    #app.secret_key = 'DamM13&Proj3ct'
     app.run(debug=True, port=5000)

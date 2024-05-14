@@ -16,3 +16,4 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Suprime la señalizació
 
 db = SQLAlchemy(app)
 
+

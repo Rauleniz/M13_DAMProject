@@ -2,13 +2,13 @@ document.addEventListener("DOMContentLoaded", function() {
     var token = localStorage.getItem('token');
     console.log("Token de autorización:", token);
 
-    fetch("http://localhost:5000/get/usuario/info", {
+    fetch("http://localhost:5000/get/usuario/" + token , {
         method: "GET",
         headers: {
             "Authorization": "Bearer " + token,
             'Content-Type': 'application/json',            
         },
-        mode: 'cors'
+        // mode: 'cors'
     })
     .then(response => {
         if (response.ok) {
@@ -19,9 +19,10 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .then(data => {
         // Manejar la respuesta aquí y actualizar la interfaz de usuario con la información del usuario
+        console.log("Datos del usuario:", data);
         document.getElementById('direccion').textContent = data.direccion;
         document.getElementById('email').textContent = data.email;
-        document.getElementById('descripcion').textContent = data.descripcion;
+        //document.getElementById('descripcion').textContent = data.descripcion;
         // y otros elementos de la interfaz de usuario según sea necesario
     })
     .catch(async error => {
