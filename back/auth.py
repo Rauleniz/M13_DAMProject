@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint, request, jsonify, current_app
 import jwt
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import bcrypt
 from db import get_database_connection
 from flask_jwt_extended import create_access_token, current_user, decode_token
@@ -49,7 +49,7 @@ def verificar_credenciales_decorador(f):
 def login(usuario):
     try:
         # Generar el token JWT si las credenciales son válidas
-        exp_time = datetime.utcnow() + timedelta(minutes=30)
+        exp_time = datetime.now(timezone.utc) + timedelta(days=365)
         exp_time_unix = exp_time.timestamp()  # Convertir a tiempo UNIX
         payload = {'sub': usuario['id'], 'exp': exp_time_unix}            
 

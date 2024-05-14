@@ -10,6 +10,7 @@ get_usuarios_bp = Blueprint('usuarios_get', __name__)
 @get_usuarios_bp.route('/usuario/<int:id_usuario>', methods=['GET'])
 def obtener_usuario(id_usuario):
     try:
+        
         connection = get_database_connection()
         if connection:
             cursor = connection.cursor()
@@ -29,4 +30,7 @@ def obtener_usuario(id_usuario):
         print(f"Error al obtener usuario: {e}")
         return jsonify({'mensaje': 'Se produjo un error al obtener usuario'}), 500
 
-        
+
+@get_usuarios_bp.route('/usuario/<int:id_usuario>', methods=['OPTIONS'])
+def options_usuario(id_usuario):
+    return jsonify({'mensaje': 'OK'}), 200

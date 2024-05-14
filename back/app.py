@@ -5,6 +5,7 @@ from flask import Flask #render_template
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager #cross_origin
 from auth import auth_bp
+# from t_auth import t_auth_bp
 from flask_sqlalchemy import SQLAlchemy
 #import middleware as middleware
 
@@ -58,6 +59,8 @@ blueprints = [
     {'module': 'back.src.delete.borrar_conversacion', 'name': 'delete_conversacion_bp', 'url_prefix': '/delete'},
     {'module': 'back.src.delete.borrar_mensaje', 'name': 'eliminar_mensaje_bp', 'url_prefix': '/delete'},
     {'module': 'back.src.delete.borrar_plan', 'name': 'delete_plan_bp', 'url_prefix': '/delete'}, 
+
+    {'module': 'back.src.put.put_correoelec', 'name': 'put_correo_bp', 'url_prefix': '/put'}, 
 ]
 
 
@@ -71,6 +74,7 @@ for bp in blueprints:
 
 # Registrando el blueprint de autenticación
 app.register_blueprint(auth_bp) 
+# app.register_blueprint(t_auth_bp) 
 
 
 # 01/05 - VALORAR SI HACER TODOS LOS ENDPOINTS EN EL APP.PY

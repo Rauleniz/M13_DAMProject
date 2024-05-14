@@ -1,36 +1,50 @@
-from flask import Flask, jsonify, request
-from flask_jwt_extended import JWTManager, create_access_token
-from models import Usuario
+from flask import Flask, Blueprint, request, jsonify, make_response
+import bcrypt
 from db import get_database_connection
 
 app = Flask(__name__)
+t_auth_bp = Blueprint('t_auth_psw', __name__)
 
-# Configurar la clave secreta para firmar tokens JWT
-app.config['JWT_SECRET_KEY'] = 'DamM13&Proj3ct'
+# Función para verificar las credenciales del usuario en la base de datos
+def verificar_credenciales(username, password):
+    connection = None
+    try:
+        connection = get_database_connection()
+        if connection:
+            with connection.cursor(dictionary=True) as cursor:
+                sql = "SELECT id, password FROM usuario WHERE username = %s"
+                cursor.execute(sql, (username,))
+                usuario = cursor.fetchone()
+                if usuario:
+                    hashed_password = usuario['password']
+                    if bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8')):
+                        return usuario
+    except Exception as error:
+        print("Error al conectar a la base de datos:", error)
+    finally:
+        if connection:
+            connection.close()
+    return None
 
-# Inicializar la extensión JWTManager con la aplicación Flask
-jwt = JWTManager(app)
+# Decorador para verificar las credenciales del usuario
+def verificar_credenciales_decorador(f):
+    def wrapper(*args, **kwargs):
+        datos_login = request.form
+        username = datos_login.get('username')
+        password = datos_login.get('password')
+        usuario = verificar_credenciales(username, password)
+        if usuario:
+            # Si las credenciales son válidas, establecer una cookie de sesión
+            response = make_response(f(usuario, *args, **kwargs))
+            response.set_cookie('usuario_id', str(usuario['id']), max_age=365*24*60*60)  # Cookie válida por un año
+            return response
+        else:
+            return jsonify({'mensaje': 'Credenciales incorrectas'}), 401
+    return wrapper
 
-@app.route('/auth/register', methods=['POST'])
-def register():
-    data = request.json
-    username = data.get('username')
-    password = data.get('password')
+# Ruta para el proceso de inicio de sesión
+@t_auth_bp.route('/logincookies', methods=['POST'])
+@verificar_credenciales_decorador
+def login(usuario):
+    return jsonify({'mensaje': 'Inicio de sesión exitoso', 'usuario_id': usuario['id']}), 200
 
-    # Verificar si el usuario ya existe en la base de datos
-    if Usuario.query.filter_by(username=username).first():
-        return jsonify({'message': 'El usuario ya existe'}), 400
-
-    # Crear un nuevo usuario
-    connection = get_database_connection()
-    cursor = connection.cursor()
-    cursor.execute("INSERT INTO usuarios (username, password) VALUES (%s, %s)", (username, password))
-    connection.commit()
-
-    # Crear y devolver el token de acceso
-    access_token = create_access_token(identity=username)
-    return jsonify(access_token=access_token), 200
-
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
-    
