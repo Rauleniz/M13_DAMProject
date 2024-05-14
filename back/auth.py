@@ -49,7 +49,9 @@ def verificar_credenciales_decorador(f):
 def login(usuario):
     try:
         # Generar el token JWT si las credenciales son válidas
-        exp_time = datetime.now(timezone.utc) + timedelta(days=365)
+        exp_time = datetime.now(
+                        tz=timezone.utc
+                        ) + timedelta(minutes=60)
         exp_time_unix = exp_time.timestamp()  # Convertir a tiempo UNIX
         payload = {'sub': usuario['id'], 'exp': exp_time_unix}            
 
