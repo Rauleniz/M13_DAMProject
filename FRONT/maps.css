@@ -78,10 +78,17 @@ body {
     width: 100%;
   }
   
-#map {
-width: 100vw; /* Toma el 100% del ancho de la ventana del navegador */
-height: 500px; /* Por ejemplo, establecer la altura en 500 píxeles */
-background-color: #1d1d1d; /* Fondo negro para la sección del mapa */
+
+#map { 
+    width: 100%;
+    height: 580px;
+    box-shadow: 5px 5px 5px #888;
+ }
+
+
+ /* Color de los popups (etiquetas) */
+ .leaflet-popup-content-wrapper {
+    background: #f8b020; 
 }
   
   
