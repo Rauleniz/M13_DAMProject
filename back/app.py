@@ -7,6 +7,7 @@ from flask_jwt_extended import JWTManager #cross_origin
 from auth import auth_bp
 # from t_auth import t_auth_bp
 from flask_sqlalchemy import SQLAlchemy
+from mysql.connector import pooling
 #import middleware as middleware
 
 
