@@ -164,8 +164,7 @@ class PlanServicio(db.Model):
 class Ubicacion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_usuario = db.Column(db.Integer)
-    latitud = db.Column(db.Float)
-    longitud = db.Column(db.Float)
+    latlng = db.Column(db.Float)
     direccion = db.Column(db.String(255))
 
     def to_json(self):
