@@ -38,7 +38,7 @@ for (var i = 0; i < markers.length; i++) {
     marker.bindPopup(markers[i].text).openPopup();
 }
 
-// B - etiqueta para conocer las coordena
+// B - etiqueta para conocer las coordenas
 var popup = L.popup()
 .setLatLng([41.3868115, 2.172877])
 .setContent("Selecciona cualquier icono")
@@ -61,20 +61,43 @@ var popup = L.popup()
 map.on('click', function(e) {
     var popup = L.popup()
         .setLatLng(e.latlng)
-        .setContent('<input type="text" id="popupText" placeholder="Describe tu estilo..."><button onclick="saveMarker()">Guardar</button>' + e.latlng.toString())
+        .setContent('<input type="text" id="descripcion" placeholder="Descríbete!"><br>' +
+                    '<input type="text" id="link1" placeholder="Pon el link da tus redes"><br>' +
+                    '<input type="text" id="link2" placeholder="Pon el link da tus redes"><br>' +
+                    '<input type="text" id="link3" placeholder="Pon el link da tus redes"><br>' +
+                    '<input type="text" id="link4" placeholder="Pon el link da tus redes"><br>' +
+                    '<input type="file" id="audioFile" accept="audio/*">' +
+                    '<button onclick="saveMarker()">Guardar</button>' + e.latlng.toString())
         .openOn(map);
 });
 
 // GUARDAR LA NUEVA ETIQUETA EN EL BACKEND
 
 function saveMarker() {
-    var text = document.getElementById('popupText').value;
+    var descripcion = document.getElementById('descripcion').value;
+    var link1 = document.getElementById('link1').value;
+    var link2 = document.getElementById('link2').value;
+    var link3 = document.getElementById('link3').value;
+    var link4 = document.getElementById('link4').value;
+    var audioFile = document.getElementById('audioFile').files[0];
     var latlng = popup.getLatLng();
     var lat = latlng.lat;
     var lng = latlng.lng;
 
     // Crear el objeto con los datos del marcador
-    var data = {lat: lat, lng: lng, text: text};
+    var newMarker = {latlng: [lat, lng], text: descripcion + '\n' + link1 + '\n' + link2 + '\n' + link3 + '\n' + link4};
+
+        // ***** Crear el objeto FormData y añadir los datos junto con el archivo de Audio
+        // var formData = new FormData();
+        // formData.append('audioFile', audioFile);
+        // formData.append('lat', lat);
+        // formData.append('lng', lng);
+
+    // Añadir el nuevo marcador al array de marcadores
+    markers.push(newMarker);
+
+    // Crear el objeto con los datos del marcador para enviar al servidor
+    var data = {lat: lat, lng: lng, descripcion: descripcion, link1: link1, link2: link2, link3: link3, link4: link4};
 
     // Enviar la petición POST al servidor
     fetch('/post/ubicacion', {
@@ -84,6 +107,8 @@ function saveMarker() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
+        // ***** Con archivo de audio no puede enviarse un json, ha de ser un FormData
+        //body: formData,
     })
     .then(response => response.json())
     .then(data => {
@@ -96,14 +121,14 @@ function saveMarker() {
 
 
 // Supongamos que 'markers' es un array de objetos, donde cada objeto tiene las propiedades 'latlng' y 'text'
-var markers = /* Aquí iría la respuesta del servidor */"";
+// var markers = /* Aquí iría la respuesta del servidor */"";
 
-for (var i = 0; i < markers.length; i++) {
-    // Crear un marcador para cada objeto en el array
-    var marker = L.marker(markers[i].latlng, {icon: iconMap}).addTo(map);
-    // Añadir un popup al marcador
-    marker.bindPopup(markers[i].text).openPopup();
-}
+// for (var i = 0; i < markers.length; i++) {
+//     // Crear un marcador para cada objeto en el array
+//     var marker = L.marker(markers[i].latlng, {icon: iconMap}).addTo(map);
+//     // Añadir un popup al marcador
+//     marker.bindPopup(markers[i].text).openPopup();
+// }
 
 
 

@@ -11,15 +11,18 @@ def actualizar_ubicacion(ubicacion_id):
         lat = data.get('lat')
         lng = data.get('lng')
         descripcion = data.get('descripcion')
-        link_rrss = data.get('link_rrss')
+        link1 = data.get('link1')
+        link2 = data.get('link2')
+        link3 = data.get('link3')
+        link4 = data.get('link4')
 
         # Conectar a la base de datos
         connection = get_database_connection()
         cursor = connection.cursor()
 
         # Actualizar la ubicación en la tabla de ubicaciones
-        cursor.execute("UPDATE ubicacion SET lat = %s, lng = %s, descripcion = %s, link_rrss = %s WHERE id = %s",
-                       (lat, lng, descripcion, link_rrss, ubicacion_id))
+        cursor.execute("UPDATE ubicacion SET lat = %s, lng = %s, descripcion = %s, link1 = %s, link2 = %s, link3 = %s, link4 = %s WHERE id = %s",
+                       (lat, lng, descripcion, link1, link2, link3, link4, ubicacion_id))
         connection.commit()
 
         # Verificar si la ubicación se ha actualizado correctamente

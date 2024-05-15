@@ -163,7 +163,10 @@ class Ubicacion(db.Model):
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
     descripcion = db.Column(db.String(255))
-    link_rrss = db.Column(db.String(255))
+    link1 = db.Column(db.String(255))
+    link2 = db.Column(db.String(255))
+    link3 = db.Column(db.String(255))
+    link4 = db.Column(db.String(255))
 
     def to_json(self):
         return {
@@ -172,7 +175,10 @@ class Ubicacion(db.Model):
             "lat": self.lat,
             "lng": self.lng,
             "descripcion": self.descripcion,
-            "linkRrss": self.link_rrss
+            "link1": self.link1,
+            "link2": self.link2,
+            "link3": self.link3,
+            "link4": self.link4
         }
     
 
