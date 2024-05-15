@@ -65,11 +65,35 @@ map.on('click', function(e) {
         .openOn(map);
 });
 
+// GUARDAR LA NUEVA ETIQUETA EN EL BACKEND
+
 function saveMarker() {
     var text = document.getElementById('popupText').value;
     var latlng = popup.getLatLng();
-    // A continuación: enviar 'text' y 'latlng' al servidor
+    var lat = latlng.lat;
+    var lng = latlng.lng;
+
+    // Crear el objeto con los datos del marcador
+    var data = {lat: lat, lng: lng, text: text};
+
+    // Enviar la petición POST al servidor
+    fetch('/post/ubicacion', {
+        method: 'POST',
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('token'),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Marcador guardado con éxito:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }
+
 
 // Supongamos que 'markers' es un array de objetos, donde cada objeto tiene las propiedades 'latlng' y 'text'
 var markers = /* Aquí iría la respuesta del servidor */"";
@@ -80,3 +104,8 @@ for (var i = 0; i < markers.length; i++) {
     // Añadir un popup al marcador
     marker.bindPopup(markers[i].text).openPopup();
 }
+
+
+
+
+

@@ -8,8 +8,8 @@ def actualizar_ubicacion(ubicacion_id):
     try:
         # Obtener los datos de la solicitud
         data = request.json
-        latitud = data.get('latitud')
-        longitud = data.get('longitud')
+        lat = data.get('lat')
+        lng = data.get('lng')
         direccion = data.get('direccion')
 
         # Conectar a la base de datos
@@ -17,8 +17,8 @@ def actualizar_ubicacion(ubicacion_id):
         cursor = connection.cursor()
 
         # Actualizar la ubicación en la tabla de ubicaciones
-        cursor.execute("UPDATE ubicacion SET latitud = %s, longitud = %s, direccion = %s WHERE id = %s",
-                       (latitud, longitud, direccion, ubicacion_id))
+        cursor.execute("UPDATE ubicacion SET lat = %s, lng = %s, direccion = %s WHERE id = %s",
+                       (lat, lng, direccion, ubicacion_id))
         connection.commit()
 
         # Verificar si la ubicación se ha actualizado correctamente

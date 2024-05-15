@@ -23,6 +23,8 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     .then(data => {
         // datos devueltos por el backend (token JWT)
         console.log("Token JWT:", data.token);
+        // Almacenar el token en el almacenamiento local
+        localStorage.setItem('token', data.token);
         // Redirigir al usuario a la página, mostrar un mensaje de éxito, etc.
         window.location.href = "miperfil.html"; //va a home_user.html una ves edite el menú del perfil
     })
