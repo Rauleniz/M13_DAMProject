@@ -61,7 +61,7 @@ var popup = L.popup()
 map.on('click', function(e) {
     var popup = L.popup()
         .setLatLng(e.latlng)
-        .setContent('<input type="text" id="popupText" placeholder="Escribe tu texto aquí..."><button onclick="saveMarker()">Guardar</button>' + e.latlng.toString())
+        .setContent('<input type="text" id="popupText" placeholder="Describe tu estilo..."><button onclick="saveMarker()">Guardar</button>' + e.latlng.toString())
         .openOn(map);
 });
 

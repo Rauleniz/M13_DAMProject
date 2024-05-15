@@ -14,15 +14,14 @@ def actualizar_usuario(id_usuario):
         apellidos = data.get('apellidos')
         email = data.get('email')
         direccion = data.get('direccion')
-        descripcion = data.get('descripcion')
         estatus = data.get('estatus')
         username = data.get('username')
         password = data.get('password')
 
         # Actualizar el usuario en la base de datos
         cursor = connection.cursor()
-        sql = "UPDATE usuario SET nombre = %s, apellidos = %s, email = %s, direccion = %s, descripcion = %s, estatus = %s, username = %s, password = %s WHERE id = %s"
-        cursor.execute(sql, (nombre, apellidos, email, direccion, descripcion, estatus, username, password, id_usuario))
+        sql = "UPDATE usuario SET nombre = %s, apellidos = %s, email = %s, direccion = %s, estatus = %s, username = %s, password = %s WHERE id = %s"
+        cursor.execute(sql, (nombre, apellidos, email, direccion, estatus, username, password, id_usuario))
         connection.commit()
 
         # Verificar si se realizó la actualización correctamente

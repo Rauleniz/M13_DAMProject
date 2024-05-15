@@ -21,7 +21,8 @@ def obtener_ubicacion(id_usuario):
                 'id_usuario': ubicacion[1],
                 'lat': ubicacion[2],
                 'lng': ubicacion[3],
-                'direccion': ubicacion[4]
+                'descripcion': ubicacion[4],
+                'link_rrss': ubicacion[5]
             }
             return jsonify(ubicacion_dict), 200
         else:

@@ -8,12 +8,10 @@ class Usuario(db.Model):
     apellidos = db.Column(db.String(255))
     email = db.Column(db.String(255))
     direccion = db.Column(db.String(255))
-    descripcion = db.Column(db.String(255))
     estatus = db.Column(db.String(255))
     img_perfil = db.Column(db.String(255))
     cancion = db.Column(db.String(255))
     id_plan = db.Column(db.Integer)
-    link_rrss = db.Column(db.String(255))
     username = db.Column(db.String(255))
     password = db.Column(db.String(255))
 
@@ -24,12 +22,10 @@ class Usuario(db.Model):
             "apellidos": self.apellidos,
             "email": self.email,
             "direccion": self.direccion,
-            "descripcion": self.descripcion,
             "estatus": self.estatus,
             "img_perfil": self.img_perfil,
             "cancion": self.cancion,
             "idPlan": self.id_plan,
-            "linkRrss": self.link_rrss,
             "username": self.username,
             "password": self.password
         }
@@ -166,7 +162,8 @@ class Ubicacion(db.Model):
     id_usuario = db.Column(db.Integer)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
-    direccion = db.Column(db.String(255))
+    descripcion = db.Column(db.String(255))
+    link_rrss = db.Column(db.String(255))
 
     def to_json(self):
         return {
@@ -174,7 +171,8 @@ class Ubicacion(db.Model):
             "idUsuario": self.id_usuario,
             "lat": self.lat,
             "lng": self.lng,
-            "direccion": self.direccion
+            "descripcion": self.descripcion,
+            "linkRrss": self.link_rrss
         }
     
 

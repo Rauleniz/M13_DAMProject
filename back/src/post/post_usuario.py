@@ -13,7 +13,6 @@ def nuevo_usuario():
         apellidos = data.get('apellidos')
         email = data.get('email')
         direccion = data.get('direccion')
-        descripcion = data.get('descripcion')
         estatus = data.get('estatus')
         id_plan = data.get('id_plan')
         username = data.get('username')
@@ -23,8 +22,8 @@ def nuevo_usuario():
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
   
         cursor = connection.cursor()
-        sql = "INSERT INTO usuario (nombre, apellidos, email, direccion, descripcion, estatus, id_plan, username, password) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        cursor.execute(sql, (nombre, apellidos, email, direccion, descripcion, estatus, id_plan, username, hashed_password))
+        sql = "INSERT INTO usuario (nombre, apellidos, email, direccion, estatus, id_plan, username, password) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(sql, (nombre, apellidos, email, direccion, estatus, id_plan, username, hashed_password))
         connection.commit()
 
         if cursor.rowcount > 0:

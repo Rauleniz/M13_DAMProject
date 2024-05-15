@@ -11,15 +11,16 @@ def agregar_ubicacion():
         id_usuario = data.get('id_usuario')
         lat = data.get('lat')
         lng = data.get('lng')
-        direccion = data.get('direccion')
+        descripcion = data.get('descripcion')
+        link_rrss = data.get('link_rrss')
 
         # Conectar a la base de datos
         connection = get_database_connection()
         cursor = connection.cursor()
 
         # Insertar la ubicación en la tabla de ubicaciones
-        cursor.execute("INSERT INTO ubicacion (id_usuario, lat, lng, direccion) VALUES (%s, %s, %s, %s)",
-                       (id_usuario, lat, lng, direccion))
+        cursor.execute("INSERT INTO ubicacion (id_usuario, lat, lng, descripcion, link_rrss) VALUES (%s, %s, %s, %s, %s)",
+                       (id_usuario, lat, lng, descripcion, link_rrss))
         connection.commit()
 
         # Verificar si la ubicación se ha insertado correctamente
