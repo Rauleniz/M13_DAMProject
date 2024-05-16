@@ -4,10 +4,13 @@ from datetime import datetime, timedelta, timezone
 import bcrypt
 from db import get_database_connection
 from flask_jwt_extended import create_access_token, current_user, decode_token
+import logging
+from logging.handlers import RotatingFileHandler
 
 
 app = Flask(__name__)
 auth_bp = Blueprint('auth_psw', __name__)
+
 
 # Función para verificar las credenciales del usuario en la base de datos
 def verificar_credenciales(username, password):
@@ -48,22 +51,28 @@ def verificar_credenciales_decorador(f):
 @verificar_credenciales_decorador
 def login(usuario):
     try:
+        usuario_id = usuario['id']
+
         # Generar el token JWT si las credenciales son válidas
         exp_time = datetime.now(
                         tz=timezone.utc
                         ) + timedelta(minutes=60)
         exp_time_unix = exp_time.timestamp()  # Convertir a tiempo UNIX
-        payload = {'sub': usuario['id'], 'exp': exp_time_unix}            
+        payload = {'sub': usuario['id'], 'exp': exp_time_unix}   
+
+        app.logger.debug(f'Print de exp_time y :exp_time_unix {exp_time} // {exp_time_unix}')        
 
         # Codificar la clave secreta en bytes
         secret_key_bytes = current_app.config['SECRET_KEY'].encode('utf-8')
 
         # Generar el token JWT utilizando la clave secreta codificada
         token = jwt.encode(payload, secret_key_bytes, algorithm='HS256')
+                
 
-        return jsonify({'token': token, 'usuario_id': usuario['id']}), 200
+        app.logger.info(f"Usuario {usuario_id} ha iniciado sesión exitosamente.")
+        return jsonify({'token': token, 'usuario_id': usuario_id}), 200
     except Exception as e:
-        print("Error al generar el token JWT:", e)
+        app.logger.error(f"Error al generar el token JWT: {e}")
         return jsonify({'mensaje': 'Error interno del servidor'}), 500
 
 
