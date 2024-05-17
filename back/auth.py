@@ -52,6 +52,7 @@ def verificar_credenciales_decorador(f):
 def login(usuario):
     try:
         usuario_id = usuario['id']
+        current_app.logger.debug(f'Print de usuario_id {usuario_id}')        
 
         # Generar el token JWT si las credenciales son válidas
         exp_time = datetime.now(
@@ -60,16 +61,18 @@ def login(usuario):
         exp_time_unix = exp_time.timestamp()  # Convertir a tiempo UNIX
         payload = {'sub': usuario['id'], 'exp': exp_time_unix}   
 
-        app.logger.debug(f'Print de exp_time y :exp_time_unix {exp_time} // {exp_time_unix}')        
+        current_app.logger.debug(f'Print de exp_time y :exp_time_unix {exp_time} // {exp_time_unix}')        
 
         # Codificar la clave secreta en bytes
         secret_key_bytes = current_app.config['SECRET_KEY'].encode('utf-8')
+        app.logger.info(f'Print de la Clave Secreta en auth.py: {current_app.config['SECRET_KEY']}')
 
         # Generar el token JWT utilizando la clave secreta codificada
-        token = jwt.encode(payload, secret_key_bytes, algorithm='HS256')
+        token = jwt.encode(payload, secret_key_bytes, algorithm='HS256')   
                 
 
-        app.logger.info(f"Usuario {usuario_id} ha iniciado sesión exitosamente.")
+        current_app.logger.info(f"Usuario {usuario_id} ha iniciado sesión exitosamente.")
+        current_app.logger.info(f"token {token} de inicio sesión exitosamente.")
         return jsonify({'token': token, 'usuario_id': usuario_id}), 200
     except Exception as e:
         app.logger.error(f"Error al generar el token JWT: {e}")

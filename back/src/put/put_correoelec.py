@@ -3,21 +3,25 @@ Script de prueba. en verda
 """
 
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, current_app
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from back.db import get_database_connection
 
-put_correo_bp = Blueprint('correo_put', __name__)
+put_correo_bp = Blueprint('correo_put', __name__)    
 
 
 # Ruta para actualizar el correo electrónico del usuario
 @put_correo_bp.route('/usuario/email', methods=['PATCH'])
 @jwt_required()  # Verificar que el token JWT sea válido
 def actualizar_email():
+    usuario_id = get_jwt_identity()
+    current_app.logger.debug(f'Print de usuario_id: {usuario_id}')
+    current_app.logger.debug(f' 1 - Print de la Clave Secreta en put_correoelec: {current_app.config['SECRET_KEY']}')
+
     try:
         # Obtener el ID del usuario del token JWT
-        usuario_id = get_jwt_identity()
+        # usuario_id = get_jwt_identity()
 
         # Obtener el ID del usuario del cuerpo de la solicitud JSON
         usuario_actualizar_id = request.json.get('id')
@@ -40,5 +44,5 @@ def actualizar_email():
         else:
             return jsonify({'mensaje': 'Error al conectar a la base de datos'}), 500
     except Exception as e:
-        print("Error al actualizar el correo electrónico:", e)
+        current_app.logger.error("Error al actualizar el correo electrónico:", e)
         return jsonify({'mensaje': 'Error interno del servidor'}), 500

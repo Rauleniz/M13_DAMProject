@@ -33,14 +33,20 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Suprime la señalizació
 db = SQLAlchemy(app)
 jwt = JWTManager(app)
 
+
 # Configuración de Logging
 if not app.debug:
     # Crear un manejador que rota los logs cuando alcanzan cierto tamaño
-    handler = RotatingFileHandler('logs/app.log', maxBytes=10000, backupCount=3) 
-    handler.setLevel(logging.DEBUG)
+    handler = RotatingFileHandler('./logs/app.log', maxBytes=10000, backupCount=3) 
+    app.logger.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]')
     handler.setFormatter(formatter)
     app.logger.addHandler(handler)
+
+# DESCOMENTAR para saber en qué nivel de logging estamos: NOTSET: 0 DEBUG: 10 INFO: 20 WARNING: 30 ERROR: 40 CRITICAL: 50
+# nivel_logging = app.logger.getEffectiveLevel()
+# app.logger.warning(f"El nivel de logging actual es: {nivel_logging}")
+        
 
 # Traemos los blueprints de todos los endpoints
 blueprints = [
@@ -87,6 +93,7 @@ for bp in blueprints:
 # Registrando el blueprint de autenticación
 app.register_blueprint(auth_bp) 
 # app.register_blueprint(t_auth_bp) 
+
 
 
 # 01/05 - VALORAR SI HACER TODOS LOS ENDPOINTS EN EL APP.PY
