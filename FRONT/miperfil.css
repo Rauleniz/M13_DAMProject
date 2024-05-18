@@ -74,6 +74,11 @@ header {
     color: black;
 }
 
+
+.menu_user {
+    position: relative;
+}
+
 .boton_menu {
     position: relative;
 }
@@ -91,11 +96,12 @@ cursor: pointer;
 
 .menu_desplegable {
 position: absolute;
-top: 60px;
+top: 40px;
 right: 0;
 background-color: #f8b020;
 border-radius: 5px;
 display: none;
+/* display: block; */
 }
 
 .menu_desplegable ul {
@@ -114,10 +120,10 @@ text-decoration: none;
 display: block;
 }
 
-.boton_menu:hover .menu_desplegable {
-display: block;
+.boton_menu:hover .menu_desplegable,
+.menu_desplegable:hover {
+    display: block;
 }
-
 
 
 /* BODY */

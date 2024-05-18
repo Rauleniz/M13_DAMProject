@@ -1,16 +1,27 @@
 # En usuarios.py
 
-from flask import Blueprint, jsonify, render_template
+import token
+from flask import Blueprint, current_app, jsonify, render_template, request
+import jwt
 from back.db import get_database_connection
+from config import Config
 
 get_usuarios_bp = Blueprint('usuarios_get', __name__)
 
 
 
-@get_usuarios_bp.route('/usuario/<int:id_usuario>', methods=['GET'])
+@get_usuarios_bp.route('/usuario/<int:id_usuario>', methods=['GET', 'OPTIONS'])
 def obtener_usuario(id_usuario):
-    try:
-        
+
+    auth_header = request.headers.get('Authorization')
+    if auth_header:
+        token = auth_header.split(" ")[1]
+    else:
+        return jsonify({'mensaje': 'Token no proporcionado'}), 401
+
+    try:        
+        data = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
+        id_usuario = data['sub']
         connection = get_database_connection()
         if connection:
             cursor = connection.cursor()

@@ -80,14 +80,4 @@ def login(usuario):
 
 
 
-# def decodificar_token(token):
-#     try:
-#         # Decodificar el token JWT utilizando la clave secreta
-#         payload = decode_token(token)
 
-#         return payload
-#     except jwt.ExpiredSignatureError:
-#         return jsonify({'mensaje':'El token ha expirado, por favor inicia sesión de nuevo.'})
-#     except jwt.InvalidTokenError:
-#         return 'Token inválido. Por favor, inicia sesión de nuevo.'
-    

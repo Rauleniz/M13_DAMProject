@@ -2,7 +2,7 @@ import os
 import sys
 import importlib
 from flask import Flask, jsonify #render_template
-from flask_cors import CORS
+from flask_cors import CORS 
 from flask_jwt_extended import JWTManager #cross_origin
 from auth import auth_bp
 # from t_auth import t_auth_bp
@@ -11,6 +11,7 @@ from mysql.connector import pooling
 #import middleware as middleware
 import logging
 from logging.handlers import RotatingFileHandler
+from flask_socketio import SocketIO, send
 
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -33,6 +34,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Suprime la señalizació
 db = SQLAlchemy(app)
 jwt = JWTManager(app)
 
+socketio = SocketIO(app)
 
 # Configuración de Logging
 if not app.debug:
@@ -99,8 +101,8 @@ app.register_blueprint(auth_bp)
 # 01/05 - VALORAR SI HACER TODOS LOS ENDPOINTS EN EL APP.PY
 @app.route('/')
 def index():      
-    print (f'Vamosssssss')
-    return f'exitooooo'
+    print (f'Conectado')
+    return f'Conectado'
 
 
 @app.errorhandler(Exception)
@@ -110,4 +112,5 @@ def handle_exception(e):
 
 if __name__ == '__main__':
     #app.secret_key = 'DamM13&Proj3ct'
+    socketio.run(app)
     app.run(debug=True, port=5000)

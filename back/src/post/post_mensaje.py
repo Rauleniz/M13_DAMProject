@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from datetime import datetime
 from back.db import get_database_connection
+from app import socketio, send
 
 escribir_mensaje_bp = Blueprint('escribir_mensaje', __name__)
 
@@ -30,3 +31,9 @@ def escribir_mensaje():
     except Exception as e:
         print(f"Error al escribir mensaje: {e}")
         return jsonify({'mensaje': 'Se produjo un error al escribir el mensaje'}), 500
+
+
+@socketio.on('message')  # Usar la instancia de SocketIO
+def handle_message(data):
+    print('received message: ' + data)
+    send(data, broadcast=True)

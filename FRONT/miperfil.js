@@ -2,13 +2,13 @@ document.addEventListener("DOMContentLoaded", function() {
     var token = localStorage.getItem('token');
     console.log("Token de autorización:", token);
 
-    fetch("http://localhost:5000/get/usuario/" + token , {
+    fetch("http://localhost:5000/get/usuario" + token , {
         method: "GET",
         headers: {
+            "Content-Type": "application/json",                                   
             "Authorization": "Bearer " + token,
-            'Content-Type': 'application/json',            
         },
-        // mode: 'cors'
+        mode: 'cors'
     })
     .then(response => {
         if (response.ok) {
@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch(endpoint, {
             method: 'PATCH',
             headers: {
+                "Authorization": "Bearer " + token,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
