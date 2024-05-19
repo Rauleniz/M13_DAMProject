@@ -68,6 +68,7 @@ blueprints = [
     {'module': 'back.src.post.post_ubicacion', 'name': 'post_ubicacion_bp', 'url_prefix': '/post'},
     {'module': 'back.src.put.put_factura', 'name': 'actualizar_factura_bp', 'url_prefix': '/put'},
     {'module': 'back.src.put.put_usuario', 'name': 'put_usuarios_bp', 'url_prefix': '/put'},
+    {'module': 'back.src.patch.patch_usuario', 'name': 'patch_usuarios_bp', 'url_prefix': '/patch'},
     {'module': 'back.src.put.put_bancario', 'name': 'put_bancarios_bp', 'url_prefix': '/put'},
     {'module': 'back.src.put.put_multimedia', 'name': 'actualizar_multimedia_bp', 'url_prefix': '/put'},
     {'module': 'back.src.put.put_servicio', 'name': 'put_servicio_bp', 'url_prefix': '/put'},

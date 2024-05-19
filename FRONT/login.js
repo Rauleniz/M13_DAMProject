@@ -23,12 +23,11 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     .then(data => {
         // datos devueltos por el backend (token JWT)
         console.log("Token JWT:", data.token);
-        // Almacenar el token en el almacenamiento local
+        // Almacenar el token y el id del usuario en el almacenamiento local
         localStorage.setItem('token', data.token);
-        // Almacenar el id usuario en el almacenamiento local
         localStorage.setItem('usuario_id', data.usuario_id)
         // Redirigir al usuario a la página, mostrar un mensaje de éxito, etc.
-        window.location.href = "miperfil.html"; //va a home_user.html una ves edite el menú del perfil
+        window.location.href = "miperfil.html"; //va a home_user.html una vez edite el menú del perfil
     })
     .catch(error => {
         // info error en el proceso de inicio de sesión

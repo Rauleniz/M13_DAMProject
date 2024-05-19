@@ -2,30 +2,30 @@ import bcrypt
 from flask import Blueprint, jsonify, request
 from back.db import get_database_connection
 
-put_usuarios_bp = Blueprint('usuarios_put', __name__)
+patch_usuarios_bp = Blueprint('usuarios_patch', __name__)
 
-@put_usuarios_bp.route('/usuario/<int:id_usuario>', methods=['PUT'])
-def actualizar_usuario(id_usuario):
-
+@patch_usuarios_bp.route('/usuario/<int:id_usuario>', methods=['PATCH'])
+def actualizar_dato_usuario(id_usuario):
     connection = get_database_connection()
     try:
         # Obtener los datos del usuario del cuerpo de la solicitud
         data = request.json
-        nombre = data.get('nombre')
-        apellidos = data.get('apellidos')
-        email = data.get('email')
-        direccion = data.get('direccion')
-        estatus = data.get('estatus')
-        username = data.get('username')
-        password = data.get('password')
 
-        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
+        # Crear la consulta SQL de actualización basada en los datos proporcionados
+        sql = "UPDATE usuario SET "
+        params = []
+        for key, value in data.items():
+            if key == 'password':
+                value = bcrypt.hashpw(value.encode('utf-8'), bcrypt.gensalt())
+            sql += f"{key} = %s, "
+            params.append(value)
+        sql = sql.rstrip(', ')  # Eliminar la última coma
+        sql += " WHERE id = %s"
+        params.append(id_usuario)
 
         # Actualizar el usuario en la base de datos
         cursor = connection.cursor()
-        sql = "UPDATE usuario SET nombre = %s, apellidos = %s, email = %s, direccion = %s, estatus = %s, username = %s, password = %s WHERE id = %s"
-        cursor.execute(sql, (nombre, apellidos, email, direccion, estatus, username, hashed_password, id_usuario))
+        cursor.execute(sql, params)
         connection.commit()
 
         # Verificar si se realizó la actualización correctamente

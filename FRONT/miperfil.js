@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     var token = localStorage.getItem('token');
     var usuario_id = localStorage.getItem('usuario_id');
-    console.log("ID de usuario:", usuario_id);
-    console.log("Token de autorización:", token);
+    console.log(token)
+    console.log(usuario_id)
 
     fetch("http://127.0.0.1:5000/get/usuario/" + usuario_id , {
         method: "GET",
@@ -19,14 +19,15 @@ document.addEventListener("DOMContentLoaded", function() {
             throw new Error("Error al obtener la información del usuario");
         }
     })
-    .then(data => {
-        // Manejar la respuesta aquí y actualizar la interfaz de usuario con la información del usuario
-        console.log("Datos del usuario:", data);
-        document.getElementById('direccion').textContent = data.direccion;
-        document.getElementById('email').textContent = data.email;
-        //document.getElementById('descripcion').textContent = data.descripcion;
-        // y otros elementos de la interfaz de usuario según sea necesario
-    })
+    // .then(data => {
+    //     // Manejar la respuesta aquí y actualizar la interfaz de usuario con la información del usuario
+    //     console.log("Datos del usuario:", data);
+    //     document.getElementById('nombre').textContent = data.nombre;
+    //     document.getElementById('email').textContent = data.email;
+    //     document.getElementById('descripcion').textContent = data.descripcion;
+    //     document.getElementById('link_rrss1').textContent = data.link_rrss1;
+
+    // })
     .catch(async error => {
         try {
             throw error;
@@ -36,94 +37,100 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // Event listener para el botón de guardar
+    document.getElementById('guardar-btn').addEventListener('click', function() {
+        var nuevoNombre = document.getElementById('tarjeta_nombre').value;
+        var nuevoApellido = document.getElementById('tarjeta_apellido').value;
+        var nuevoEmail = document.getElementById('tarjeta_email').value;
+        var nuevoEstatus = document.getElementById('tarjeta_estatus').value;
+        var nuevoUsername = document.getElementById('tarjeta_username').value;
+        var nuevoPassword = document.getElementById('tarjeta_password').value;
 
-
-
-
-    // BOTONES DE SELECCIÓN
-    var botonEditarNombre = document.querySelector('#select-nombre-btn');
-    var botonEditarFacturacion = document.querySelector('#select-facturacion-btn');
-    var botonCambiarContrasena = document.querySelector('#select-contrasena-btn');
-    var botonCambiarPlan = document.querySelector('#select-plan-btn');
-    var botonCancelarSuscripcion = document.querySelector('#select-cancelar-btn');
-
-    // Agregar event listeners para cada botón
-    botonEditarNombre.addEventListener('click', function() {
-        // Mostrar el input para editar el nombre
-        mostrarCampoEdicion('nombre');
-    });
-
-    botonEditarFacturacion.addEventListener('click', function() {
-        // Mostrar el input para editar los datos de facturación
-        mostrarCampoEdicion('facturacion');
-    });
-
-    // botonCambiarContrasena.addEventListener('click', function() {
-    //     // Mostrar el input para cambiar la contraseña
-    //     mostrarCampoEdicion('contrasenya');
-    // });
-
-    botonCambiarPlan.addEventListener('click', function() {
-        // Mostrar el input para cambiar el plan
-        mostrarCampoEdicion('plan');
-    });
-
-    botonCancelarSuscripcion.addEventListener('click', function() {
-        // Mostrar el input para cancelar la suscripción
-        mostrarCampoEdicion('cancelar');
-    });
-
-
-
-    // Función para mostrar el campo de edición correspondiente
-    function mostrarCampoEdicion(campo) {
-        // Ocultar todos los campos de edición
-        var camposEdicion = document.querySelectorAll('.datos_actualizados input');
-        camposEdicion.forEach(function(input) {
-            input.style.display = 'none';
-        });
-
-        // Mostrar el campo de edición correspondiente
-        var campoEdicion = document.querySelector('#' + campo);
-        campoEdicion.style.display = 'block';
-    }
-
-
-
-    // BOTÓN GUARDAR
-    var botonGuardar = document.querySelector('#guardar-btn');
-    botonGuardar.addEventListener('click', function() {
-        // Obtener el valor del campo de edición activo
-        var campoEdicionActivo = document.querySelector('.datos_actualizados input[style="display: block"]');
-        var nuevoValor = campoEdicionActivo.value;
-
-        // Enviar solicitud PATCH al backend con el nuevo valor
-        var endpoint = 'http://localhost:5000/usuario/actualizar/' + campoEdicionActivo.id;
-        var data = {};
-        data[campoEdicionActivo.name] = nuevoValor;
-
-        fetch(endpoint, {
-            method: 'PATCH',
+        // Actualizar los datos del usuario
+        fetch("http://127.0.0.1:5000/patch/usuario/" + usuario_id , {
+            method: "PATCH",
             headers: {
+                "Content-Type": "application/json",                                   
                 "Authorization": "Bearer " + token,
-                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({
+                nombre: nuevoNombre,
+                apellidos: nuevoApellido,
+                email: nuevoEmail,
+                estatus: nuevoEstatus,
+                username: nuevoUsername, 
+                password: nuevoPassword
+            }),
+            mode: 'cors'
         })
-        .then(function(response) {
-            if (response.ok) {
-                // Si la solicitud fue exitosa, mostrar un mensaje al usuario
-                console.log('Datos actualizados correctamente');
-            } else {
-                // Si hubo un error en la solicitud, mostrar un mensaje de error
-                console.error('Error al actualizar los datos:', response.statusText);
-            }
+        .then(response => response.json())
+        .then(data => {
+            // Manejar la respuesta de la solicitud PUT
+            console.log("Datos actualizados del usuario:", data);
         })
-        .catch(function(error) {
-            // Si hubo un error en la solicitud, mostrar un mensaje de error
-            console.error('Error en la solicitud:', error);
-        });
+        .catch(error => console.error('Error:', error));
     });
+
+    // Aquí puedes agregar más event listeners para otros botones, como el de añadir una red social
+
+    
+    //************************* */
+
+
+    var datosActualizadosDiv = document.querySelector('.datos_actualizados');
+    var datosFacturacionDiv = document.querySelector('.datos_facturacion');
+    var datosContrasenyaDiv = document.querySelector('.datos_contrasenya');
+    var datosPlanDiv = document.querySelector('.datos_plan');
+    var datosSuscripcionDiv = document.querySelector('.datos_suscripcion');
+
+    // Oculta todos los divs al inicio
+    datosActualizadosDiv.style.display = 'none';
+    datosFacturacionDiv.style.display = 'none';
+    datosContrasenyaDiv.style.display = 'none';
+    datosPlanDiv.style.display = 'none';
+    datosSuscripcionDiv.style.display = 'none';
+    document.querySelector(".edicion_perfil .guardar_cambios").style.display = "none";
+    document.querySelector(".edicion_facturacion .guardar_cambios").style.display = "none";
+    document.querySelector(".edicion_contrasenya .guardar_cambios").style.display = "none";
+    document.querySelector(".edicion_plan .guardar_cambios").style.display = "none";
+    document.querySelector(".edicion_suscripcion .guardar_cambios").style.display = "none";
+
+    // Agrega event listeners a los botones
+    document.getElementById('select-perfil-btn').addEventListener('click', function() {
+        // Muestra el div de datos actualizados y oculta los demás
+        datosActualizadosDiv.style.display = 'block';
+        document.querySelector(".edicion_perfil .guardar_cambios").style.display = "block";
+        datosFacturacionDiv.style.display = 'none';
+        document.querySelector(".edicion_facturacion .guardar_cambios").style.display = "none";
+        datosContrasenyaDiv.style.display = 'none';
+        document.querySelector(".edicion_contrasenya .guardar_cambios").style.display = "none";
+    });
+
+    document.getElementById('select-facturacion-btn').addEventListener('click', function() {
+        // Muestra el div de datos de facturación y oculta los demás
+        datosFacturacionDiv.style.display = 'block';
+        document.querySelector(".edicion_facturacion .guardar_cambios").style.display = "block";
+        datosActualizadosDiv.style.display = 'none';
+        document.querySelector(".edicion_perfil .guardar_cambios").style.display = "none";
+        datosContrasenyaDiv.style.display = 'none';
+        document.querySelector(".edicion_contrasenya .guardar_cambios").style.display = "none";
+    });
+
+    document.getElementById('select-contrasenya-btn').addEventListener('click', function() { 
+        datosContrasenyaDiv.style.display = 'block';
+        document.querySelector(".edicion_contrasenya .guardar_cambios").style.display = "block";
+        datosActualizadosDiv.style.display = 'none';
+        document.querySelector(".edicion_perfil .guardar_cambios").style.display = "none";
+        datosFacturacionDiv.style.display = 'none';
+        document.querySelector(".edicion_facturacion .guardar_cambios").style.display = "none";
+    });
+
+    
+    
+    
+
+
+
 
   
 });

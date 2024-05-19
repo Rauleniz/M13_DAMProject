@@ -49,7 +49,7 @@
         <section>
             <div class="botones">
                 <div class="opciones">
-                    <button id="select-nombre-btn">Editar Nombre</button>
+                    <button id="select-perfil-btn">Editar Perfil</button>
                     <button id="select-facturacion-btn">Editar Datos de Facturación</button>
                     <button id="select-contrasenya-btn">Cambiar Contraseña</button>
                     <button id="select-plan-btn">Cambiar de Plan</button>
@@ -57,22 +57,59 @@
                 </div>
             </div>   
     
-            <div class="info_actual">                
+            <!-- <div class="info_actual">                
                 <div class="datos_actual">
-                    <p id="direccion">Dirección actual</p>
+                    <p id="nombre">Nombre</p>
                     <p id="email">Email actual</p>
                     <p id="descripcion">Descripción actual</p>
-                    <p id="link_rss1">Link a una red</p>
+                    <p id="link_rrss1">Link a una red</p>
                 </div>
-            </div>
+            </div> -->
     
-            <div class="edicion_info">
+            <div class="edicion_perfil">
                 <div class="datos_actualizados">
                     <input type="text" id="tarjeta_nombre" name="tarjeta" placeholder="Actualiza tu nombre" required>      
-                    <input type="text" id="tarjeta_facturacion" name="tarjeta" placeholder="Actualiza tu facturación" required>      
-                    <input type="text" id="tarjeta_contrasenya" name="tarjeta" placeholder="Actualiza tu contraseña" required>      
-                    <input type="text" id="tarjeta_plan" name="tarjeta" placeholder="Actualiza tu plan" required>       
-                    <input type="text" id="tarjeta_cancelar" name="tarjeta" placeholder="Cancelar Suscripción" required>      
+                    <input type="text" id="tarjeta_apellido" name="tarjeta" placeholder="Actualiza tu apellido" required>      
+                    <input type="text" id="tarjeta_email" name="tarjeta" placeholder="Actualiza tu email" required>      
+                    <input type="text" id="tarjeta_estatus" name="tarjeta" placeholder="Actualiza estatus" required>       
+                    <input type="text" id="tarjeta_username" name="tarjeta" placeholder="Cancelar nombre de usuario" required>      
+                    <input type="text" id="tarjeta_password" name="tarjeta" placeholder="Cancelar contraseña" required>      
+                </div>
+                <div class="guardar_cambios">
+                    <button id="guardar-btn">Guardar</button>
+                </div>
+            </div>
+
+            <div class="edicion_facturacion">
+                <div class="datos_facturacion">
+                    <input type="text" id="tarjeta_titular" name="tarjeta" placeholder="Titular de la tarjeta" required>      
+                    <input type="text" id="tarjeta_numeracion" name="tarjeta" placeholder="Número de tarjeta" required>      
+                    <input type="text" id="tarjeta_fecha_caducidd" name="tarjeta" placeholder="Fecha de caducidad" required>      
+                    <input type="text" id="tarjeta_cvc" name="tarjeta" placeholder="CVC" required>         
+                </div>
+                <div class="guardar_cambios">
+                    <button id="guardar-btn">Guardar</button>
+                </div>
+            </div>
+            <div class="edicion_contrasenya">
+                <div class="datos_contrasenya">
+                    <input type="text" id="tarjeta_contrasenya" name="tarjeta" placeholder="Nueva contraseña" required>         
+                </div>
+                <div class="guardar_cambios">
+                    <button id="guardar-btn">Guardar</button>
+                </div>
+            </div>
+            <div class="edicion_plan">
+                <div class="datos_plan">
+                    <input type="text" id="tarjeta_plan" name="tarjeta" placeholder="Nuevo Plan" required>         
+                </div>
+                <div class="guardar_cambios">
+                    <button id="guardar-btn">Guardar</button>
+                </div>
+            </div>
+            <div class="edicion_suscripcion">
+                <div class="datos_suscripcion">
+                    <input type="text" id="tarjeta_suscripcion" name="tarjeta" placeholder="Cancelar suscripción" required>         
                 </div>
                 <div class="guardar_cambios">
                     <button id="guardar-btn">Guardar</button>
