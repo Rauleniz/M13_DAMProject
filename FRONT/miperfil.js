@@ -104,6 +104,9 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector(".edicion_facturacion .guardar_cambios").style.display = "none";
         datosContrasenyaDiv.style.display = 'none';
         document.querySelector(".edicion_contrasenya .guardar_cambios").style.display = "none";
+        datosSuscripcionDiv.style.display = 'block';
+        document.querySelector(".edicion_suscripcion .guardar_cambios").style.display = "none";
+        datosSuscripcionDiv.style.display = 'none';
     });
 
     document.getElementById('select-facturacion-btn').addEventListener('click', function() {
@@ -123,6 +126,30 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector(".edicion_perfil .guardar_cambios").style.display = "none";
         datosFacturacionDiv.style.display = 'none';
         document.querySelector(".edicion_facturacion .guardar_cambios").style.display = "none";
+    });
+
+    document.getElementById('select-plan-btn').addEventListener('click', function() { 
+        datosPlanDiv.style.display = 'block';
+        document.querySelector(".edicion_plan .guardar_cambios").style.display = "block";
+        datosActualizadosDiv.style.display = 'none';
+        document.querySelector(".edicion_perfil .guardar_cambios").style.display = "none";
+        datosFacturacionDiv.style.display = 'none';
+        document.querySelector(".edicion_facturacion .guardar_cambios").style.display = "none";
+        datosContrasenyaDiv.style.display = 'none';
+        document.querySelector(".edicion_contrasenya .guardar_cambios").style.display = "none";
+    });
+
+    document.getElementById('select-cancelar-btn').addEventListener('click', function() { 
+        datosSuscripcionDiv.style.display = 'block';
+        document.querySelector(".edicion_suscripcion .guardar_cambios").style.display = "block";
+        datosActualizadosDiv.style.display = 'none';
+        document.querySelector(".edicion_perfil .guardar_cambios").style.display = "none";
+        datosFacturacionDiv.style.display = 'none';
+        document.querySelector(".edicion_facturacion .guardar_cambios").style.display = "none";
+        datosContrasenyaDiv.style.display = 'none';
+        document.querySelector(".edicion_contrasenya .guardar_cambios").style.display = "none";
+        datosPlanDiv.style.display = 'none';
+        document.querySelector(".edicion_plan .guardar_cambios").style.display = "none";
     });
 
     
