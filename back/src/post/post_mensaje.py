@@ -1,7 +1,8 @@
 from flask import Blueprint, request, jsonify
 from datetime import datetime
 from back.db import get_database_connection
-from app import socketio, send
+from flask_socketio import send
+from socketio_config import socketio
 
 escribir_mensaje_bp = Blueprint('escribir_mensaje', __name__)
 

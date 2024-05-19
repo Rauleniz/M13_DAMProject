@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const messagesContainer = document.getElementById('messages-container');
 
     // Conectar al WebSocket
-    const socket = io.connect('http://' + document.domain + ':' + location.port);
+    const socket = io.connect('http://127.0.0.1:5000');
+    // const socket = io.connect('http://localhost:5000');
 
     // Event listener para el botón de enviar
     sendButton.addEventListener('click', function() {

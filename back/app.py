@@ -11,7 +11,7 @@ from mysql.connector import pooling
 #import middleware as middleware
 import logging
 from logging.handlers import RotatingFileHandler
-from flask_socketio import SocketIO, send
+from socketio_config import socketio
 
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -20,7 +20,7 @@ sys.path.append(parent_dir)
 rutas = ["http://localhost:5500", "http://127.0.0.1:5500"]
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, allow_headers=["Content-Type", "Authorization"], resources={r"/*": {"origins": rutas}}, methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"])
+CORS(app, supports_credentials=True, allow_headers=["Content-Type", "Authorization"], resources={r"/*": {"origins": rutas}}, methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
 
 app.config['SECRET_KEY'] = 'DamM13&Pr0j3c7'
 app.config['JWT_TOKEN_LOCATION'] = ['headers']
@@ -33,8 +33,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Suprime la señalizació
 
 db = SQLAlchemy(app)
 jwt = JWTManager(app)
-
-socketio = SocketIO(app)
 
 # Configuración de Logging
 if not app.debug:
@@ -112,5 +110,5 @@ def handle_exception(e):
 
 if __name__ == '__main__':
     #app.secret_key = 'DamM13&Proj3ct'
-    socketio.run(app)
+    socketio.init_app(app)
     app.run(debug=True, port=5000)

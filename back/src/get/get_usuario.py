@@ -10,8 +10,8 @@ get_usuarios_bp = Blueprint('usuarios_get', __name__)
 
 
 
-@get_usuarios_bp.route('/usuario/<int:id_usuario>', methods=['GET', 'OPTIONS'])
-def obtener_usuario(id_usuario):
+@get_usuarios_bp.route('/usuario/<int:usuario_id>', methods=['GET'])
+def obtener_usuario(usuario_id):
 
     auth_header = request.headers.get('Authorization')
     if auth_header:
@@ -21,11 +21,14 @@ def obtener_usuario(id_usuario):
 
     try:        
         data = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
-        id_usuario = data['sub']
+        usuario_id = data['sub']
+        current_app.logger.debug(f"Token decodificado: {data}") 
+        current_app.logger.debug(f"ID de usuario del token: {usuario_id}") 
+
         connection = get_database_connection()
         if connection:
             cursor = connection.cursor()
-            cursor.execute("SELECT * FROM usuario WHERE id = %s", (id_usuario,))
+            cursor.execute("SELECT * FROM usuario WHERE id = %s", (usuario_id,))
 
             usuario = cursor.fetchone()  # Obtener el usuario encontrado
          
@@ -43,5 +46,5 @@ def obtener_usuario(id_usuario):
 
 
 @get_usuarios_bp.route('/usuario/<int:id_usuario>', methods=['OPTIONS'])
-def options_usuario(id_usuario):
+def options_usuario(usuario_id):
     return jsonify({'mensaje': 'OK'}), 200

@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     var token = localStorage.getItem('token');
+    // var usuario_id = localStorage.getItem('usuario_id');
     console.log("Token de autorización:", token);
 
-    fetch("http://localhost:5000/get/usuario" + token , {
+    fetch("http://127.0.0.1:5000/get/usuario/" + usuario_id , {
         method: "GET",
         headers: {
             "Content-Type": "application/json",                                   
