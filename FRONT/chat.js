@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
+    var token = localStorage.getItem('token');
+    var usuario_id = localStorage.getItem('usuario_id');
+    console.log(token)
+    console.log(usuario_id)
     const messageInput = document.getElementById('message-input');
     const sendButton = document.getElementById('send-button');
     const messagesContainer = document.getElementById('messages-container');

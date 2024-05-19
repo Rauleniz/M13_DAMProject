@@ -1,14 +1,24 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, current_app, request, jsonify
 from datetime import datetime
+
+import jwt
 from back.db import get_database_connection
 
 crear_conversacion_bp = Blueprint('crear_conversacion', __name__)
 
-@crear_conversacion_bp.route('/conversacion', methods=['POST'])
-def crear_conversacion():
+@crear_conversacion_bp.route('/conversacion/<int:usuario_id>', methods=['POST'])
+def crear_conversacion(usuario_id):
+    auth_header = request.headers.get('Authorization')
+    if auth_header:
+        token = auth_header.split(" ")[1]
+    else:
+        return jsonify({'mensaje': 'Token no proporcionado'}), 401
+
     try:
         # Obtener los datos del mensaje del cuerpo de la solicitud
         data = request.json
+        data = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
+
         id_usuario1 = data.get('id_usuario1')
         id_usuario2 = data.get('id_usuario2')
         contenido = data.get('contenido')

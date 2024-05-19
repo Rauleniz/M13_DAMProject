@@ -1,23 +1,28 @@
 # En usuarios.py
 
-from flask import Blueprint, jsonify
+from flask import Blueprint, current_app, jsonify, request
+import jwt
 from back.db import get_database_connection
 
 get_plan_bp = Blueprint('plan_get', __name__)
 
-# planes = []
 
-# @get_plan_bp.route('/plan', methods=['GET'])
-# def obtener_planes():
+@get_plan_bp.route('/plan/<int:usuario_id>', methods=['GET'])
+def obtener_plan(usuario_id):
 
-#     return jsonify(planes)
+    auth_header = request.headers.get('Authorization')
+    if auth_header:
+        token = auth_header.split(" ")[1]
+    else:
+        return jsonify({'mensaje': 'Token no proporcionado'}), 401
 
-@get_plan_bp.route('/plan/<int:id_plan>', methods=['GET'])
-def obtener_plan(id_plan):
-    connection = get_database_connection()
     try:
+        data = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
+        usuario_id = data['sub']
+
+        connection = get_database_connection()
         cursor = connection.cursor() 
-        cursor.execute("SELECT * FROM plan WHERE id = %s", (id_plan, ))
+        cursor.execute("SELECT plan.nombre FROM plan INNER JOIN usuario ON usuario.id_plan = plan.id WHERE usuario.id = %s", (usuario_id, ))
         plan = cursor.fetchone()  
         if plan:
             return jsonify(plan)
@@ -29,3 +34,6 @@ def obtener_plan(id_plan):
         return jsonify({'mensaje': 'Se produjo un error al obtener plan'}), 500
 
         
+@get_plan_bp.route('/plan/<int:usuario_id>', methods=['OPTIONS'])
+def options_usuario(usuario_id):
+    return jsonify({'mensaje': 'OK'}), 200

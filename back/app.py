@@ -50,7 +50,6 @@ if not app.debug:
 # Traemos los blueprints de todos los endpoints
 blueprints = [
     {'module': 'back.src.get.get_usuario', 'name': 'get_usuarios_bp', 'url_prefix': '/get'},
-    {'module': 'back.src.get.get_usuario_tk', 'name': 'get_usuarios_tk_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_plan', 'name': 'get_plan_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_conversacion', 'name': 'obtener_conversacion_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_factura', 'name': 'get_factura_usuario_bp', 'url_prefix': '/get'},

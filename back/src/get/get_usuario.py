@@ -32,8 +32,7 @@ def obtener_usuario(usuario_id):
 
             usuario = cursor.fetchone()  # Obtener el usuario encontrado
          
-            if usuario:
-                # return render_template('front/miperfil.html', usuario=usuario)
+            if usuario:                
                 return jsonify(usuario)
             else:
                 return jsonify({'mensaje': 'Usuario no encontrado'}), 404
