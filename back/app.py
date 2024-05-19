@@ -56,6 +56,7 @@ blueprints = [
     {'module': 'back.src.get.get_multimedia', 'name': 'get_multimedia_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_servicio', 'name': 'get_servicio_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_ubicacion', 'name': 'get_ubicacion_bp', 'url_prefix': '/get'},
+    {'module': 'back.src.get.get_agenda', 'name': 'get_agenda_bp', 'url_prefix': '/get'},
     {'module': 'back.src.post.post_usuario', 'name': 'post_usuarios_bp', 'url_prefix': '/post'},
     {'module': 'back.src.post.post_mensaje', 'name': 'escribir_mensaje_bp', 'url_prefix': '/post'},
     {'module': 'back.src.post.post_plan', 'name': 'post_plan_bp', 'url_prefix': '/post'},
@@ -65,6 +66,7 @@ blueprints = [
     {'module': 'back.src.post.post_multimedia', 'name': 'post_multimedia_bp', 'url_prefix': '/post'},
     {'module': 'back.src.post.post_servicio', 'name': 'post_servicio_bp', 'url_prefix': '/post'},
     {'module': 'back.src.post.post_ubicacion', 'name': 'post_ubicacion_bp', 'url_prefix': '/post'},
+    {'module': 'back.src.post.post_agenda', 'name': 'post_agenda_bp', 'url_prefix': '/post'},
     {'module': 'back.src.put.put_factura', 'name': 'actualizar_factura_bp', 'url_prefix': '/put'},
     {'module': 'back.src.put.put_usuario', 'name': 'put_usuarios_bp', 'url_prefix': '/put'},
     {'module': 'back.src.patch.patch_usuario', 'name': 'patch_usuarios_bp', 'url_prefix': '/patch'},
@@ -77,7 +79,6 @@ blueprints = [
     {'module': 'back.src.delete.borrar_mensaje', 'name': 'eliminar_mensaje_bp', 'url_prefix': '/delete'},
     {'module': 'back.src.delete.borrar_plan', 'name': 'delete_plan_bp', 'url_prefix': '/delete'}, 
 
-    {'module': 'back.src.put.put_correoelec', 'name': 'put_correo_bp', 'url_prefix': '/put'}, 
 ]
 
 

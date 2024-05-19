@@ -49,13 +49,13 @@
         <section>
             <div class="botones">
                 <div class="opciones">
-                    <button id="mostrar-info-btn">Cambiar ubicacion</button>
-                    <button id="mostrar-info-btn">Editar Datos</button>
-                    <button id="mostrar-info-btn">Cambiar imagen de etiqueta</button>
+                    <button id="select-etiqueta-btn">Edita tu etiqueta</button>
+                    <button id="select-img-btn">Cambiar imagen de etiqueta</button>
+                    <button id="select-song-btn">Subir Canción</button>
                 </div>
             </div>   
     
-            <div class="info_actual">                
+            <!-- <div class="info_actual">                
                 <div class="datos_actual">
                     <p>Dirección actual</p>
                     <p>email actual</p>
@@ -65,18 +65,37 @@
                     <p>link a una red</p>
                 </div>
             </div>
-    
-            <div class="edicion_info">
-                <div class="datos_actualizados">
-                    <input type="text" id="tarjeta" name="tarjeta" placeholder="Actualiza tu direccón" required>      
-                    <input type="text" id="tarjeta" name="tarjeta" placeholder="Actualiza tu email" required>      
-                    <input type="text" id="tarjeta" name="tarjeta" placeholder="Actualiza tu descripción" required>      
-                    <input type="text" id="tarjeta" name="tarjeta" placeholder="Actualiza tu link" required>      
-                    <input type="text" id="tarjeta" name="tarjeta" placeholder="Actualiza tu link" required>      
-                    <input type="text" id="tarjeta" name="tarjeta" placeholder="Actualiza tu link" required>      
+     -->
+            <div class="edicion_etiqueta">
+                <div class="datos_etiqueta">
+                    <input type="text" id="tarjeta_lat" name="tarjeta" placeholder="Escribe la latitud" required>      
+                    <input type="text" id="tarjeta_lng" name="tarjeta" placeholder="Escribe la longitud" required>         
+                    <input type="text" id="tarjeta_descripcion" name="tarjeta" placeholder="Descríbete!" required>         
+                    <input type="text" id="tarjeta_redes1" name="tarjeta" placeholder="Escribe tu enlace 1" required>         
+                    <input type="text" id="tarjeta_redes2" name="tarjeta" placeholder="Escribe tu enlace 2" required>         
+                    <input type="text" id="tarjeta_redes3" name="tarjeta" placeholder="Escribe tu enlace 3" required>         
+                    <input type="text" id="tarjeta_redes4" name="tarjeta" placeholder="Escribe tu enlace 4" required>         
                 </div>
                 <div class="guardar_cambios">
-                    <button id="mostrar-info-btn">Guardar</button>
+                    <button id="guardar-btn">Guardar</button>
+                </div>
+            </div>
+
+            <div class="edicion_img">
+                <div class="datos_img">
+                    <input type="text" id="tarjeta_img" name="tarjeta" placeholder="Sube una imagen" required>       
+                </div>
+                <div class="guardar_cambios">
+                    <button id="guardar-btn">Guardar</button>
+                </div>
+            </div>
+
+            <div class="edicion_song">
+                <div class="datos_song">
+                    <input type="text" id="tarjeta_song" name="tarjeta" placeholder="Sube una canción" required>       
+                </div>
+                <div class="guardar_cambios">
+                    <button id="guardar-btn">Guardar</button>
                 </div>
             </div>
 

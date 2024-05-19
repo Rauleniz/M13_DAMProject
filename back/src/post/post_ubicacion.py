@@ -22,7 +22,7 @@ def agregar_ubicacion():
 
         # Obtener los datos de la solicitud
         data = request.json
-        id_usuario = data.get('id_usuario')
+        id_usuario = data.get('usuario_id')
         lat = data.get('lat')
         lng = data.get('lng')
         descripcion = data.get('descripcion')

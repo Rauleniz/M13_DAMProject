@@ -138,6 +138,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById('guardar-btn').addEventListener('click', function() {
         var nuevoPlan = document.getElementById('tarjeta_plan').value;
+        var nuevoConfirmar = document.getElementById('tarjeta_confirmar').value;
 
         // Actualizar los datos del usuario
         fetch("http://127.0.0.1:5000/put/plan/" + usuario_id, {
@@ -147,7 +148,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 "Authorization": "Bearer " + token,
             },
             body: JSON.stringify({
-                nombre: nuevoPlan
+                nombre: nuevoPlan,
+                cambio_plan: nuevoConfirmar
             }),
             mode: 'cors'
         })

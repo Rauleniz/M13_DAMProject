@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
+    var token = localStorage.getItem('token');
+    var usuario_id = localStorage.getItem('usuario_id');
+    
+    console.log(token)
+    console.log(usuario_id)
     const calendario = document.getElementById('calendario');
     const fechaActual = new Date();
     let mes = fechaActual.getMonth();

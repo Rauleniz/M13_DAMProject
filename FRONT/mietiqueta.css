@@ -90,7 +90,7 @@ cursor: pointer;
 
 .menu_desplegable {
 position: absolute;
-top: 60px;
+top: 40px;
 right: 0;
 background-color: #f8b020;
 border-radius: 5px;
@@ -180,14 +180,14 @@ section {
 }
 
 /* Estilos para la edición de información */
-.edicion_info {
+.edicion_etiqueta, .edicion_img, .edicion_song {
     background-color: #f8b020;
     padding: 20px;
     border-radius: 8px;
     color: black;
 }
 
-.datos_actualizados input[type="text"] {
+.datos_etiqueta input[type="text"], .datos_img input[type="text"], .datos_song input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;

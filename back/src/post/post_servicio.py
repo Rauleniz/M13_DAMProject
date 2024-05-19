@@ -4,15 +4,15 @@ from back.db import get_database_connection
 post_servicio_bp = Blueprint('post_servicio', __name__)
 
 @post_servicio_bp.route('/servicio/<int:usuario_id>', methods=['POST'])
-def agregar_servicio():
+def agregar_servicio(usuario_id):
     try:
         # Obtener los datos de la solicitud
         data = request.json
-        asignacion_tecnico = data.get('asignacion_tecnico')
-        cheque = data.get('cheque')
-        financiacion = data.get('financiacion')
-        seguro = data.get('seguro')
-        alquiler_furgon = data.get('alquiler_furgon')
+        asignacion_tecnico = data.get('tarjeta_tecnico')
+        cheque = data.get('tarjeta_cheque')
+        financiacion = data.get('tarjeta_financiacion')
+        seguro = data.get('tarjeta_seguro')
+        alquiler_furgon = data.get('tarjeta_furgon')
 
         # Conectar a la base de datos
         connection = get_database_connection()
@@ -39,3 +39,7 @@ def agregar_servicio():
 
     except Exception as e:
         return jsonify({'mensaje': f"Error al agregar el servicio: {str(e)}"}), 500
+
+@post_servicio_bp.route('/bancario/<int:usuario_id>', methods=['OPTIONS'])
+def options_usuario(usuario_id):
+    return jsonify({'mensaje': 'OK'}), 200
