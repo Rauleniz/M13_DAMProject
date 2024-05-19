@@ -6,7 +6,7 @@ from db import database
 update_plan_bp = Blueprint('update_put', __name__)
 
 
-@update_plan_bp.route('/usuario/plan', methods=['PUT'])
+@update_plan_bp.route('/plan/<int:usuario_id>', methods=['PUT'])
 def actualizar_plan_usuario():
     try:
         # Obtener el ID del usuario que ya ha inciado la sesión:¨session['user_id'] = user_id

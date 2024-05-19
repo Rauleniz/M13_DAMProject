@@ -16,14 +16,14 @@ def actualizar_datos_bancarios():
         user_id = session['user_id']
 
         data = request.json
-        nombre_tarjeta = data.get('nombre_tarjeta')
-        numero_tarjeta = data.get('numero_tarjeta')
-        caducidad_tarjeta = data.get('caducidad_tarjeta')
-        cvc = data.get('cvc')
+        titular_tarjeta = data.get('tarjeta_titular')
+        numero_tarjeta = data.get('tarjeta_numeracion')
+        caducidad_tarjeta = data.get('tarjeta_fecha_caducidd')
+        cvc = data.get('tarjeta_cvc')
 
         cursor = connection.cursor()
-        sql = "UPDATE datosbancarios SET nombre_tarjeta = %s, numero_tarjeta = %s, caducidad_tarjeta = %s, cvc = %s WHERE id_usuario = %s"
-        cursor.execute(sql, (nombre_tarjeta, numero_tarjeta, caducidad_tarjeta, cvc, user_id))
+        sql = "UPDATE datosbancarios SET titular_tarjeta = %s, numero_tarjeta = %s, caducidad_tarjeta = %s, cvc = %s WHERE id_usuario = %s"
+        cursor.execute(sql, (titular_tarjeta, numero_tarjeta, caducidad_tarjeta, cvc, user_id))
         connection.commit()
 
         if cursor.rowcount > 0:

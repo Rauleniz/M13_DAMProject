@@ -3,7 +3,7 @@ from back.db import get_database_connection
 
 post_servicio_bp = Blueprint('post_servicio', __name__)
 
-@post_servicio_bp.route('/servicio', methods=['POST'])
+@post_servicio_bp.route('/servicio/<int:usuario_id>', methods=['POST'])
 def agregar_servicio():
     try:
         # Obtener los datos de la solicitud

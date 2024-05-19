@@ -51,7 +51,7 @@
                 <div class="opciones">
                     <button id="select-perfil-btn">Editar Perfil</button>
                     <button id="select-facturacion-btn">Editar Datos de Facturación</button>
-                    <button id="select-contrasenya-btn">Cambiar Contraseña</button>
+                    <button id="select-servicio-btn">Cambiar Servicio</button>
                     <button id="select-plan-btn">Cambiar de Plan</button>
                     <button id="select-cancelar-btn">Cancelar Suscripción</button>
                 </div>
@@ -72,8 +72,8 @@
                     <input type="text" id="tarjeta_apellido" name="tarjeta" placeholder="Actualiza tu apellido" required>      
                     <input type="text" id="tarjeta_email" name="tarjeta" placeholder="Actualiza tu email" required>      
                     <input type="text" id="tarjeta_estatus" name="tarjeta" placeholder="Actualiza estatus" required>       
-                    <input type="text" id="tarjeta_username" name="tarjeta" placeholder="Cancelar nombre de usuario" required>      
-                    <input type="text" id="tarjeta_password" name="tarjeta" placeholder="Cancelar contraseña" required>      
+                    <input type="text" id="tarjeta_username" name="tarjeta" placeholder="Nuevo nombre de usuario" required>      
+                    <input type="text" id="tarjeta_password" name="tarjeta" placeholder="Nueva contraseña" required>      
                 </div>
                 <div class="guardar_cambios">
                     <button id="guardar-btn">Guardar</button>
@@ -84,16 +84,20 @@
                 <div class="datos_facturacion">
                     <input type="text" id="tarjeta_titular" name="tarjeta" placeholder="Titular de la tarjeta" required>      
                     <input type="text" id="tarjeta_numeracion" name="tarjeta" placeholder="Número de tarjeta" required>      
-                    <input type="text" id="tarjeta_fecha_caducidd" name="tarjeta" placeholder="Fecha de caducidad" required>      
+                    <input type="text" id="tarjeta_fecha_caducidd" name="tarjeta" placeholder="Fecha de caducidad 00/00" required>      
                     <input type="text" id="tarjeta_cvc" name="tarjeta" placeholder="CVC" required>         
                 </div>
                 <div class="guardar_cambios">
                     <button id="guardar-btn">Guardar</button>
                 </div>
             </div>
-            <div class="edicion_contrasenya">
-                <div class="datos_contrasenya">
-                    <input type="text" id="tarjeta_contrasenya" name="tarjeta" placeholder="Nueva contraseña" required>         
+            <div class="edicion_servicio">
+                <div class="datos_servicio">
+                    <input type="text" id="tarjeta_tecnico" name="tarjeta" placeholder="Asignación Técnico (selecciona con un '1')" required>         
+                    <input type="text" id="tarjeta_cheque" name="tarjeta" placeholder="Cheque (selecciona con un '1')" required>         
+                    <input type="text" id="tarjeta_financiacion" name="tarjeta" placeholder="Financiación (selecciona con un '1')" required>         
+                    <input type="text" id="tarjeta_seguro" name="tarjeta" placeholder="Seguro (selecciona con un '1')" required>         
+                    <input type="text" id="tarjeta_furgon" name="tarjeta" placeholder="Alquiler de furgón (selecciona con un '1')" required>         
                 </div>
                 <div class="guardar_cambios">
                     <button id="guardar-btn">Guardar</button>
@@ -109,10 +113,10 @@
             </div>
             <div class="edicion_suscripcion">
                 <div class="datos_suscripcion">
-                    <input type="text" id="tarjeta_suscripcion" name="tarjeta" placeholder="Cancelar suscripción" required>         
+                    <input type="text" id="tarjeta_suscripcion" name="tarjeta" placeholder="¿Cancelar suscripción?" required>         
                 </div>
                 <div class="guardar_cambios">
-                    <button id="guardar-btn">Guardar</button>
+                    <button id="guardar-btn">Sí</button>
                 </div>
             </div>
 

@@ -184,14 +184,14 @@ section {
 }
 
 /* Estilos para la edición de información */
-.edicion_perfil, .edicion_facturacion, .edicion_contrasenya, .edicion_plan, .edicion_suscripcion{
+.edicion_perfil, .edicion_facturacion, .edicion_servicio, .edicion_plan, .edicion_suscripcion{
     background-color: #f8b020;
     padding: 20px;
     border-radius: 8px;
     color: black;
 }
 
-.datos_actualizados input[type="text"], .datos_facturacion input[type="text"], .datos_contrasenya input[type="text"],
+.datos_actualizados input[type="text"], .datos_facturacion input[type="text"], .datos_servicio input[type="text"],
 .datos_plan input[type="text"], .datos_suscripcion input[type="text"] {
     width: 100%;
     padding: 10px;
