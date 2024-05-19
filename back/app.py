@@ -5,7 +5,6 @@ from flask import Flask, jsonify #render_template
 from flask_cors import CORS 
 from flask_jwt_extended import JWTManager #cross_origin
 from auth import auth_bp
-# from t_auth import t_auth_bp
 from flask_sqlalchemy import SQLAlchemy
 from mysql.connector import pooling
 #import middleware as middleware
@@ -36,7 +35,7 @@ jwt = JWTManager(app)
 
 # Configuración de Logging
 if not app.debug:
-    # Crear un manejador que rota los logs cuando alcanzan cierto tamaño
+    # Manejador que rota los logs cuando alcanzan cierto tamaño
     handler = RotatingFileHandler('./logs/app.log', maxBytes=10000, backupCount=3) 
     app.logger.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]')
@@ -92,7 +91,6 @@ for bp in blueprints:
 
 # Registrando el blueprint de autenticación
 app.register_blueprint(auth_bp) 
-# app.register_blueprint(t_auth_bp) 
 
 
 
