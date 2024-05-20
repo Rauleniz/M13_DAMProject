@@ -56,6 +56,7 @@ blueprints = [
     {'module': 'back.src.get.get_multimedia', 'name': 'get_multimedia_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_servicio', 'name': 'get_servicio_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_ubicacion', 'name': 'get_ubicacion_bp', 'url_prefix': '/get'},
+    {'module': 'back.src.get.get_marcadores_todos', 'name': 'get_marcadores_bp', 'url_prefix': '/get'},
     {'module': 'back.src.get.get_agenda', 'name': 'get_agenda_bp', 'url_prefix': '/get'},
     {'module': 'back.src.post.post_usuario', 'name': 'post_usuarios_bp', 'url_prefix': '/post'},
     {'module': 'back.src.post.post_mensaje', 'name': 'escribir_mensaje_bp', 'url_prefix': '/post'},

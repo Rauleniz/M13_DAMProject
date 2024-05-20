@@ -1,11 +1,13 @@
 from flask import Blueprint, current_app, jsonify, request
 import jwt
 from back.db import get_database_connection
+# from flask_cors import cross_origin
 
 
 post_ubicacion_bp = Blueprint('post_ubicacion', __name__)
 
 @post_ubicacion_bp.route('/ubicacion/<int:usuario_id>', methods=['POST'])
+# @cross_origin()
 def agregar_ubicacion(usuario_id):
 
     auth_header = request.headers.get('Authorization')

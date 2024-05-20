@@ -1,10 +1,62 @@
 document.addEventListener("DOMContentLoaded", function() {
     var token = localStorage.getItem('token');
     var usuario_id = localStorage.getItem('usuario_id');
-    
-    console.log(token)
-    console.log(usuario_id)
+
     const calendario = document.getElementById('calendario');
+    const modal = document.getElementById("modal");
+    const span = document.getElementsByClassName("close")[0];
+    const form = document.getElementById("evento-form");
+    const eventoFecha = document.getElementById("evento-fecha");
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function abrirModal(fecha) {
+        eventoFecha.value = fecha;
+        modal.style.display = "block";
+    }
+
+    form.onsubmit = function(event) {
+        event.preventDefault();
+        const titulo = document.getElementById("evento-titulo").value;
+        const descripcion = document.getElementById("evento-descripcion").value;
+        const fecha = eventoFecha.value;
+
+        fetch(`http://127.0.0.1:5000/post/agenda/${usuario_id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                agenda_fecha: fecha,
+                agenda_titulo: titulo,
+                agenda_descripcion: descripcion
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.mensaje) {
+                alert(data.mensaje);
+                modal.style.display = "none";
+                actualizarCalendario();
+            } else {
+                alert("Error al guardar el evento");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Error al guardar el evento");
+        });
+    };
+
     const fechaActual = new Date();
     let mes = fechaActual.getMonth();
     let año = fechaActual.getFullYear();
@@ -16,16 +68,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const diasEnMes = ultimoDia.getDate();
         const primerDiaSemana = primerDia.getDay();
 
-        // Limpiar el calendario
         calendario.innerHTML = '';
 
-        // Mostrar el nombre del mes
         const mesElemento = document.createElement('div');
         mesElemento.id = 'mes';
         mesElemento.textContent = `${nombreMes} ${año}`;
         calendario.appendChild(mesElemento);
 
-        // Mostrar los días de la semana
         const diasElemento = document.createElement('div');
         diasElemento.id = 'dias';
         const diasSemana = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
@@ -37,22 +86,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         calendario.appendChild(diasElemento);
 
-        // Mostrar los días del mes
         for (let i = 0; i < primerDiaSemana; i++) {
             const diaElemento = document.createElement('div');
             diaElemento.classList.add('dia');
             calendario.appendChild(diaElemento);
         }
         for (let dia = 1; dia <= diasEnMes; dia++) {
-            const diaElemento = document.createElement('input');
-            diaElemento.type = 'text';
+            const diaElemento = document.createElement('div');
             diaElemento.classList.add('dia');
-            diaElemento.classList.add('dia-numero'); // Añadir clase para estilos de números del mes
-            diaElemento.value = dia; // Mostrar número del día
+            diaElemento.classList.add('dia-numero');
+            diaElemento.textContent = dia;
+
+            diaElemento.addEventListener('click', () => {
+                const fechaSeleccionada = `${año}-${mes + 1}-${dia}`;
+                abrirModal(fechaSeleccionada);
+            });
+
             calendario.appendChild(diaElemento);
         }
 
-        // Añadir botón para avanzar al siguiente mes
         const avanzarElemento = document.createElement('div');
         avanzarElemento.id = 'avanzar';
         const botonAvanzar = document.createElement('button');
@@ -68,8 +120,6 @@ document.addEventListener("DOMContentLoaded", function() {
         avanzarElemento.appendChild(botonAvanzar);
         calendario.appendChild(avanzarElemento);
 
-
-        // Añadir botón para retroceder al mes anterior
         const retrocederElemento = document.createElement('div');
         retrocederElemento.id = 'retroceder';
         const botonRetroceder = document.createElement('button');
@@ -84,7 +134,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         retrocederElemento.appendChild(botonRetroceder);
         calendario.appendChild(retrocederElemento);
-
     }
 
     actualizarCalendario();

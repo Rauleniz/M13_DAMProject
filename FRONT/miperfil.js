@@ -44,12 +44,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 "Authorization": "Bearer " + token,
             },
             body: JSON.stringify({
-                nombre: nuevoNombre,
-                apellidos: nuevoApellido,
-                email: nuevoEmail,
-                estatus: nuevoEstatus,
-                username: nuevoUsername, 
-                password: nuevoPassword
+                tarjeta_nombre: nuevoNombre,
+                tarjeta_apellido: nuevoApellido,
+                tarjeta_email: nuevoEmail,
+                tarjeta_estatus: nuevoEstatus,
+                usertarjeta_usernamename: nuevoUsername, 
+                tarjeta_password: nuevoPassword
             }),
             mode: 'cors'
         })
@@ -110,11 +110,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 "Authorization": "Bearer " + token,
             },
             body: JSON.stringify({
-                asignacion_tecnico: nuevoTecnico,
-                cheque: nuevoCheque,
-                financiacion: nuevoFinanciacion,
-                seguro: nuevoSeguro,
-                alquiler_furgon: nuevoFurgon
+                tarjeta_tecnico: nuevoTecnico,
+                tarjeta_cheque: nuevoCheque,
+                tarjeta_financiacion: nuevoFinanciacion,
+                tarjeta_seguro: nuevoSeguro,
+                tarjeta_furgon: nuevoFurgon
             }),
             mode: 'cors'
         })
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 "Authorization": "Bearer " + token,
             },
             body: JSON.stringify({
-                nombre: nuevoPlan,
+                tarjeta_plan: nuevoPlan,
             }),
             mode: 'cors'
         })
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 "Authorization": "Bearer " + token,
             },
             body: JSON.stringify({
-                cancelarSuscripcion: nuevoCancelacion,
+                tarjeta_suscripcion: nuevoCancelacion,
             }),
             mode: 'cors'
         })

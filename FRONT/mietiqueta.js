@@ -46,13 +46,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 "Authorization": "Bearer " + token,
             },
             body: JSON.stringify({
-                lat: nuevoLat,
-                lng: nuevoLng,
-                descripcion: nuevoDescripcion,
-                link1: nuevoRedes1,
-                link2: nuevoRedes2,
-                link3: nuevoRedes3,
-                link4: nuevoRedes4,
+                tarjeta_lat: nuevoLat,
+                tarjeta_lng: nuevoLng,
+                tarjeta_descripcion: nuevoDescripcion,
+                tarjeta_redes1: nuevoRedes1,
+                tarjeta_redes2: nuevoRedes2,
+                tarjeta_redes3: nuevoRedes3,
+                tarjeta_redes4: nuevoRedes4,
 
             }),
             mode: 'cors'

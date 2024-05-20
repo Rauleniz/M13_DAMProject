@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda</title>
     <link rel="stylesheet" href="agenda.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    </head>
-
+</head>
+<body>
     <header>
         <div class="menu contenedor">
             <a href="index.html" class="logo">
                 <img src="Images/logo_marco.png" alt="logo">
-            </a>            
-    
-            <!-- menú de navegación header -->
+            </a>
             <nav class="navbar">
                 <ul>
                     <li><a href="maps.html">Maps</a></li>
                     <li><a href="suscripcion.html">Suscribirse</a></li>
                     <li><a href="quienessomos.html">Quiénes Somos</a></li>
-                </ul>                
+                </ul>
             </nav>
-            
             <div class="menu_user">
                 <div class="boton_menu">
                     <button class="boton_menu_icono">&#9898;</button>
                     <div class="menu_desplegable">
-                      <ul>
-                        <li><a href="maps.html">Maps</a></li>
-                        <li><a href="mietiqueta.html">Mi Etiqueta</a></li>
-                        <li><a href="agenda.html">Agenda</a></li>
-                        <li><a href="chat.html">Chat</a></li>
-                        <li><a href="miperfil.html">Mi perfil</a></li>
-                        <li><a href="index.html">Logout</a></li>
-                      </ul>
+                        <ul>
+                            <li><a href="maps.html">Maps</a></li>
+                            <li><a href="mietiqueta.html">Mi Etiqueta</a></li>
+                            <li><a href="agenda.html">Agenda</a></li>
+                            <li><a href="chat.html">Chat</a></li>
+                            <li><a href="miperfil.html">Mi perfil</a></li>
+                            <li><a href="index.html">Logout</a></li>
+                        </ul>
                     </div>
-                  </div>
                 </div>
             </div>
         </div>
-        </header>
-
-    <body>
-
-        <div id="calendario"></div>        
-        <div class="dia">
-            <input type="text" class="dia-numero" value="1" readonly>
+    </header>
+    <div id="calendario"></div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="evento-form">
+                <input type="hidden" id="evento-fecha" />
+                <label for="evento-titulo">Título:</label>
+                <input type="text" id="evento-titulo" name="titulo" required>
+                <label for="evento-descripcion">Descripción:</label>
+                <textarea id="evento-descripcion" name="descripcion" required></textarea>
+                <button type="submit">Guardar</button>
+            </form>
         </div>
-        
-
-        <!-- Script JS -->
-        <script src="agenda.js"></script>
-
-    </body>
+    </div>
+    <script src="agenda.js"></script>
+</body>
 </html>
