@@ -1,27 +1,33 @@
 # En usuarios.py
 
-from flask import Blueprint, jsonify, request, session
+from flask import Blueprint, current_app, jsonify, request, session
+import jwt
 from db import database
 
 update_plan_bp = Blueprint('update_put', __name__)
 
 
 @update_plan_bp.route('/plan/<int:usuario_id>', methods=['PUT'])
-def actualizar_plan_usuario():
+def actualizar_plan_usuario(usuario_id):
+
+    auth_header = request.headers.get('Authorization')
+    if auth_header:
+        token = auth_header.split(" ")[1]
+    else:
+        return jsonify({'mensaje': 'Token no proporcionado'}), 401
+
     try:
-        # Obtener el ID del usuario que ya ha inciado la sesión:¨session['user_id'] = user_id
-        id_usuario = session.get('user_id')
-        if id_usuario is None:
-            return jsonify({'mensaje': 'Usuario no autenticado'}), 401
+        data = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
+        usuario_id = data['sub']
         
         # Obtener el ID del plan seleccionado por el usuario desde los datos enviados en la solicitud
-        data = request.json
-        nuevo_id_plan = data.get('id_plan')
+        data_solicitud = request.json
+        nuevo_id_plan = data_solicitud.get('tarjeta_plan')
 
         # Actualizar el plan del usuario en la base de datos
         cursor = database.cursor()
-        sql = "UPDATE usuario SET plan_id = %s WHERE id = %s"
-        cursor.execute(sql, (nuevo_id_plan, id_usuario))
+        sql = "UPDATE usuario SET id_plan = %s WHERE id = %s"
+        cursor.execute(sql, (nuevo_id_plan, usuario_id))
         database.commit()
 
         if cursor.rowcount > 0:
@@ -34,4 +40,6 @@ def actualizar_plan_usuario():
         return jsonify({'mensaje': 'Se produjo un error al actualizar el Plan de Suscripción'}), 500
 
 
-        
+@update_plan_bp.route('/usuario/<int:usuario_id>', methods=['OPTIONS'])
+def options_usuario(usuario_id):
+    return jsonify({'mensaje': 'OK'}), 200    

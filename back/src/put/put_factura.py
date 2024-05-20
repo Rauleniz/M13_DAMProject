@@ -30,3 +30,4 @@ def actualizar_factura(factura_id):
 
     except Exception as e:
         return jsonify({'mensaje': f"Error al actualizar la factura: {str(e)}"}), 500
+

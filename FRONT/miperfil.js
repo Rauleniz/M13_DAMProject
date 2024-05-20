@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             // Manejar la respuesta de la solicitud PUT
             console.log("Datos actualizados del usuario:", data);
+            alert('Datos actualizados correctamente');
         })
         .catch(error => console.error('Error:', error));
     });
@@ -96,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             // Manejar la respuesta de la solicitud PUT
             console.log("Datos actualizados del usuario:", data);
+            alert('Datos actualizados correctamente');
         })
         .catch(error => console.error('Error:', error));
     });
@@ -110,26 +112,30 @@ document.addEventListener("DOMContentLoaded", function() {
         var nuevoFurgon = document.getElementById('tarjeta_furgon').value;
 
         // Actualizar los datos del usuario
-        fetch("http://127.0.0.1:5000/post/servicio/" + usuario_id, {
-            method: "POST",
+        fetch("http://127.0.0.1:5000/put/servicio/" + usuario_id, {
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",                                   
                 "Authorization": "Bearer " + token,
             },
             body: JSON.stringify({
-                asignacionTecnico: nuevoTecnico,
+                asignacion_tecnico: nuevoTecnico,
                 cheque: nuevoCheque,
                 financiacion: nuevoFinanciacion,
                 seguro: nuevoSeguro,
-                alquilerFurgon: nuevoFurgon
+                alquiler_furgon: nuevoFurgon
             }),
             mode: 'cors'
         })
         .then(response => response.json())
         .then(data => {
             console.log("Datos actualizados del servicio:", data);
+            alert('Servicio actualizados correctamente');
+            // event.target.reset();
+
         })
         .catch(error => console.error('Error:', error));
+        alert('Error al dar de alta: ' + error.message);
     });
     
 
@@ -138,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById('guardar-btn').addEventListener('click', function() {
         var nuevoPlan = document.getElementById('tarjeta_plan').value;
-        var nuevoConfirmar = document.getElementById('tarjeta_confirmar').value;
 
         // Actualizar los datos del usuario
         fetch("http://127.0.0.1:5000/put/plan/" + usuario_id, {
@@ -149,13 +154,13 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             body: JSON.stringify({
                 nombre: nuevoPlan,
-                cambio_plan: nuevoConfirmar
             }),
             mode: 'cors'
         })
         .then(response => response.json())
         .then(data => {
             console.log("Datos actualizados del plan:", data);
+            alert('Plan actualizado correctamente');
         })
         .catch(error => console.error('Error:', error));
     });
@@ -178,6 +183,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             console.log("Datos actualizados del servicio:", data);
+            alert('Plan cancelado correctamente');
         })
         .catch(error => console.error('Error:', error));
     });
