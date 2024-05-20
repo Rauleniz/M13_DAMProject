@@ -11,9 +11,9 @@
 
     <header>
     <div class="menu contenedor">
-        <a href="index.html" class="logo">
+        <!-- <a href="index.html" class="logo">
             <img src="Images/logo_marco.png" alt="logo">
-        </a>            
+        </a>             -->
 
         <!-- menú de navegación header -->
         <nav class="navbar">
@@ -32,10 +32,14 @@
 
     <div class="caja_inscripcion">
         <h1>Formulario de Inscripción</h1>
-        <form action="procesar_inscripcion.php" method="POST"> 
+        <form id="post-profile-form" action="preventDefault()" method="POST"> 
             <div>
-                <label for="nombre_artista">Nombre de Artístico</label>
+                <label for="nombre_artista">Nombre Artístico</label>
                 <input type="text" id="nombre_artista" name="nombre_artista" required>
+            </div>
+            <div>
+                <label for="apellido_artista">Apellido Artístico</label>
+                <input type="text" id="apellido_artista" name="apellido_artista" required>
             </div>
             <div>
                 <label for="direccion_facturacion">Dirección de Facturación:</label>
@@ -47,19 +51,36 @@
             </div>
             <div>
                 <label for="opciones_perfil">Selecciona tu perfil:</label>
-                <select id="opciones" name="opciones">
-                    <option value="opcion1">Artista</option>
-                    <option value="opcion2">Técnico</option>
-                    <option value="opcion3">Productor</option>
+                <select id="opciones_perfil" name="opciones_perfil">
+                    <option value="artista">Artista</option>
+                    <option value="tecnico">Técnico</option>
+                    <option value="productor">Productor</option>
                 </select>
             </div>
             <div>
-                <label for="tarjeta">Número de tarjeta:</label>
-                <input type="text" id="tarjeta" name="tarjeta" placeholder="Ingresa el número de tu tarjeta" required>
+                <label for="opciones_plan">Selecciona el plan</label>
+                <select id="plan" name="plan">
+                    <option value="1">1 (0 €/mes)</option>
+                    <option value="2">2 (10 €/mes)</option>
+                    <option value="3">3 (50 €/mes)</option>
+                    <option value="4">4 (100 €/mes)</option>
+                </select>
+            </div>
+            <div>
+                <label for="num_tarjeta">Número de tarjeta:</label>
+                <input type="text" id="num_tarjeta" name="num_tarjeta" placeholder="Escribe el número de tu tarjeta" required>
                 <br>
             
                 <label for="nombre_titular">Nombre del titular de la tarjeta:</label>
-                <input type="text" id="nombre_titular" name="nombre_titular" placeholder="Ingresa el nombre del titular de la tarjeta" required>
+                <input type="text" id="nombre_titular" name="nombre_titular" placeholder="Escribe el nombre del titular de la tarjeta" required>
+                <br>
+
+                <label for="caducidad_tarjeta">Fecha caducidad de la tarjeta:</label>
+                <input type="text" id="caducidad_tarjeta" name="caducidad_tarjeta" placeholder="Escribe la caducidad de la tarjeta" required>
+                <br>
+
+                <label for="cvc_tarjeta">CVC de la tarjeta:</label>
+                <input type="text" id="cvc_tarjeta" name="cvc_tarjeta" placeholder="Escribe el CVC de la tarjeta" required>
                 <br>
             </div>
             <div>
@@ -67,15 +88,18 @@
                 <input type="text" id="nombre_usuario" name="nombre_usuario" required>
             </div>
             <div>
-                <label for="contraseña">Registra tu Contraseña</label>
-                <input type="text" id="contraseña" name="contraseña" required>
+                <label for="password">Registra tu Contraseña</label>
+                <input type="text" id="password" name="password" required>
+            </div>
+            <div class="boton">
+                <!-- <button type="submit">Registrar</button> -->
+                <input type="submit" value="Crear Usuario">
+        
             </div>
         </form>
     </div>
 
-    <div class="boton">
-        <button type="submit">Registrar</button>
-    </div>
+
 
 
     <!-- Script JS -->
