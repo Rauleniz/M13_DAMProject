@@ -19,15 +19,6 @@ document.addEventListener("DOMContentLoaded", function() {
             throw new Error("Error al obtener la información del usuario");
         }
     })
-    // .then(data => {
-    //     // Manejar la respuesta aquí y actualizar la interfaz de usuario con la información del usuario
-    //     console.log("Datos del usuario:", data);
-    //     document.getElementById('nombre').textContent = data.nombre;
-    //     document.getElementById('email').textContent = data.email;
-    //     document.getElementById('descripcion').textContent = data.descripcion;
-    //     document.getElementById('link_rrss1').textContent = data.link_rrss1;
-
-    // })
     .catch(async error => {
         try {
             throw error;

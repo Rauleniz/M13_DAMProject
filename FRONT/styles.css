@@ -31,6 +31,18 @@ header {
     /* flex: 1; */
 }
 
+/*------IN--------DOS MENUS****************/
+.menu-general {
+    display: none;
+}
+
+.menu-usuario {
+    display: none;
+}
+
+/*---OUT-----------DOS MENUS****************/
+
+
 .navbar {
     /* flex: 2; */
     text-align: center;
@@ -72,6 +84,60 @@ header {
     background-color: #f8b020;
     color: black;
 }
+
+/*-------------IN-------------MENU USER--------*/
+
+.menu_user {
+    position: relative;
+}
+
+.boton_menu {
+    position: relative;
+}
+
+.boton_menu_icono {
+width: 40px;
+height: 40px;
+background-color: #f8b020;
+color: white;
+border: none;
+border-radius: 50%;
+font-size: 24px;
+cursor: pointer;
+}
+
+.menu_desplegable {
+position: absolute;
+top: 40px;
+right: 0;
+background-color: #f8b020;
+border-radius: 5px;
+display: none;
+/* display: block; */
+}
+
+.menu_desplegable ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
+
+.menu_desplegable ul li {
+padding: 10px;
+}
+
+.menu_desplegable ul li a {
+color: white;
+text-decoration: none;
+display: block;
+}
+
+.boton_menu:hover .menu_desplegable,
+.menu_desplegable:hover {
+    display: block;
+}
+
+/*-----------OUT------MENU USER*/
 
 
 /* Linea Separador */
