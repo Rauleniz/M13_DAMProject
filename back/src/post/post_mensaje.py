@@ -1,14 +1,24 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, current_app, request, jsonify
 from datetime import datetime
+import jwt
 from back.db import get_database_connection
 from flask_socketio import send
 from socketio_config import socketio
 
 escribir_mensaje_bp = Blueprint('escribir_mensaje', __name__)
 
-@escribir_mensaje_bp.route('/mensaje/escribir', methods=['POST'])
-def escribir_mensaje():
+@escribir_mensaje_bp.route('/mensaje/escribir/<int:usuario_id>', methods=['POST'])
+def escribir_mensaje(usuario_id):
+
+    auth_header = request.headers.get('Authorization')
+    if auth_header:
+        token = auth_header.split(" ")[1]
+    else:
+        return jsonify({'mensaje': 'Token no proporcionado'}), 401
+
     try:
+        data_token = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
+        usuario_id = data_token['sub']
         # Obtener los datos del mensaje del cuerpo de la solicitud
         data = request.json
         id_conversacion = data.get('id_conversacion')
@@ -18,12 +28,12 @@ def escribir_mensaje():
         # Verificar si la conversación existe y si el usuario pertenece a ella
         connection = get_database_connection()
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM conversacion WHERE id = %s AND (id_usuario1 = %s OR id_usuario2 = %s)", (id_conversacion, id_usuario, id_usuario))
+        cursor.execute("SELECT * FROM conversacion WHERE id = %s AND (id_usuario1 = %s OR id_usuario2 = %s)", (id_conversacion, usuario_id, id_usuario))
         conversacion = cursor.fetchone()
         if conversacion:
             # La conversación existe y el usuario pertenece a ella, podemos agregar el mensaje
             fecha_envio = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            cursor.execute("INSERT INTO mensaje (id_conversacion, id_usuario, contenido, fecha_envio) VALUES (%s, %s, %s, %s)", (id_conversacion, id_usuario, contenido, fecha_envio))
+            cursor.execute("INSERT INTO mensaje (id_conversacion, id_usuario, contenido, fecha_envio) VALUES (%s, %s, %s, %s)", (id_conversacion, usuario_id, contenido, fecha_envio))
             connection.commit()
             connection.close()
             return jsonify({'mensaje': 'Mensaje enviado correctamente'}), 200
@@ -34,7 +44,11 @@ def escribir_mensaje():
         return jsonify({'mensaje': 'Se produjo un error al escribir el mensaje'}), 500
 
 
-@socketio.on('message')  # Usar la instancia de SocketIO
+@socketio.on('message')
 def handle_message(data):
-    print('received message: ' + data)
+    print('received message: ' + data['contenido'])
     send(data, broadcast=True)
+
+@escribir_mensaje_bp.route('/mensaje/<int:usuario_id>', methods=['OPTIONS'])
+def options_usuario(usuario_id):
+    return jsonify({'mensaje': 'OK'}), 200

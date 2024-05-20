@@ -3,7 +3,8 @@ import sys
 import importlib
 from flask import Flask, jsonify #render_template
 from flask_cors import CORS 
-from flask_jwt_extended import JWTManager #cross_origin
+from flask_jwt_extended import JWTManager
+from flask_socketio import SocketIO #cross_origin
 from auth import auth_bp
 from flask_sqlalchemy import SQLAlchemy
 from mysql.connector import pooling
@@ -32,6 +33,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Suprime la señalizació
 
 db = SQLAlchemy(app)
 jwt = JWTManager(app)
+
+#socketIo para el chat
+socketio = SocketIO(app, cors_allowed_origins="http://127.0.0.1:5500")
 
 # Configuración de Logging
 if not app.debug:

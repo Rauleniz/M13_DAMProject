@@ -1,58 +1,43 @@
 document.addEventListener("DOMContentLoaded", function() {
     var token = localStorage.getItem('token');
     var usuario_id = localStorage.getItem('usuario_id');
-    console.log(token)
-    console.log(usuario_id)
+    
     const messageInput = document.getElementById('message-input');
     const sendButton = document.getElementById('send-button');
-    const messagesContainer = document.getElementById('messages-container');
+    const messagesContainer = document.getElementById('chat-messages');
 
     // Conectar al WebSocket
     const socket = io.connect('http://127.0.0.1:5000');
-    // const socket = io.connect('http://localhost:5000');
 
     // Event listener para el botón de enviar
-    sendButton.addEventListener('click', function() {
-        // Obtener el mensaje del input
-        const messageText = messageInput.value;
+    sendButton.addEventListener('click', sendMessage);
 
-        // Si el mensaje no está vacío
-        if (messageText.trim() !== '') {
-            // Crear un nuevo elemento para representar el mensaje
-            socket.emit('message', messageText);
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message');
-            messageElement.textContent = messageText;
-
-            // Agregar el mensaje al contenedor de mensajes
-            messagesContainer.appendChild(messageElement);
-
-            // Limpiar el input
-            messageInput.value = '';
-
-            // Desplazarse automáticamente hacia abajo para mostrar el mensaje más reciente
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-    });
-
-    // Opcional: permitir enviar el mensaje al presionar Enter
+    // Permitir enviar el mensaje al presionar Enter
     messageInput.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
-            sendButton.click();
+            sendMessage();
         }
     });
 
+    function sendMessage() {
+        const messageText = messageInput.value;
+        if (messageText.trim() !== '') {
+            socket.emit('message', {
+                id_usuario: usuario_id,
+                token: token,
+                contenido: messageText
+            });
+
+            messageInput.value = '';
+        }
+    }
+
     // Cuando se recibe un mensaje a través del WebSocket
-    socket.on('message', function(msg) {
-        // Crear un nuevo elemento para representar el mensaje
+    socket.on('message', function(data) {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message');
-        messageElement.textContent = msg;
-
-        // Agregar el mensaje al contenedor de mensajes
+        messageElement.textContent = data.contenido;
         messagesContainer.appendChild(messageElement);
-
-        // Desplazarse automáticamente hacia abajo para mostrar el mensaje más reciente
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     });
 });
