@@ -30,7 +30,7 @@ def obtener_usuario(usuario_id):
             cursor = connection.cursor()
             cursor.execute("SELECT * FROM usuario WHERE id = %s", (usuario_id,))
 
-            usuario = cursor.fetchone()  # Obtener el usuario encontrado
+            usuario = cursor.fetchone()
          
             if usuario:                
                 return jsonify(usuario)

@@ -10,4 +10,19 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.boton_login').style.display = 'block';
         document.querySelector('.menu_user').style.display = 'none';
     }
+
+    var cookieConsent = document.getElementById('cookie-consent');
+    var acceptCookiesButton = document.getElementById('accept-cookies');
+
+    // Comprobar si el usuario ya ha aceptado las cookies
+    if (!localStorage.getItem('cookiesAccepted')) {
+        cookieConsent.style.display = 'block';
+    }
+
+    acceptCookiesButton.addEventListener('click', function() {
+        // Guardar la aceptación en localStorage
+        localStorage.setItem('cookiesAccepted', 'true');
+        // Ocultar el aviso de cookies
+        cookieConsent.style.display = 'none';
+    });
 });

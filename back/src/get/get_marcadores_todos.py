@@ -7,8 +7,7 @@ get_marcadores_bp = Blueprint('get_marcadores', __name__)
 @get_marcadores_bp.route('/marcadores', methods=['GET'])
 def obtener_marcadores():
 
-    try:
-        # Conectar a la base de datos
+    try:     
         connection = get_database_connection()
 
         if connection:
@@ -17,7 +16,7 @@ def obtener_marcadores():
             
             ubicaciones = cursor.fetchall()
 
-        # Verificar si se encontró la ubicación para el usuario dado
+        # Verificar si se encontró la ubicación del usuario
             if ubicaciones:
                 ubicaciones_dict = [{
                     'id': ubicacion[0],
@@ -34,7 +33,7 @@ def obtener_marcadores():
             else:
                 return jsonify({'mensaje': 'Marcadores no encontrado'}), 404
         else:
-            return jsonify({'mensaje': 'No se encontró marcadores para el usuario dado'}), 404
+            return jsonify({'mensaje': 'No se encontró marcadores para el usuario'}), 404
 
     except Exception as e:
         return jsonify({'mensaje': f"Error al obtener marcadores: {str(e)}"}), 500

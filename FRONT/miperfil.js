@@ -174,7 +174,8 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             console.log("Datos actualizados del servicio:", data);
-            alert('Plan cancelado correctamente');
+            window.location.href = "cancelacion.html";
+            // alert('Plan cancelado correctamente');
         })
         .catch(error => console.error('Error:', error));
     });

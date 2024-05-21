@@ -27,13 +27,14 @@ header {
     align-items: center;
 }
 
-.logo {
-    /* flex: 1; */
-}
+/* .logo {
+    left: 20px;
+} */
 
 /*------IN--------DOS MENUS****************/
 .menu-general {
-    display: none;
+    left: 0;
+    display: block;
 }
 
 .menu-usuario {
@@ -337,28 +338,31 @@ section h1 {
 
 
 /* Estilos para el aviso de cookies */
-.aviso-cookies {
+.cookie-consent {
+    display: none; /* Inicialmente oculto */
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
     text-align: center;
-    display: none; /* Lo ocultamos inicialmente */
+    padding: 10px;
 }
 
-.aviso-cookies a {
-    color: #fb0404;
-    text-decoration: underline;
+.cookie-consent .cookie-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.aviso-cookies button {
-    background-color: #fb0404;
-    color: #fff;
-    padding: 5px 10px;
+.cookie-consent button {
+    background-color: #f8b020;
+    color: white;
     border: none;
+    padding: 10px 20px;
     cursor: pointer;
-    margin-left: 10px;
+    border-radius: 5px;
 }
+

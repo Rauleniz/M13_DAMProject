@@ -11,8 +11,7 @@ def borrar_plan(id_plan):
     try:
         connection = get_database_connection()
         if connection:
-            cursor = connection.cursor()
-            # hay que hacer una query con JOIN para traer el id_usuario o añadirlo como FK
+            cursor = connection.cursor()            
             cursor.execute("DELETE FROM plan WHERE id = %s", (id_plan,))     
             connection.commit()
 

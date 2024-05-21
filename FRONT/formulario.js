@@ -25,9 +25,8 @@ document.getElementById('post-profile-form').addEventListener('submit', function
         }
     }).then(function(data) {
         console.log('Success:', data);
-        alert('Usuario dado de alta correctamente');
-        event.target.reset();
-        
+        window.location.href = 'bienvenida.html';
+
     }).catch(function(error) {
         console.error('Error:', error);
         alert('Error al dar de alta: ' + error.message);

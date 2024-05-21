@@ -6,7 +6,7 @@ obtener_conversacion_bp = Blueprint('obtener_conversacion', __name__)
 @obtener_conversacion_bp.route('/conversacion', methods=['GET'])
 def obtener_conversaciones():
     try:
-        # Obtener los IDs de los usuarios involucrados de los parámetros de la consulta
+        # Obtener los IDs de los usuarios de la conversación
         id_usuario1 = request.args.get('id_usuario1', type=int)
         id_usuario2 = request.args.get('id_usuario2', type=int)
         print(id_usuario1, id_usuario2)

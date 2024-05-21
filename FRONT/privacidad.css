@@ -30,9 +30,9 @@ header {
     align-items: center;
 }
 
-.logo {
-    /* flex: 1; */
-}
+/* .logo {
+    left: 20px;
+} */
 
 .navbar {
     /* flex: 2; */

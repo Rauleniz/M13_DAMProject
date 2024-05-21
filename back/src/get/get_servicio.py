@@ -16,7 +16,7 @@ def obtener_servicios(usuario_id):
     try:
         data = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
         usuario_id = data['sub']
-        # Conectar a la base de datos
+
         connection = get_database_connection()
 
         if connection:          
@@ -30,7 +30,7 @@ def obtener_servicios(usuario_id):
 
             servicios = cursor.fetchall()
 
-            # Verificar si se encontraron servicios
+        
             if servicios:
                 return jsonify(servicios), 200
             else:
