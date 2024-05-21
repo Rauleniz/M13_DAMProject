@@ -58,7 +58,7 @@ def login(usuario):
         exp_time = datetime.now(
                         tz=timezone.utc
                         ) + timedelta(minutes=60)
-        exp_time_unix = exp_time.timestamp()  # Convertir a tiempo UNIX
+        exp_time_unix = exp_time.timestamp()  # Convertir a tiempo UNIX, de lo contrario no se peude procesar
         payload = {'sub': usuario['id'], 'exp': exp_time_unix}   
 
         current_app.logger.debug(f'Print de exp_time y :exp_time_unix {exp_time} // {exp_time_unix}')        

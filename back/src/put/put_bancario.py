@@ -13,13 +13,11 @@ def actualizar_datos_bancarios(usuario_id):
     if auth_header:
         token = auth_header.split(" ")[1]
     else:
-        return jsonify({'mensaje': 'Token no proporcionado'}), 401
-    
+        return jsonify({'mensaje': 'Token no proporcionado'}), 401   
 
     connection = get_database_connection()
 
     try:
-
         data = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
         usuario_id = data['sub']
 

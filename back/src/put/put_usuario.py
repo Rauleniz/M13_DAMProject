@@ -20,10 +20,9 @@ def actualizar_usuario(usuario_id):
         
         connection = get_database_connection()
 
-        # Obtener los datos del usuario del cuerpo de la solicitud
         data_solicitud = request.json
 
-        # Crear la consulta SQL de actualización basada en los datos proporcionados
+        # Consulta SQL dinámica con for
         sql = "UPDATE usuario SET "
         params = []
         for key, value in data_solicitud.items():
@@ -35,12 +34,10 @@ def actualizar_usuario(usuario_id):
         sql += " WHERE id = %s"
         params.append(usuario_id)
 
-        # Actualizar el usuario en la base de datos
         cursor = connection.cursor()
         cursor.execute(sql, params)
         connection.commit()
-
-        # Verificar si se realizó la actualización correctamente
+       
         if cursor.rowcount > 0:
             return jsonify({'mensaje': 'Usuario actualizado correctamente'})
         else:

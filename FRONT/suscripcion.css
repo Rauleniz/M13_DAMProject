@@ -145,8 +145,13 @@ display: block;
 /*-----------OUT------MENU USER*/
 
 
-
-
+/* Linea Separador */
+.separator {
+    border: none; /* Sin borde */
+    border-top: 3px solid #f8b020; /* Línea horizontal de 1px de ancho y color naranja */
+    margin: 220; /* Sin margen */
+    width: 100%; /* Ancho completo */
+}
 
 
 /* BODY - PLANES*/

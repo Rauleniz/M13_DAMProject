@@ -18,20 +18,18 @@ def escribir_mensaje(usuario_id):
 
     try:
         data_token = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
-        usuario_id = data_token['sub']
-        # Obtener los datos del mensaje del cuerpo de la solicitud
+        usuario_id = data_token['sub']      
         data = request.json
         id_conversacion = data.get('id_conversacion')
         id_usuario = data.get('id_usuario')
         contenido = data.get('contenido')
         
-        # Verificar si la conversación existe y si el usuario pertenece a ella
+        # Si la conversación existe y el usuario pertenece a ella, se agrega el mensaje
         connection = get_database_connection()
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM conversacion WHERE id = %s AND (id_usuario1 = %s OR id_usuario2 = %s)", (id_conversacion, usuario_id, id_usuario))
         conversacion = cursor.fetchone()
-        if conversacion:
-            # La conversación existe y el usuario pertenece a ella, podemos agregar el mensaje
+        if conversacion:            
             fecha_envio = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             cursor.execute("INSERT INTO mensaje (id_conversacion, id_usuario, contenido, fecha_envio) VALUES (%s, %s, %s, %s)", (id_conversacion, usuario_id, contenido, fecha_envio))
             connection.commit()
@@ -49,6 +47,6 @@ def handle_message(data):
     print('received message: ' + data['contenido'])
     send(data, broadcast=True)
 
-@escribir_mensaje_bp.route('/mensaje/<int:usuario_id>', methods=['OPTIONS'])
+@escribir_mensaje_bp.route('/mensaje/escribir/<int:usuario_id>', methods=['OPTIONS'])
 def options_usuario(usuario_id):
     return jsonify({'mensaje': 'OK'}), 200

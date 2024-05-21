@@ -16,8 +16,7 @@ def actualizar_ubicacion(usuario_id):
     try:
         data = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
         usuario_id = data['sub']
-        
-        # Conectar a la base de datos
+    
         connection = get_database_connection()
         
         data_solicitud = request.json

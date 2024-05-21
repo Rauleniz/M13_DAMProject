@@ -6,7 +6,6 @@ post_servicio_bp = Blueprint('post_servicio', __name__)
 @post_servicio_bp.route('/servicio/<int:usuario_id>', methods=['POST'])
 def agregar_servicio(usuario_id):
     try:
-        # Obtener los datos de la solicitud
         data = request.json
         asignacion_tecnico = data.get('tarjeta_tecnico')
         cheque = data.get('tarjeta_cheque')
@@ -14,11 +13,9 @@ def agregar_servicio(usuario_id):
         seguro = data.get('tarjeta_seguro')
         alquiler_furgon = data.get('tarjeta_furgon')
 
-        # Conectar a la base de datos
         connection = get_database_connection()
         cursor = connection.cursor()
 
-        # Insertar el servicio en la tabla de servicio
         cursor.execute("INSERT INTO servicio (asignacion_tecnico, cheque, financiacion, seguro, alquiler_furgon) VALUES (%s, %s, %s, %s, %s)",
                        (asignacion_tecnico, cheque, financiacion, seguro, alquiler_furgon))
         connection.commit()
@@ -26,7 +23,6 @@ def agregar_servicio(usuario_id):
         # Obtener el ID del servicio recién insertado
         servicio_id = cursor.lastrowid
 
-        # Insertar una entrada en la tabla plan_servicio
         cursor.execute("INSERT INTO plan_servicio (id_plan, id_servicio) VALUES (%s, %s)",
                        (data.get('id_plan'), servicio_id))
         connection.commit()
@@ -40,6 +36,6 @@ def agregar_servicio(usuario_id):
     except Exception as e:
         return jsonify({'mensaje': f"Error al agregar el servicio: {str(e)}"}), 500
 
-@post_servicio_bp.route('/bancario/<int:usuario_id>', methods=['OPTIONS'])
+@post_servicio_bp.route('/servicio/<int:usuario_id>', methods=['OPTIONS'])
 def options_usuario(usuario_id):
     return jsonify({'mensaje': 'OK'}), 200

@@ -5,8 +5,7 @@ crear_factura_bp = Blueprint('factura_post', __name__)
 
 @crear_factura_bp.route('/factura', methods=['POST'])
 def crear_factura():
-    try:
-        # Obtener los datos de la factura del cuerpo de la solicitud
+    try:        
         data = request.json
         id_usuario = data.get('id_usuario')
         id_plan = data.get('id_plan')
@@ -14,7 +13,6 @@ def crear_factura():
         token_ahorro = data.get('token_ahorro')
         documentos = data.get('documentos')
 
-        # Conectar a la base de datos
         connection = get_database_connection()
 
         # Insertar la nueva factura en la base de datos

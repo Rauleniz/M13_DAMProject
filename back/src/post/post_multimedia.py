@@ -13,9 +13,8 @@ def crear_multimedia(usuario_id):
     if auth_header:
         token = auth_header.split(" ")[1]
     else:
-        return jsonify({'mensaje': 'Token no proporcionado'}), 401
-    
-  
+        return jsonify({'mensaje': 'Token no proporcionado'}), 401    
+      
     connection = get_database_connection()
 
     try:
@@ -28,15 +27,12 @@ def crear_multimedia(usuario_id):
         audio_file.save(os.path.join('ruta/donde/guardar/el/archivo', audio_file.filename))
 
 
-        # Obtener los datos del multimedia del cuerpo de la solicitud
         data = request.json
         img = data.get('tarjeta_img')
         song = data.get('tarjeta_song')
 
-
         cursor = connection.cursor()
-
-        # Insertar multimedia en la base de datos
+      
         cursor.execute("INSERT INTO multimedia (id_usuario, img, song) VALUES (%s, %s, %s)",
                        (usuario_id, img, song))
         connection.commit()

@@ -31,8 +31,7 @@ def nuevo_plan(usuario_id):
 
         # Obtener el ID del plan recién insertado
         plan_id = cursor.lastrowid
-
-        # Insertar una entrada en la tabla plan_servicio
+    
         cursor.execute("INSERT INTO plan_servicio (id_plan, id_servicio) VALUES (%s, %s)",
                        (plan_id, data_solicitud.get('id_servicio')))
         connection.commit()
@@ -45,6 +44,6 @@ def nuevo_plan(usuario_id):
         print(f"Error al crear plan: {e}")
         return jsonify({'mensaje': 'Se produjo un error al dar de alta el plan'}), 500
     
-@post_plan_bp.route('/bancario/<int:usuario_id>', methods=['OPTIONS'])
+@post_plan_bp.route('/plan/<int:usuario_id>', methods=['OPTIONS'])
 def options_usuario(usuario_id):
     return jsonify({'mensaje': 'OK'}), 200

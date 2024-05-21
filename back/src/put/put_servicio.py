@@ -23,8 +23,7 @@ def actualizar_servicio(usuario_id):
         financiacion = data_solicitud.get('tarjeta_financiacion')
         seguro = data_solicitud.get('tarjeta_seguro')
         alquiler_furgon = data_solicitud.get('tarjeta_furgon')
-
-        # Conectar a la base de datos
+      
         connection = get_database_connection()
         cursor = connection.cursor()
 

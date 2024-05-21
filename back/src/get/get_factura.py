@@ -21,12 +21,10 @@ def obtener_factura_usuario(usuario_id):
      
         connection = get_database_connection()
 
-        # Obtener las facturas del usuario
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM factura WHERE id_usuario = %s", (usuario_id,))
         facturas = cursor.fetchall()
 
-        # Verificar si se encontraron facturas para el usuario
         if facturas:
             return jsonify(facturas), 200
         else:

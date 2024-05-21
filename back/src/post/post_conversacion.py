@@ -14,8 +14,7 @@ def crear_conversacion(usuario_id):
     else:
         return jsonify({'mensaje': 'Token no proporcionado'}), 401
 
-    try:
-        # Obtener los datos del mensaje del cuerpo de la solicitud
+    try:       
         data = request.json
         data = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
 

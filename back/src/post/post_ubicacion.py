@@ -22,8 +22,7 @@ def agregar_ubicacion(usuario_id):
 
         data_token = jwt.decode(token, current_app.config['SECRET_KEY'], algorithms=['HS256'])
         usuario_id = data_token['sub']
-
-        # Obtener los datos de la solicitud
+        
         data = request.json
         lat = data.get('tarjeta_lat')
         lng = data.get('tarjeta_lng')
@@ -33,9 +32,8 @@ def agregar_ubicacion(usuario_id):
         link3 = data.get('tarjeta_redes3')
         link4 = data.get('tarjeta_redes4')
 
-        # Conectar a la base de datos
         cursor = connection.cursor()
-        # Insertar la ubicación en la tabla de ubicaciones
+      
         cursor.execute("INSERT INTO ubicacion (id_usuario, lat, lng, descripcion, link1, link2, link3, link4) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
                        (usuario_id, lat, lng, descripcion, link1, link2, link3, link4))
         connection.commit()

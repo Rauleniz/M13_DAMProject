@@ -2,7 +2,7 @@
 
 from flask import Blueprint, current_app, jsonify, request, session
 import jwt
-from db import database
+from back.db import get_database_connection
 
 update_plan_bp = Blueprint('update_put', __name__)
 
@@ -25,10 +25,11 @@ def actualizar_plan_usuario(usuario_id):
         nuevo_id_plan = data_solicitud.get('tarjeta_plan')
 
         # Actualizar el plan del usuario en la base de datos
-        cursor = database.cursor()
+        connection = get_database_connection()
+        cursor = connection.cursor()
         sql = "UPDATE usuario SET id_plan = %s WHERE id = %s"
         cursor.execute(sql, (nuevo_id_plan, usuario_id))
-        database.commit()
+        connection.commit()
 
         if cursor.rowcount > 0:
             return jsonify({'mensaje': 'Plan de Suscripción actualizado correctamente'})
@@ -40,6 +41,6 @@ def actualizar_plan_usuario(usuario_id):
         return jsonify({'mensaje': 'Se produjo un error al actualizar el Plan de Suscripción'}), 500
 
 
-@update_plan_bp.route('/usuario/<int:usuario_id>', methods=['OPTIONS'])
+@update_plan_bp.route('/plan/<int:usuario_id>', methods=['OPTIONS'])
 def options_usuario(usuario_id):
     return jsonify({'mensaje': 'OK'}), 200    

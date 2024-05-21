@@ -1,14 +1,13 @@
 import os
 import sys
 import importlib
-from flask import Flask, jsonify #render_template
+from flask import Flask, jsonify 
 from flask_cors import CORS 
 from flask_jwt_extended import JWTManager
-from flask_socketio import SocketIO #cross_origin
+from flask_socketio import SocketIO 
 from auth import auth_bp
 from flask_sqlalchemy import SQLAlchemy
 from mysql.connector import pooling
-#import middleware as middleware
 import logging
 from logging.handlers import RotatingFileHandler
 from socketio_config import socketio
@@ -37,9 +36,9 @@ jwt = JWTManager(app)
 #socketIo para el chat
 socketio = SocketIO(app, cors_allowed_origins="http://127.0.0.1:5500")
 
+
 # Configuración de Logging
 if not app.debug:
-    # Manejador que rota los logs cuando alcanzan cierto tamaño
     handler = RotatingFileHandler('./logs/app.log', maxBytes=10000, backupCount=3) 
     app.logger.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]')
@@ -83,12 +82,11 @@ blueprints = [
     {'module': 'back.src.delete.borrar_conversacion', 'name': 'delete_conversacion_bp', 'url_prefix': '/delete'},
     {'module': 'back.src.delete.borrar_mensaje', 'name': 'eliminar_mensaje_bp', 'url_prefix': '/delete'},
     {'module': 'back.src.delete.borrar_plan', 'name': 'delete_plan_bp', 'url_prefix': '/delete'}, 
-
 ]
 
 
 
-# Para atender la solicitud recorremos los blueprints en función del endpoint seleccionado
+# Recorrer los blueprints en función del endpoint seleccionado
 for bp in blueprints:
     module = importlib.import_module(bp['module'])
     blueprint = getattr(module, bp['name'])
@@ -98,9 +96,7 @@ for bp in blueprints:
 # Registrando el blueprint de autenticación
 app.register_blueprint(auth_bp) 
 
-
-
-# 01/05 - VALORAR SI HACER TODOS LOS ENDPOINTS EN EL APP.PY
+#check
 @app.route('/')
 def index():      
     print (f'Conectado')
@@ -112,7 +108,7 @@ def handle_exception(e):
     app.logger.error(f"Error no manejado: {e}")
     return jsonify({'mensaje': 'Se produjo un error interno'}), 500
 
-if __name__ == '__main__':
-    #app.secret_key = 'DamM13&Proj3ct'
+
+if __name__ == '__main__':    
     socketio.init_app(app)
     app.run(debug=True, port=5000)

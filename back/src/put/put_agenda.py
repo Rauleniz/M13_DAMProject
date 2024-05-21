@@ -13,10 +13,7 @@ def actualizar_servicio(usuario_id):
     else:
         return jsonify({'mensaje': 'Token no proporcionado'}), 401
 
-
     try:
-        # Obtener los datos del servicio del cuerpo de la solicitud
-
         data = jwt.decode(token,  current_app.config['SECRET_KEY'], algorithms=['HS256'])
         usuario_id = data['sub']
 
@@ -26,16 +23,13 @@ def actualizar_servicio(usuario_id):
         titulo = data_solicitud.get('titulo')
         descripcion = data_solicitud.get('descripcion')
 
-        # Conectar a la base de datos
         connection = get_database_connection()
         cursor = connection.cursor()
 
-        # Actualizar el servicio en la base de datos
         cursor.execute("UPDATE agenda SET usuario_id=%s, fecha=%s, titulo=%s, descripcion=%s WHERE id_usuario=%s",
                        (usuario_id, fecha, titulo, descripcion))
         connection.commit()
 
-        # Verificar si el servicio se ha actualizado correctamente
         if cursor.rowcount > 0:
             return jsonify({'mensaje': 'Servicio actualizado correctamente'}), 200
         else:
