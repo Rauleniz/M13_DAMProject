@@ -122,7 +122,6 @@ display: block;
 
 /* styles.css */
 
-/* styles.css */
 
 
 #calendario {
@@ -219,29 +218,72 @@ display: block;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
     padding-top: 60px;
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #fff;
     margin: 5% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #f8b020;
     width: 80%;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra para darle un aspecto más fresco */
+}
+
+.modal-header, .modal-footer {
+    background-color: #f8b020; /* Color naranja */
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 15px; /* Bordes redondeados del encabezado */
+    border-top-right-radius: 15px; /* Bordes redondeados del encabezado */
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-bottom-left-radius: 15px; /* Bordes redondeados del pie de página */
+    border-bottom-right-radius: 15px; /* Bordes redondeados del pie de página */
+}
+
+.modal-body {
+    padding: 20px;
+    background-color: #fff;
+    border-bottom-left-radius: 15px; /* Bordes redondeados del cuerpo */
+    border-bottom-right-radius: 15px; /* Bordes redondeados del cuerpo */
 }
 
 .close {
-    color: #aaa;
-    float: right;
+    color: white;
     font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: #f8b020;
     text-decoration: none;
     cursor: pointer;
+}
+
+.evento-titulo {
+    background-color: #f8b020;
+    color: white;
+    border-radius: 4px;
+    padding: 2px;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 0.9em;
 }

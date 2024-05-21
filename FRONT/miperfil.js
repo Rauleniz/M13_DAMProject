@@ -157,34 +157,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // CANCELAR SUSCRIPCION
-    document.getElementById('guardar-btn').addEventListener('click', function() {
-        var nuevoCancelacion = document.getElementById('tarjeta_suscripcion').value;
-      
-        fetch("http://127.0.0.1:5000/delete/plan/" + usuario_id, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",                                   
-                "Authorization": "Bearer " + token,
-            },
-            body: JSON.stringify({
-                tarjeta_suscripcion: nuevoCancelacion,
-            }),
-            mode: 'cors'
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Datos actualizados del servicio:", data);
-            window.location.href = "cancelacion.html";
-            // alert('Plan cancelado correctamente');
-        })
-        .catch(error => console.error('Error:', error));
+    document.getElementById('select-cancelar-btn').addEventListener('click', function() {
+        // Redireccionar a cancelacion.html
+        window.location.href = "cancelacion.html";
     });
 
 
-
-
-    
-    //************************* */
 
 
     var datosActualizadosDiv = document.querySelector('.datos_actualizados');

@@ -31,6 +31,21 @@ header {
     left: 20px;
 } */
 
+
+
+/*------IN--------DOS MENUS****************/
+.menu-general {
+    left: 0;
+    display: block;
+}
+
+.menu-usuario {
+    display: none;
+}
+
+/*---OUT-----------DOS MENUS****************/
+
+
 .navbar {
     /* flex: 2; */
     text-align: center;
@@ -73,6 +88,14 @@ header {
     color: black;
 }
 
+
+
+/*-------------IN-------------MENU USER--------*/
+
+.menu_user {
+    position: relative;
+}
+
 .boton_menu {
     position: relative;
 }
@@ -90,11 +113,12 @@ cursor: pointer;
 
 .menu_desplegable {
 position: absolute;
-top: 60px;
+top: 40px;
 right: 0;
 background-color: #f8b020;
 border-radius: 5px;
 display: none;
+/* display: block; */
 }
 
 .menu_desplegable ul {
@@ -113,9 +137,13 @@ text-decoration: none;
 display: block;
 }
 
-.boton_menu:hover .menu_desplegable {
-display: block;
+.boton_menu:hover .menu_desplegable,
+.menu_desplegable:hover {
+    display: block;
 }
+
+/*-----------OUT------MENU USER*/
+
 
 
 

@@ -61,7 +61,24 @@ document.addEventListener("DOMContentLoaded", function() {
     let mes = fechaActual.getMonth();
     let año = fechaActual.getFullYear();
 
-    function actualizarCalendario() {
+    function obtenerEventos() {
+        return fetch(`http://127.0.0.1:5000/get/agenda/${usuario_id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => data.eventos || [])
+        .catch(error => {
+            console.error('Error al obtener eventos:', error);
+            return [];
+        });
+    }
+
+    async function actualizarCalendario() {
+        const eventos = await obtenerEventos();
         const primerDia = new Date(año, mes, 1);
         const ultimoDia = new Date(año, mes + 1, 0);
         const nombreMes = primerDia.toLocaleString('es-ES', { month: 'long' });
@@ -91,11 +108,21 @@ document.addEventListener("DOMContentLoaded", function() {
             diaElemento.classList.add('dia');
             calendario.appendChild(diaElemento);
         }
+
         for (let dia = 1; dia <= diasEnMes; dia++) {
             const diaElemento = document.createElement('div');
             diaElemento.classList.add('dia');
             diaElemento.classList.add('dia-numero');
             diaElemento.textContent = dia;
+
+            const fecha = `${año}-${(mes + 1).toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
+            const eventosDia = eventos.filter(evento => evento.agenda_fecha === fecha);
+            if (eventosDia.length > 0) {
+                const eventoTitulo = document.createElement('div');
+                eventoTitulo.classList.add('evento-titulo');
+                eventoTitulo.textContent = eventosDia[0].agenda_titulo;
+                diaElemento.appendChild(eventoTitulo);
+            }
 
             diaElemento.addEventListener('click', () => {
                 const fechaSeleccionada = `${año}-${mes + 1}-${dia}`;
